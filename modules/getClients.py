@@ -33,4 +33,15 @@ def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
                 if((ciudad is None or val.get('ciudad') == ciudad)):
                     clientZone.append(val)
     return clientZone
+
+def getHowIsClientContac(telefono):
+    for val in cli.clientes:
+        if(val.get('telefono') == telefono):
+             return{
+                "codigo_cliente": val.get('codigo_cliente'),
+                "nombre_cliente": val.get('nombre_cliente')
+             }
+
+
+
             
