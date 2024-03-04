@@ -29,12 +29,8 @@ def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
     clientZone = list()
     for val in cli.clientes:
         if (val.get('pais') == pais):
-            
-            if((region != None or val.get('region') == region)):
-                clientZone.append(val)
-            elif(val.get('region') == None):
-                clientZone.append(val)
-            elif(val.get('ciudad')== None):
-                clientZone.append(val)
+            if((region is None or val.get('region') == region)):
+                if((ciudad is None or val.get('ciudad') == ciudad)):
+                    clientZone.append(val)
     return clientZone
             

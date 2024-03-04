@@ -569,7 +569,7 @@ clientes = [
         "linea_direccion1": '176 Cumberland Street The rocks',
         "linea_direccion2": None,
         "ciudad": 'Sydney',
-        "region": 'Nueva Gales del Sur',
+        "region": 'Sur',
         "pais": 'Australia',
         "codigo_postal": '2003',
         "codigo_empleado_rep_ventas": 31,
