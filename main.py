@@ -2,7 +2,7 @@ from tabulate import tabulate
 import modules.getClients as cliente
 import modules.getOficina as oficina
 import modules.getEmpleados as empleado
-
+import modules.getPedido as pedido
 #print(cliente.getAllClientName())
 #print(cliente.getOneClientCodigo(1))
 #print(cliente.getAllClientCreditCiudad(5000, "Humanes"))
@@ -15,4 +15,5 @@ import modules.getEmpleados as empleado
 #print(tabulate(empleado.getAllNombreApellidoEmailJefe(None), tablefmt="grid"))
 #print(tabulate(empleado.getAllJefeNombreApellidoEmailPuesto(None), tablefmt="grid"))
 #print(tabulate(empleado.getAllNombreApellidosPuestoNoRepresentantesDeVentas(), tablefmt="rounded_grid"))
-print(tabulate(cliente.getAllNombreClientesEspañoles(), tablefmt="rounded_grid"))
+#print(tabulate(cliente.getAllNombreClientesEspañoles(), tablefmt="rounded_grid"))
+print(tabulate(pedido.getAllEstadoPedido(), tablefmt="rounded_grid"))
