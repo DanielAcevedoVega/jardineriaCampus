@@ -3,6 +3,7 @@ import modules.getClients as cliente
 import modules.getOficina as oficina
 import modules.getEmpleados as empleado
 import modules.getPedido as pedido
+import modules.getPagos as pago
 #print(cliente.getAllClientName())
 #print(cliente.getOneClientCodigo(1))
 #print(cliente.getAllClientCreditCiudad(5000, "Humanes"))
@@ -16,4 +17,5 @@ import modules.getPedido as pedido
 #print(tabulate(empleado.getAllJefeNombreApellidoEmailPuesto(None), tablefmt="grid"))
 #print(tabulate(empleado.getAllNombreApellidosPuestoNoRepresentantesDeVentas(), tablefmt="rounded_grid"))
 #print(tabulate(cliente.getAllNombreClientesEspañoles(), tablefmt="rounded_grid"))
-print(tabulate(pedido.getAllEstadoPedido(), tablefmt="rounded_grid"))
+#print(tabulate(pedido.getAllEstadoPedido(), tablefmt="rounded_grid"))
+print(tabulate(pago.getAllCodigoClientePago(), tablefmt="rounded_grid"))
