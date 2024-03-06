@@ -15,3 +15,4 @@ import modules.getEmpleados as empleado
 #print(tabulate(empleado.getAllNombreApellidoEmailJefe(None), tablefmt="grid"))
 #print(tabulate(empleado.getAllJefeNombreApellidoEmailPuesto(None), tablefmt="grid"))
 #print(tabulate(empleado.getAllNombreApellidosPuestoNoRepresentantesDeVentas(), tablefmt="rounded_grid"))
+print(tabulate(cliente.getAllNombreClientesEspañoles(), tablefmt="rounded_grid"))
