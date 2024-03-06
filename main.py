@@ -18,4 +18,4 @@ import modules.getPagos as pago
 #print(tabulate(empleado.getAllNombreApellidosPuestoNoRepresentantesDeVentas(), tablefmt="rounded_grid"))
 #print(tabulate(cliente.getAllNombreClientesEspañoles(), tablefmt="rounded_grid"))
 #print(tabulate(pedido.getAllEstadoPedido(), tablefmt="rounded_grid"))
-print(tabulate(pago.getAllCodigoClientePago(), tablefmt="rounded_grid"))
+#print(tabulate(pago.getAllCodigoClientePago(), tablefmt="rounded_grid"))
