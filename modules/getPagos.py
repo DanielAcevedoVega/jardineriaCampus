@@ -15,3 +15,12 @@ def getAllPagos2008Paypal():
             allPagosPaypal.append(val)
     allPagosPaypal.sort(key=lambda x: x.get("total"), reverse=True) 
     return allPagosPaypal
+
+def getAllFormasDePago():
+    formaDePago = list()
+    for val in pay.pago:
+        val.get("forma_pago")
+        formaDePago.append(val.get("forma_pago"))
+        converted = set(str(item) for item in formaDePago)
+
+    return converted
