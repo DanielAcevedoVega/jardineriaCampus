@@ -22,4 +22,5 @@ import modules.getPagos as pago
 #print(tabulate(pedidos.getAllPedidosEntregadosAtrasadosDeTiempo(), tablefmt="rounded_grid"))
 #print(tabulate(pedidos.getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera(), tablefmt="rounded_grid"))
 #print(tabulate(pedidos.getAllPedidoRechazados2009(), tablefmt="rounded_grid"))
-print(tabulate(pedidos.getAllPedidosEntregadosEnero(), tablefmt="rounded_grid"))
+#print(tabulate(pedidos.getAllPedidosEntregadosEnero(), tablefmt="rounded_grid"))
+print(tabulate(pago.getAllPagos2008Paypal(), tablefmt="rounded_grid"))
