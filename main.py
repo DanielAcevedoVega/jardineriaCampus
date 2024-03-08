@@ -24,4 +24,8 @@ import modules.getProductos as producto
 #print(tabulate(pedidos.getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera(), tablefmt="rounded_grid"))
 #print(tabulate(pedidos.getAllPedidoRechazados2009(), tablefmt="rounded_grid"))
 #print(tabulate(pedidos.getAllPedidosEntregadosEnero(), tablefmt="rounded_grid"))
-print(tabulate(producto.getAllProductosGamaAromaticas(), tablefmt="rounded_grid"))
+#print(pago.getAllFormasDePago())
+#print(tabulate(producto.getAllProductosGamaAromaticas(), tablefmt="rounded_grid"))
+print(tabulate(cliente.getAllClientesMadridRepresentantesVentas(), tablefmt="rounded_grid"))
+
+

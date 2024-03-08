@@ -21,6 +21,5 @@ def getAllFormasDePago():
     for val in pay.pago:
         val.get("forma_pago")
         formaDePago.append(val.get("forma_pago"))
-        converted = set(str(item) for item in formaDePago)
-
-    return converted
+        conjuntoFormaDePago = set(str(item) for item in formaDePago)
+    return conjuntoFormaDePago

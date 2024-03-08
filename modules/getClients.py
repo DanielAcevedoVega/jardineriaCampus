@@ -60,4 +60,15 @@ def getAllNombreClientesEspañoles():
             )
     return nombreClienteEspañol
 
+def getAllClientesMadridRepresentantesVentas():
+    clientesMadrid = list()
+    for val in cli.clientes:
+        if(val.get("ciudad") == "Madrid") and (val.get("codigo_empleado_rep_ventas") == 11 and val.get("codigo_empleado_rep_ventas") == 30):
+            clientesMadrid.append({
+                "nombre": val.get("nombre_cliente"),
+                "ciudad": val.get("ciudad"),
+                "codigo_empleado_rep_ventas": val.get("codigo_empleado_rep_ventas")
+            })
+    return clientesMadrid
+
             
