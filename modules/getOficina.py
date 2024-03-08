@@ -21,3 +21,19 @@ def getAllCiudadTelefono(pais):
                 "pais": val.get("pais")
             })
     return ciudadTelefono
+
+
+def menu():
+    print("""
+ ____                       _                  _               __ _      _             
+ |  _ \ ___ _ __   ___  _ __| |_ ___  ___    __| | ___    ___  / _(_) ___(_)_ __   __ _ 
+ | |_) / _ \ '_ \ / _ \| '__| __/ _ \/ __|  / _` |/ _ \  / _ \| |_| |/ __| | '_ \ / _` |
+ |  _ <  __/ |_) | (_) | |  | ||  __/\__ \ | (_| |  __/ | (_) |  _| | (__| | | | | (_| |
+ |_| \_\___| .__/ \___/|_|   \__\___||___/  \__,_|\___|  \___/|_| |_|\___|_|_| |_|\__,_|
+           |_|                                                                          
+           |_|                                                                                          
+            
+          1. Obtener una lista de las oficinas que hay en una ciudad (codigo oficina y ciudad)
+          2. Obtener el numero de contacto 
+          
+""")    
