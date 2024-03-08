@@ -15,8 +15,8 @@ def getOneClientCodigo(codigo):
     for val in cli.clientes:
         if(val.get('codigo_cliente') == codigo):
             return[{
-                "codigo_cliente": val.get('codigo_cliente'),
-                "nombre_cliente": val.get('nombre_cliente')
+                "codigo": val.get('codigo_cliente'),
+                "nombre": val.get('nombre_cliente')
             }]
             
 def getAllClientCreditCiudad(limiteCredit, ciudad):
@@ -42,7 +42,17 @@ def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
         if (val.get('pais') == pais):
             if((region is None or val.get('region') == region)):
                 if((ciudad is None or val.get('ciudad') == ciudad)):
-                    clientZone.append(val)
+                    clientZone.append({
+                "codigo": val.get('codigo_cliente'),
+                "Responsable": val.get('nombre_cliente'),
+                "Director": f"{val.get('nombre_contacto')} {val.get('apellido_contacto')}",
+                "Telefono": val.get('telefono'),
+                "Fax": val.get('fax'),
+                "Direcciones": f"{val.get('linea_direccion1')} {val.get('linea_direccion2')}",
+                "Origen": f"{val.get('pais')} {val.get('region')} {val.get('ciudad')} {val.get('codigo_postal')}",
+                "Codigo del asesor": val.get('codigo_empleado_rep_ventas'),
+                "Credito": val.get('limite_credito')
+            })
     return clientZone
 
 def getOneClientContac(telefono):
@@ -94,6 +104,7 @@ def menu():
           1. Obtener todos los clientes (codigo y nombre)
           2. Obtener un cliente por el código (codigo y nombre)
           3. Obtener toda la informacion de los cliente segun su limite de creditos y ciudad que pertenece (ejem:3000.0, San Francisco)
+          4. Obtener toda la informacion de los clientes segun su pais, region y ciudad (ejem: Spain, Madrid, Fuenlabrada)
           
 """)            
     opcion = int(input("\nSeleccione una de las opciones: "))
@@ -106,5 +117,10 @@ def menu():
         limite = float(input("Ingrese el limite de credito de los clientes que desee visualizar: "))
         ciudad = input("Ingrese el nombre de la ciudad que desea filtrar a los clientes: ")
         print(tabulate(getAllClientCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
+    elif (opcion == 4):
+        pais = input("Ingrese el pais filtrar a los clientes: ")
+        region = input("Ingrese la region que desea filtrar a los clientes(opcional): ") or None
+        ciudad = input("Ingrese la ciudad que desea filtrar a los clientes(opcional): ") or None
+        print(tabulate(getAllClientPaisRegionCiudad(pais, region, ciudad), headers="keys", tablefmt="github"))
     else:
         print("opcion no validad")
