@@ -127,6 +127,7 @@ def menu():
           4. Obtener toda la informacion de los clientes segun su pais, region y ciudad (ejem: Spain, Madrid, Fuenlabrada)
           5. Obtener toda la informacion del cliente por el numero de contacto (telefono)
           6. Obtener toda la informacion del cliente por el codigo postal
+          7. Obtener todos los nombres de los clientes Españoles 
 """)            
     opcion = int(input("\nSeleccione una de las opciones: "))
     if (opcion == 1):
@@ -149,5 +150,7 @@ def menu():
     elif (opcion == 6):
         codigo_postal = input("Ingrese el codigo postal del cliente que deseas filtrar: ")
         print(tabulate(getClientCodePostal(codigo_postal), headers="keys", tablefmt="github"))
+    elif (opcion == 7):
+        print(tabulate(getAllNombreClientesEspañoles(), headers="keys", tablefmt="github"))
     else:
         print("opcion no validad")
