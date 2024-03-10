@@ -101,15 +101,16 @@ def getAllNombreClientesEspañoles():
             )
     return nombreClienteEspañol
 
-#def getAllClientesMadridRepresentantesVentas():
+def getAllClientesMadridRepresentantesVentas():
     clientesMadrid = list()
     for val in cli.clientes:
-        if(val.get("ciudad") == "Madrid") and (val.get("codigo_empleado_rep_ventas") == 11 and val.get("codigo_empleado_rep_ventas") == 30):
-            clientesMadrid.append({
+        if(val.get("ciudad") == "Madrid"):
+            if(val.get("codigo_empleado_rep_ventas") == 11 or val.get("codigo_empleado_rep_ventas") == 30):
+                clientesMadrid.append({
                 "nombre": val.get("nombre_cliente"),
                 "ciudad": val.get("ciudad"),
-                "codigo_empleado_rep_ventas": val.get("codigo_empleado_rep_ventas")
-            })
+                "Codigo del asesor": val.get("codigo_empleado_rep_ventas")
+                })
     return clientesMadrid
 
 def menu():
@@ -128,6 +129,7 @@ def menu():
           5. Obtener toda la informacion del cliente por el numero de contacto (telefono)
           6. Obtener toda la informacion del cliente por el codigo postal
           7. Obtener todos los nombres de los clientes Españoles 
+          8. Obtener un listado de los clientes de Madird y su representante de ventas tenga el codigo de empleado (11 o 30)
 """)            
     opcion = int(input("\nSeleccione una de las opciones: "))
     if (opcion == 1):
@@ -152,5 +154,7 @@ def menu():
         print(tabulate(getClientCodePostal(codigo_postal), headers="keys", tablefmt="github"))
     elif (opcion == 7):
         print(tabulate(getAllNombreClientesEspañoles(), headers="keys", tablefmt="github"))
+    elif (opcion == 8):
+        print(tabulate(getAllClientesMadridRepresentantesVentas(), headers="keys", tablefmt="github"))
     else:
         print("opcion no validad")
