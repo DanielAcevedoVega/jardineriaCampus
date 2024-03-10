@@ -146,5 +146,8 @@ def menu():
     elif (opcion == 5):
         telefono = input("Ingrese el nuemro de contacto del cliente que deseas filtrar: ")
         print(tabulate(getOneClientContac(telefono), headers="keys", tablefmt="github"))
+    elif (opcion == 6):
+        codigo_postal = input("Ingrese el codigo postal del cliente que deseas filtrar: ")
+        print(tabulate(getClientCodePostal(codigo_postal), headers="keys", tablefmt="github"))
     else:
         print("opcion no validad")
