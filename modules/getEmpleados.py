@@ -54,16 +54,16 @@ ______                      _             _        _____                _       
           |_|                                                    |_|                                 
 
           
-          1. Obtener el nombre, apellidos y email del jefe por su codigo.
-          2. Obtener la informacion por el codigo de empleado.
+          1. Obtener el nombre, apellidos y email de los empleados con el mismo codigo del jefe.
+          2. Obtener la informacion de su jefe.
           3. Obtener el listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
 """)
     opcion = int(input("\nSeleccione una de las opciones: "))
     if (opcion == 1):
-        cogido = int(input("Ingrese el codigo del jefe: "))
+        cogido = int(input("Ingrese el codigo del jefe de los empleados: "))
         print(tabulate(getAllNombreApellidoEmailJefe(cogido), headers="keys", tablefmt="github"))
     elif (opcion == 2):
-        cogido = int(input("Ingrese el codigo de empleado: "))
+        cogido = int(input("Ingrese el codigo de su jefe para obtener su infromacion: "))
         print(tabulate(getAllJefeNombreApellidoEmailPuesto(cogido), headers="keys", tablefmt="github"))
     elif (opcion == 3):
         print(tabulate(getAllNombreApellidosPuestoNoRepresentantesDeVentas(), headers="keys", tablefmt="github"))
