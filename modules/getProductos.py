@@ -1,4 +1,5 @@
 import storage.producto as pro
+from tabulate import tabulate
 
 def getAllProductosGamaAromaticas():
     productoAromatica = list()
@@ -6,9 +7,9 @@ def getAllProductosGamaAromaticas():
         if (val.get("gama") == "Aromáticas") and (val.get("cantidad_en_stock") > 100):
             productoAromatica.sort(key=lambda x: x.get("precio_venta"), reverse=True) 
             productoAromatica.append({
-                "Precio de venta": val.get("precio_venta"),
-                "Gama": val.get("gama"),
-                "Nombre": val.get("nombre")
+                "precio_venta": val.get("precio_venta"),
+                "gama": val.get("gama"),
+                "nombre": val.get("nombre")
             })
     return productoAromatica
 
@@ -27,3 +28,8 @@ ______                      _             _       ______              _         
           1. Obtener todos los prodcutos de la gama Aromaticas
 
 """)
+    opcion = int(input("\nSeleccione una de las opciones: "))
+    if (opcion == 1):
+        print(tabulate(getAllProductosGamaAromaticas(), headers="keys", tablefmt="github"))
+    else:
+        print("Opcion no valida")
