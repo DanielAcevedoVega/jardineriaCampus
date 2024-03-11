@@ -34,8 +34,8 @@ def menu():
            |_|                                                                          
            |_|                                                                                          
             
-          1. Obtener una lista de las oficinas que hay en una ciudad (codigo oficina y ciudad)
-          2. Obtener los contactos de todas las oficinas del pais especifico 
+          1. Obtener una lista de las oficinas que hay en una ciudad (codigo oficina y ciudad).
+          2. Obtener los contactos de todas las oficinas del pais especifico. 
           
 """)
     opcion = int(input("\nSeleccione una de las opciones: "))
@@ -43,4 +43,6 @@ def menu():
         print(tabulate(getAllCodigoCiudad(), headers="keys", tablefmt="github"))
     if (opcion == 2):
         pais = input("Ingrese el pais que deseas filtrar: ")
-        print(tabulate(getAllCiudadTelefono(pais), headers="keys", tablefmt="github"))     
+        print(tabulate(getAllCiudadTelefono(pais), headers="keys", tablefmt="github")) 
+    else:
+        print("Opcion no valida")    

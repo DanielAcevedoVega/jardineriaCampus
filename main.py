@@ -46,9 +46,9 @@ if(__name__ == "__main__"):
     elif (opcion == 4):
         pedidos.menu()
     elif (opcion == 5):
-        productos.menu()
+        producto.menu()
     elif (opcion == 6):
-        pagos.menu()
+        pago.menu()
     else:
         print("opcion no validad")
 

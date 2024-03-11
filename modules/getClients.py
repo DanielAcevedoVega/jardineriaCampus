@@ -124,12 +124,12 @@ def menu():
             
           1. Obtener todos los clientes (codigo y nombre)
           2. Obtener un cliente por el código (codigo y nombre)
-          3. Obtener toda la informacion de los cliente segun su limite de creditos y ciudad que pertenece (ejem:3000.0, San Francisco)
-          4. Obtener toda la informacion de los clientes segun su pais, region y ciudad (ejem: Spain, Madrid, Fuenlabrada)
-          5. Obtener toda la informacion del cliente por el numero de contacto (telefono)
-          6. Obtener toda la informacion del cliente por el codigo postal
-          7. Obtener todos los nombres de los clientes Españoles 
-          8. Obtener un listado de los clientes de Madird y su representante de ventas tenga el codigo de empleado (11 o 30)
+          3. Obtener toda la informacion de los cliente segun su limite de creditos y ciudad que pertenece (ejem:3000.0, San Francisco).
+          4. Obtener toda la informacion de los clientes segun su pais, region y ciudad (ejem: Spain, Madrid, Fuenlabrada).
+          5. Obtener toda la informacion del cliente por el numero de contacto (telefono).
+          6. Obtener toda la informacion del cliente por el codigo postal.
+          7. Obtener todos los nombres de los clientes Españoles.
+          8. Obtener un listado de los clientes de Madird y su representante de ventas tenga el codigo de empleado (11 o 30).
 """)            
     opcion = int(input("\nSeleccione una de las opciones: "))
     if (opcion == 1):
