@@ -143,7 +143,7 @@ def menu():
                 codigo = int(input("Ingrese el codigo del cliente: "))
                 print(tabulate(getOneClientCodigo(codigo), headers="keys", tablefmt="github"))
             except KeyboardInterrupt:
-                break
+                menu()
         elif (opcion == 3):
             try:
                 print("Crtl + C para volver al menu principal")
