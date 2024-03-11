@@ -1,4 +1,5 @@
 import storage.empleado as em
+from tabulate import tabulate
 
 def getAllNombreApellidoEmailJefe(codigo):
     nombreApellidoEmail = list()
@@ -57,3 +58,15 @@ ______                      _             _        _____                _       
           2. Obtener la informacion por el codigo de empleado.
           3. Obtener el listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
 """)
+    opcion = int(input("\nSeleccione una de las opciones: "))
+    if (opcion == 1):
+        cogido = int(input("Ingrese el codigo del jefe: "))
+        print(tabulate(getAllNombreApellidoEmailJefe(cogido), headers="keys", tablefmt="github"))
+    elif (opcion == 2):
+        cogido = int(input("Ingrese el codigo de empleado: "))
+        print(tabulate(getAllJefeNombreApellidoEmailPuesto(cogido), headers="keys", tablefmt="github"))
+    elif (opcion == 3):
+        print(tabulate(getAllNombreApellidosPuestoNoRepresentantesDeVentas(), headers="keys", tablefmt="github"))
+    else:
+        print("Opcion no valida")
+    
