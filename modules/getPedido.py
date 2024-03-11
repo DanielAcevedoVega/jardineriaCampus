@@ -1,5 +1,6 @@
 import storage.pedido as pe
 from datetime import datetime 
+from tabulate import tabulate
 
 def getAllEstadoPedido():
     estadoPedido = list()
@@ -69,12 +70,31 @@ def getAllPedidosEntregadosEnero():
             fecha_entrega = datetime.strptime(date_1, "%d/%m/%Y")
             if fecha_entrega.month == 1:
                 pedidosEntregadosEnero.append({
-                    "codigo_de_pedido": val.get("codigo_pedido"),
-                    "codigo_de_cliente": val.get("codigo_cliente"),
-                    "fecha_de_entrega": val.get("fecha_entrega")
+                    "Codigo de pedido": val.get("codigo_pedido"),
+                    "Codigo de cliente": val.get("codigo_cliente"),
+                    "Fecha de entrega": val.get("fecha_entrega")
                 })
     return pedidosEntregadosEnero
 
+def menu():
+    print("""
+
+______                      _             _       ______        _ _     _           
+| ___ \                    | |           | |      | ___ \      | (_)   | |          
+| |_/ /___ _ __   ___  _ __| |_ ___    __| | ___  | |_/ /__  __| |_  __| | ___  ___ 
+|    // _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ \ |  __/ _ \/ _` | |/ _` |/ _ \/ __|
+| |\ \  __/ |_) | (_) | |  | ||  __/ | (_| |  __/ | | |  __/ (_| | | (_| | (_) \__ \\
+\_| \_\___| .__/ \___/|_|   \__\___|  \__,_|\___| \_|  \___|\__,_|_|\__,_|\___/|___/
+          | |                                                                       
+          |_|                                                                       
+
+          1. Obtener todos los estados de los pedidos.
+          2. Obtener la lista de los pedidos atrasados.
+          3. Obtener todos los pedidos que fueron entregados al menos 2 dias antes de lo esperado.
+          4. Mostrar todos los pedidos rechazados en el 2009.
+          5. Mostrar los pedidos entregados en el mes de enero sin importar el año.
+
+""")
 
 
 
