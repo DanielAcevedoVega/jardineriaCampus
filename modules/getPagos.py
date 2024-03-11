@@ -1,4 +1,5 @@
 import storage.pago as pay
+from tabulate import tabulate
 
 def getAllCodigoClientePago():
     codigoClientePago = list()
@@ -40,3 +41,12 @@ ______                      _             _       ______
           2. Obtener la infromacion de los clientes que pagaron con Paypal y realizadas en el 2008.
           3. Obtener todas las formas de pago.
 """)
+    opcion = int(input("\nSeleccione una de las opciones: "))
+    if (opcion == 1):
+        print(tabulate(getAllCodigoClientePago()))
+    elif (opcion == 2):
+        print(tabulate(getAllPagos2008Paypal(), headers="keys", tablefmt="github"))
+    elif (opcion == 3):
+        print(tabulate(getAllFormasDePago()))
+    else:
+        print("Opcion no valida")

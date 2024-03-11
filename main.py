@@ -50,7 +50,7 @@ if(__name__ == "__main__"):
     elif (opcion == 6):
         pago.menu()
     else:
-        print("opcion no validad")
+        print("opcion no valida")
 
 
       
