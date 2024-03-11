@@ -32,6 +32,8 @@ if(__name__ == "__main__"):
             2. Oficina 
             3. Empleado
             4. Pedidos
+            5. Productos
+            6. Pagos
           
 """)
     opcion = int(input("\nSeleccione una de las opciones: "))
@@ -43,6 +45,10 @@ if(__name__ == "__main__"):
         empleado.menu()
     elif (opcion == 4):
         pedidos.menu()
+    elif (opcion == 5):
+        productos.menu()
+    elif (opcion == 6):
+        pagos.menu()
     else:
         print("opcion no validad")
 

@@ -1,4 +1,5 @@
 import storage.oficina as of   
+from tabulate import tabulate
 #Devuelve un listado con el codigo de oficina y la ciudad donde hay oficinas
 
 def getAllCodigoCiudad():
@@ -34,6 +35,12 @@ def menu():
            |_|                                                                                          
             
           1. Obtener una lista de las oficinas que hay en una ciudad (codigo oficina y ciudad)
-          2. Obtener el numero de contacto 
+          2. Obtener los contactos de todas las oficinas del pais especifico 
           
-""")    
+""")
+    opcion = int(input("\nSeleccione una de las opciones: "))
+    if (opcion == 1):
+        print(tabulate(getAllCodigoCiudad(), headers="keys", tablefmt="github"))
+    if (opcion == 2):
+        pais = input("Ingrese el pais que deseas filtrar: ")
+        print(tabulate(getAllCiudadTelefono(pais), headers="keys", tablefmt="github"))     
