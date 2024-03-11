@@ -26,10 +26,10 @@ def getAllPedidosEntregadosAtrasadosDeTiempo():
             diff = end.date() - start.date()
             if (diff.days < 0):
                 pedidosEntregados.append({
-                    "codigo_de_pedido": val.get("codigo_pedido"),
-                    "codigo_de_cliente": val.get("codigo_cliente"),
-                    "fecha_esperada": val.get("fecha_esperada"),
-                    "fecha_de_entrega": val.get("fecha_entrega")
+                    "Codigo de pedido": val.get("codigo_pedido"),
+                    "Codigo de cliente": val.get("codigo_cliente"),
+                    "Fecha esperada": val.get("fecha_esperada"),
+                    "Fecha de entrega": val.get("fecha_entrega")
                 })
     return pedidosEntregados
 
@@ -46,10 +46,10 @@ def getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera():
             diff = end.date() - start.date()
             if (diff.days >= 2):
                 pedidosEntregados.append({
-                    "codigo_de_pedido": val.get("codigo_pedido"),
-                    "codigo_de_cliente": val.get("codigo_cliente"),
-                    "fecha_esperada": val.get("fecha_esperada"),
-                    "fecha_de_entrega": val.get("fecha_entrega")
+                    "Codigo de pedido": val.get("codigo_pedido"),
+                    "Codigo de cliente": val.get("codigo_cliente"),
+                    "Fecha esperada": val.get("fecha_esperada"),
+                    "Fecha de entrega": val.get("fecha_entrega")
                 })
     return pedidosEntregados
 
@@ -57,7 +57,12 @@ def getAllPedidoRechazados2009():
     allRechazados = list()
     for val in pe.pedido:
         if val.get("estado") == "Rechazado" and "2009" in val.get("fecha_pedido"):
-            allRechazados.append(val)
+            allRechazados.append({
+                    "Codigo de pedido": val.get("codigo_pedido"),
+                    "Codigo de cliente": val.get("codigo_cliente"),
+                    "Fecha pedido": val.get("fecha_pedido"),
+                    "Estado": val.get("estado")
+                })
     return allRechazados
 
 def getAllPedidosEntregadosEnero():
@@ -95,6 +100,19 @@ ______                      _             _       ______        _ _     _
           5. Mostrar los pedidos entregados en el mes de enero sin importar el año.
 
 """)
+    opcion = int(input("\nSeleccione una de las opciones: "))
+    if (opcion == 1):
+        print(tabulate(getAllEstadoPedido(), headers="keys", tablefmt="github"))
+    elif (opcion == 2):
+        print(tabulate(getAllPedidosEntregadosAtrasadosDeTiempo(), headers="keys", tablefmt="github"))
+    elif (opcion == 3):
+        print(tabulate(getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera(), headers="keys", tablefmt="github"))
+    elif (opcion == 4):
+        print(tabulate(getAllPedidoRechazados2009(), headers="keys", tablefmt="github"))
+    elif (opcion == 5):
+        print(tabulate(getAllPedidosEntregadosEnero(), headers="keys", tablefmt="github"))
+    else:
+        print("Opcion no valida")
 
 
 
