@@ -26,7 +26,8 @@ def getAllFormasDePago():
     return conjuntoFormaDePago
 
 def menu():
-    print("""
+    while True:
+        print("""
 
 ______                      _             _       ______                     
 | ___ \                    | |           | |      | ___ \                    
@@ -37,16 +38,19 @@ ______                      _             _       ______
           | |                                                 __/ |          
           |_|                                                |___/           
 
+          0. Regresar al menu principal
           1. Obtener codigo cliente de los que realizaron pagos en el 2008.
           2. Obtener la infromacion de los clientes que pagaron con Paypal y realizadas en el 2008.
           3. Obtener todas las formas de pago.
-""")
-    opcion = int(input("\nSeleccione una de las opciones: "))
-    if (opcion == 1):
-        print(tabulate(getAllCodigoClientePago()))
-    elif (opcion == 2):
-        print(tabulate(getAllPagos2008Paypal(), headers="keys", tablefmt="github"))
-    elif (opcion == 3):
-        print(tabulate(getAllFormasDePago()))
-    else:
-        print("Opcion no valida")
+    """)
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if (opcion == 1):
+            print(tabulate(getAllCodigoClientePago()))
+        elif (opcion == 2):
+            print(tabulate(getAllPagos2008Paypal(), headers="keys", tablefmt="github"))
+        elif (opcion == 3):
+            print(tabulate(getAllFormasDePago()))
+        elif (opcion == 0):
+            break
+        else:
+            print("Opcion no valida")

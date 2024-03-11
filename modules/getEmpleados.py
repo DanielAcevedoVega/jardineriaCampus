@@ -43,7 +43,8 @@ def getAllNombreApellidosPuestoNoRepresentantesDeVentas():
     return nombreApellidosPuetos
 
 def menu():
-    print("""
+    while True:
+        print("""
 ______                      _             _        _____                _                _           
 | ___ \                    | |           | |      |  ___|              | |              | |          
 | |_/ /___ _ __   ___  _ __| |_ ___    __| | ___  | |__ _ __ ___  _ __ | | ___  __ _  __| | ___  ___ 
@@ -53,20 +54,22 @@ ______                      _             _        _____                _       
           | |                                                    | |                                 
           |_|                                                    |_|                                 
 
-          
+          0. Regresar al menu principal
           1. Obtener el nombre, apellidos y email de los empleados con el mismo codigo del jefe.
           2. Obtener la informacion de su jefe.
           3. Obtener el listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
-""")
-    opcion = int(input("\nSeleccione una de las opciones: "))
-    if (opcion == 1):
-        cogido = int(input("Ingrese el codigo del jefe de los empleados: "))
-        print(tabulate(getAllNombreApellidoEmailJefe(cogido), headers="keys", tablefmt="github"))
-    elif (opcion == 2):
-        cogido = int(input("Ingrese el codigo de su jefe para obtener su infromacion: "))
-        print(tabulate(getAllJefeNombreApellidoEmailPuesto(cogido), headers="keys", tablefmt="github"))
-    elif (opcion == 3):
-        print(tabulate(getAllNombreApellidosPuestoNoRepresentantesDeVentas(), headers="keys", tablefmt="github"))
-    else:
-        print("Opcion no valida")
+    """)
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if (opcion == 1):
+            cogido = int(input("Ingrese el codigo del jefe de los empleados: "))
+            print(tabulate(getAllNombreApellidoEmailJefe(cogido), headers="keys", tablefmt="github"))
+        elif (opcion == 2):
+            cogido = int(input("Ingrese el codigo de su jefe para obtener su infromacion: "))
+            print(tabulate(getAllJefeNombreApellidoEmailPuesto(cogido), headers="keys", tablefmt="github"))
+        elif (opcion == 3):
+            print(tabulate(getAllNombreApellidosPuestoNoRepresentantesDeVentas(), headers="keys", tablefmt="github"))
+        elif (opcion == 0):
+            break
+        else:
+            print("Opcion no valida")
     

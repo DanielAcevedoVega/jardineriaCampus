@@ -14,7 +14,8 @@ def getAllProductosGamaAromaticas():
     return productoAromatica
 
 def menu():
-    print("""
+    while True:
+        print("""
 
 ______                      _             _       ______              _            _            
 | ___ \                    | |           | |      | ___ \            | |          | |           
@@ -27,9 +28,11 @@ ______                      _             _       ______              _         
 
           1. Obtener todos los prodcutos de la gama Aromaticas
 
-""")
-    opcion = int(input("\nSeleccione una de las opciones: "))
-    if (opcion == 1):
-        print(tabulate(getAllProductosGamaAromaticas(), headers="keys", tablefmt="github"))
-    else:
-        print("Opcion no valida")
+    """)
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if (opcion == 1):
+            print(tabulate(getAllProductosGamaAromaticas(), headers="keys", tablefmt="github"))
+        elif (opcion == 0):
+            break
+        else:
+            print("Opcion no valida")

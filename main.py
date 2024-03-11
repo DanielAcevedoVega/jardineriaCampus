@@ -19,7 +19,8 @@ import modules.getProductos as producto
 #menu()
 
 if(__name__ == "__main__"):
-    print("""
+    while True:
+        print("""
           
   _ __ ___   ___ _ __  _   _   _ __  _ __(_)_ __   ___(_)_ __   __ _| |
  | '_ ` _ \ / _ \ '_ \| | | | | '_ \| '__| | '_ \ / __| | '_ \ / _` | |
@@ -34,23 +35,26 @@ if(__name__ == "__main__"):
             4. Pedidos
             5. Productos
             6. Pagos
+            0. Salir
           
-""")
-    opcion = int(input("\nSeleccione una de las opciones: "))
-    if (opcion == 1):
-        cliente.menu()
-    elif (opcion == 2):
-        oficina.menu()
-    elif (opcion == 3):
-        empleado.menu()
-    elif (opcion == 4):
-        pedidos.menu()
-    elif (opcion == 5):
-        producto.menu()
-    elif (opcion == 6):
-        pago.menu()
-    else:
-        print("opcion no valida")
+    """)
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if (opcion == 1):
+            cliente.menu()
+        elif (opcion == 2):
+            oficina.menu()
+        elif (opcion == 3):
+            empleado.menu()
+        elif (opcion == 4):
+            pedidos.menu()
+        elif (opcion == 5):
+            producto.menu()
+        elif (opcion == 6):
+            pago.menu()
+        elif (opcion == 0):
+            break
+        else:
+            print("opcion no valida")
 
 
       

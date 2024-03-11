@@ -82,7 +82,8 @@ def getAllPedidosEntregadosEnero():
     return pedidosEntregadosEnero
 
 def menu():
-    print("""
+    while True:
+        print("""
 
 ______                      _             _       ______        _ _     _           
 | ___ \                    | |           | |      | ___ \      | (_)   | |          
@@ -92,27 +93,30 @@ ______                      _             _       ______        _ _     _
 \_| \_\___| .__/ \___/|_|   \__\___|  \__,_|\___| \_|  \___|\__,_|_|\__,_|\___/|___/
           | |                                                                       
           |_|                                                                       
-
+         
+          0. Regresar al menu principal
           1. Obtener todos los estados de los pedidos.
           2. Obtener la lista de los pedidos atrasados.
           3. Obtener todos los pedidos que fueron entregados al menos 2 dias antes de lo esperado.
           4. Mostrar todos los pedidos rechazados en el 2009.
           5. Mostrar los pedidos entregados en el mes de enero sin importar el año.
 
-""")
-    opcion = int(input("\nSeleccione una de las opciones: "))
-    if (opcion == 1):
-        print(tabulate(getAllEstadoPedido(), headers="keys", tablefmt="github"))
-    elif (opcion == 2):
-        print(tabulate(getAllPedidosEntregadosAtrasadosDeTiempo(), headers="keys", tablefmt="github"))
-    elif (opcion == 3):
-        print(tabulate(getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera(), headers="keys", tablefmt="github"))
-    elif (opcion == 4):
-        print(tabulate(getAllPedidoRechazados2009(), headers="keys", tablefmt="github"))
-    elif (opcion == 5):
-        print(tabulate(getAllPedidosEntregadosEnero(), headers="keys", tablefmt="github"))
-    else:
-        print("Opcion no valida")
+    """)
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if (opcion == 1):
+            print(tabulate(getAllEstadoPedido(), headers="keys", tablefmt="github"))
+        elif (opcion == 2):
+            print(tabulate(getAllPedidosEntregadosAtrasadosDeTiempo(), headers="keys", tablefmt="github"))
+        elif (opcion == 3):
+            print(tabulate(getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera(), headers="keys", tablefmt="github"))
+        elif (opcion == 4):
+            print(tabulate(getAllPedidoRechazados2009(), headers="keys", tablefmt="github"))
+        elif (opcion == 5):
+            print(tabulate(getAllPedidosEntregadosEnero(), headers="keys", tablefmt="github"))
+        elif (opcion == 0):
+            break
+        else:
+            print("Opcion no valida")
 
 
 
