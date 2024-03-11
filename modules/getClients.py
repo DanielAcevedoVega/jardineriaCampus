@@ -1,6 +1,7 @@
 import storage.cliente as cli
 from tabulate import tabulate
 
+
 def getAllClientName():
     clientName = list()
     for val in cli.clientes:
