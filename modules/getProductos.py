@@ -1,17 +1,17 @@
 import storage.producto as pro
 from tabulate import tabulate
 
-def getAllProductosGamaAromaticas():
-    productoAromatica = list()
+def getAllProductosOrnamentales():
+    productoOrnamentales = list()
     for val in pro.producto:
-        if (val.get("gama") == "Aromáticas") and (val.get("cantidad_en_stock") > 100):
-            productoAromatica.sort(key=lambda x: x.get("precio_venta"), reverse=True) 
-            productoAromatica.append({
+        if (val.get("gama") == "Ornamentales") and (val.get("cantidad_en_stock") > 100):
+            productoOrnamentales.sort(key=lambda x: x.get("precio_venta"), reverse=True) 
+            productoOrnamentales.append({
                 "precio_venta": val.get("precio_venta"),
                 "gama": val.get("gama"),
                 "nombre": val.get("nombre")
             })
-    return productoAromatica
+    return productoOrnamentales
 
 def menu():
     while True:
@@ -31,7 +31,7 @@ ______                      _             _       ______              _         
     """)
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
-            print(tabulate(getAllProductosGamaAromaticas(), headers="keys", tablefmt="github"))
+            print(tabulate(getAllProductosOrnamentales(), headers="keys", tablefmt="github"))
         elif (opcion == 0):
             break
         else:
