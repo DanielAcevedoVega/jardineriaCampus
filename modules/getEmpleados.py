@@ -61,11 +61,19 @@ ______                      _             _        _____                _       
     """)
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
-            cogido = int(input("Ingrese el codigo del jefe de los empleados: "))
-            print(tabulate(getAllNombreApellidoEmailJefe(cogido), headers="keys", tablefmt="github"))
+            try:
+                print("Crtl + C para volver al menu principal")
+                cogido = int(input("Ingrese el codigo del jefe de los empleados: "))
+                print(tabulate(getAllNombreApellidoEmailJefe(cogido), headers="keys", tablefmt="github"))
+            except KeyboardInterrupt:
+                break
         elif (opcion == 2):
-            cogido = int(input("Ingrese el codigo de su jefe para obtener su infromacion: "))
-            print(tabulate(getAllJefeNombreApellidoEmailPuesto(cogido), headers="keys", tablefmt="github"))
+            try:
+                print("Crtl + C para volver al menu principal")
+                cogido = int(input("Ingrese el codigo de su jefe para obtener su infromacion: "))
+                print(tabulate(getAllJefeNombreApellidoEmailPuesto(cogido), headers="keys", tablefmt="github"))
+            except KeyboardInterrupt:
+                break
         elif (opcion == 3):
             print(tabulate(getAllNombreApellidosPuestoNoRepresentantesDeVentas(), headers="keys", tablefmt="github"))
         elif (opcion == 0):

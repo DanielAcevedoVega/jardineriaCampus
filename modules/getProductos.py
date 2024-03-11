@@ -26,7 +26,8 @@ ______                      _             _       ______              _         
           | |                                                                                   
           |_|                                                                                   
 
-          1. Obtener todos los prodcutos de la gama Aromaticas
+          0. Regresar al menu principal
+          1. Obtener todos los prodcutos de la gama Ornamentales
 
     """)
         opcion = int(input("\nSeleccione una de las opciones: "))
