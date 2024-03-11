@@ -23,3 +23,20 @@ def getAllFormasDePago():
         formaDePago.append(val.get("forma_pago"))
         conjuntoFormaDePago = set(str(item) for item in formaDePago)
     return conjuntoFormaDePago
+
+def menu():
+    print("""
+
+______                      _             _       ______                     
+| ___ \                    | |           | |      | ___ \                    
+| |_/ /___ _ __   ___  _ __| |_ ___    __| | ___  | |_/ /_ _  __ _  ___  ___ 
+|    // _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ \ |  __/ _` |/ _` |/ _ \/ __|
+| |\ \  __/ |_) | (_) | |  | ||  __/ | (_| |  __/ | | | (_| | (_| | (_) \__ \\
+\_| \_\___| .__/ \___/|_|   \__\___|  \__,_|\___| \_|  \__,_|\__, |\___/|___/
+          | |                                                 __/ |          
+          |_|                                                |___/           
+
+          1. Obtener codigo cliente de los que realizaron pagos en el 2008.
+          2. Obtener la infromacion de los clientes que pagaron con Paypal y realizadas en el 2008.
+          3. Obtener todas las formas de pago.
+""")
