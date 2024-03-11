@@ -138,8 +138,12 @@ def menu():
         if (opcion == 1):
             print(tabulate(getAllClientName(), headers="keys", tablefmt="github"))
         elif (opcion == 2):
-            codigo = int(input("Ingrese el codigo del cliente: "))
-            print(tabulate(getOneClientCodigo(codigo), headers="keys", tablefmt="github"))
+            try:
+                print("Crtl + C para volver al menu")
+                codigo = int(input("Ingrese el codigo del cliente: "))
+                print(tabulate(getOneClientCodigo(codigo), headers="keys", tablefmt="github"))
+            except KeyboardInterrupt:
+                break
         elif (opcion == 3):
             limite = float(input("Ingrese el limite de credito de los clientes que desee visualizar: "))
             ciudad = input("Ingrese el nombre de la ciudad que desea filtrar a los clientes: ")
