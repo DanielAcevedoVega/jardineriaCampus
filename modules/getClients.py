@@ -151,7 +151,7 @@ def menu():
                 ciudad = input("Ingrese el nombre de la ciudad que desea filtrar a los clientes: ")
                 print(tabulate(getAllClientCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
             except KeyboardInterrupt:
-                break
+                menu()
         elif (opcion == 4):
             try:
                 print("Crtl + C para volver al menu principal")

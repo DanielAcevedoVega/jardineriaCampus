@@ -1,17 +1,27 @@
 import storage.producto as pro
 from tabulate import tabulate
 
-def getAllProductosOrnamentales():
-    productoOrnamentales = list()
+def getAllStockPriceGama(gama, stock):
+    condiciones = list()
     for val in pro.producto:
-        if (val.get("gama") == "Ornamentales") and (val.get("cantidad_en_stock") > 100):
-            productoOrnamentales.sort(key=lambda x: x.get("precio_venta"), reverse=True) 
-            productoOrnamentales.append({
-                "precio_venta": val.get("precio_venta"),
-                "gama": val.get("gama"),
-                "nombre": val.get("nombre")
-            })
-    return productoOrnamentales
+        if(val.get("gama") == gama and val.get("cantidad_en_stock") >= stock):
+            condiciones.append(val)
+    def price(val):
+        return val.get("precio_venta")
+    condiciones.sort(key=price, reverse=True)
+    for i, val in enumerate(condiciones):
+        condiciones[i] = {
+            "codigo": val.get("codigo_producto"),
+            "venta": val.get("precio_venta"),
+            "nombre": val.get("nombre_"),
+            "gama": val.get("gama"),
+            "dimensiones": val.get("dimensiones"),
+            "proveedor": val.get("proveedor"),
+            "descripcion": f'{val.get("descripcion")[:20]}...' if condiciones[i].get("descripcion") else None,
+            "stock": val.get("cantidad_en_stock"),
+            "base": val.get("precio_proveedor")
+        }
+    return condiciones
 
 def menu():
     while True:
@@ -32,7 +42,9 @@ ______                      _             _       ______              _         
     """)
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
-            print(tabulate(getAllProductosOrnamentales(), headers="keys", tablefmt="github"))
+            gama = input("Ingrese la gama que deseas filtrar (Ejem: Ornamentales, 100): ")
+            stock = int(input("Ingrese las unidades de stock: "))
+            print(tabulate(getAllStockPriceGama(gama,stock), headers="keys", tablefmt="github"))
         elif (opcion == 0):
             break
         else:
