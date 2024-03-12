@@ -1,4 +1,5 @@
 import storage.cliente as cli
+import storage.empleado as em
 from tabulate import tabulate
 
 
@@ -114,6 +115,22 @@ def getAllClientesMadridRepresentantesVentas():
                 })
     return clientesMadrid
 
+def getAllNombreApellidosDeClientesRepresentanteVentas():
+    nombreClienteRepresentanteVentas = list()
+    for val in cli.clientes:
+        codigoEmpleado = val.get("codigo_empleado_rep_ventas")
+        nombreCliente = val.get("nombre_cliente")
+        for val in em.empleados:
+            if codigoEmpleado == val.get("codigo_empleado") and val.get("puesto") == "Representante Ventas":
+                nombreClienteRepresentanteVentas.append({
+                    "nombre cliente": nombreCliente,
+                    "nombre del representante de ventas": f'{val.get("nombre")} {val.get("apellido1")} {val.get("apellido2")}'
+                })
+    return nombreClienteRepresentanteVentas
+
+
+
+
 def menu():
     while True:
         print("""
@@ -133,6 +150,7 @@ def menu():
           6. Obtener toda la informacion del cliente por el codigo postal.
           7. Obtener todos los nombres de los clientes Españoles.
           8. Obtener un listado de los clientes de Madird y su representante de ventas tenga el codigo de empleado (11 o 30).
+          9. Obtener un listado con los nombres del cliente y su representante de ventas.    
     """)            
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
@@ -179,6 +197,8 @@ def menu():
             print(tabulate(getAllNombreClientesEspañoles(), headers="keys", tablefmt="github"))
         elif (opcion == 8):
             print(tabulate(getAllClientesMadridRepresentantesVentas(), headers="keys", tablefmt="github"))
+        elif (opcion == 9):
+            print(tabulate(getAllNombreApellidosDeClientesRepresentanteVentas(), headers="keys", tablefmt="github"))
         elif (opcion == 0):
             break
         else:
