@@ -1,12 +1,12 @@
 from tabulate import tabulate
-import modules.postProducto as psPro
+from modules.post import postProducto as psPro
 import modules.getGama as gG
 #import json
 import requests
 
 def getAllData():
     #json-server storage/producto.json -b 5501
-    peticion = requests.get("http://172.16.100.140:5501")
+    peticion = requests.get("http://localhost:5501")
     data = peticion.json()
     return data 
 
