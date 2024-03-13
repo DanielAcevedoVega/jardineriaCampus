@@ -1,4 +1,6 @@
 import storage.pago as pay
+import storage.cliente as cli
+import storage.empleado as em
 from tabulate import tabulate
 
 def getAllCodigoClientePago():
@@ -25,6 +27,44 @@ def getAllFormasDePago():
         conjuntoFormaDePago = set(str(item) for item in formaDePago)
     return conjuntoFormaDePago
 
+def getAllNombreClientesRealizaronPagos():
+    nombresClientesPagos = set()
+    for val in cli.clientes:
+        codigoCliente = val.get("codigo_cliente")
+        nombreCliente = val.get("nombre_cliente")
+        codigoEmpleado = val.get("codigo_empleado_rep_ventas")
+        for val in em.empleados:
+            nombreRepresentanteVentas = f'{val.get("nombre")} {val.get("apellido1")} {val.get("apellido2")}'
+            if codigoEmpleado == val.get("codigo_empleado") and val.get("puesto") == "Representante Ventas":
+                for val in pay.pago:
+                    if codigoCliente == val.get("codigo_cliente"):
+                        nombresClientesPagos.add(( 
+                            nombreCliente,
+                            nombreRepresentanteVentas
+                        ))
+    return [{"nombre cliente": nombre, "nombre de representante de ventas": representante} for nombre, representante in nombresClientesPagos] 
+
+def getAllNombreClientesNoRealizaronPagos():
+    nombresClientesNoPagos = list()
+    for val in cli.clientes:
+        codigoCliente = val.get("codigo_cliente")
+        nombreCliente = val.get("nombre_cliente")
+        codigoEmpleado = val.get("codigo_empleado_rep_ventas")
+        cliente_con_pago = False
+        for val in em.empleados:
+            nombreRepresentanteVentas = f'{val.get("nombre")} {val.get("apellido1")} {val.get("apellido2")}'
+            if codigoEmpleado == val.get("codigo_empleado") and val.get("puesto") == "Representante Ventas":
+                for val in pay.pago:
+                    if codigoCliente == val.get("codigo_cliente"):
+                        cliente_con_pago = True
+                        break
+                if not cliente_con_pago:
+                        nombresClientesNoPagos.append({
+                            "nombre cliente": nombreCliente,
+                            "nombre de representante de ventas": nombreRepresentanteVentas
+                        })
+    return nombresClientesNoPagos
+
 def menu():
     while True:
         print("""
@@ -42,6 +82,8 @@ ______                      _             _       ______
           1. Obtener codigo cliente de los que realizaron pagos en el 2008.
           2. Obtener la infromacion de los clientes que pagaron con Paypal y realizadas en el 2008.
           3. Obtener todas las formas de pago.
+          4. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
+          5. Obtener el nombre de los clientes que no hayan realizado pagos junto con el nombre de sus representantes de ventas.  
     """)
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
@@ -50,6 +92,10 @@ ______                      _             _       ______
             print(tabulate(getAllPagos2008Paypal(), headers="keys", tablefmt="github"))
         elif (opcion == 3):
             print(tabulate(getAllFormasDePago()))
+        elif (opcion == 4):
+            print(tabulate(getAllNombreClientesRealizaronPagos(), headers="keys", tablefmt="github"))
+        elif (opcion == 5):
+            print(tabulate(getAllNombreClientesNoRealizaronPagos(), headers="keys", tablefmt="github"))
         elif (opcion == 0):
             break
         else:
