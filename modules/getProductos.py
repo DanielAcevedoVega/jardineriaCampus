@@ -1,9 +1,17 @@
-import storage.producto as pro
 from tabulate import tabulate
+import modules.postProducto as psPro
+#import json
+import requests
+
+def getAllData():
+    #json-server storage/producto.json -b 5501
+    peticion = requests.get("http://172.16.100.140:5501")
+    data = peticion.json()
+    return data 
 
 def getAllStockPriceGama(gama, stock):
     condiciones = list()
-    for val in pro.producto:
+    for val in getAllData():
         if(val.get("gama") == gama and val.get("cantidad_en_stock") >= stock):
             condiciones.append(val)
     def price(val):
@@ -37,14 +45,30 @@ ______                      _             _       ______              _         
           |_|                                                                                   
 
           0. Regresar al menu principal
-          1. Obtener todos los prodcutos de la gama Ornamentales
+          1. Obtener todos los productos de una categoria ordenando sus precios de venta, tambien que su cantidad de stock sea mayor de 100.   (Ejem: Ornamentales, 100)
+          2. Guardar  
 
     """)
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
-            gama = input("Ingrese la gama que deseas filtrar (Ejem: Ornamentales, 100): ")
+            gama = input("Ingrese la gama que deseas filtrar: ")
             stock = int(input("Ingrese las unidades de stock: "))
             print(tabulate(getAllStockPriceGama(gama,stock), headers="keys", tablefmt="github"))
+        elif (opcion == 2):
+           producto = {
+                "codigo_producto": input("Ingrese el codigo del producto: "),
+                "nombre": input("Ingrese el nombre del producto: "),
+                "gama": input("Ingrese la gama del producto: "),
+                "dimensiones": input("Ingrese la dimension del producto: "),
+                "proveedor": input("Ingrese el proveedor del producto: "),
+                "descripcion": input("Ingrese la descipcion del producto: "),
+                "cantidad_en_stock": int(input("Ingrese la cantidad de stock: ")),
+                "precio_venta": float(input("Ingrese el precio de venta: ")),
+                "precio_proveedor": float(input("Ingrese el precio del proveedor: "))
+            }
+           psPro.postProducto(producto)
+           print("Producto Guardado")
+           
         elif (opcion == 0):
             break
         else:
