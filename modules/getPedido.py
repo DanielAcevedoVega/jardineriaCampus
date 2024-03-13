@@ -1,10 +1,17 @@
-import storage.pedido as pe
+import requests
+#from modules.post import postPedido as posPe
 from datetime import datetime 
 from tabulate import tabulate
 
+def getAllData():
+    #json-server storage/producto.json -b 5501
+    peticion = requests.get("http://localhost:5503")
+    data = peticion.json()
+    return data 
+
 def getAllEstadoPedido():
     estadoPedido = list()
-    for val in pe.pedido:
+    for val in getAllData():
         estadoPedido.append(
             {
                 "codigo": val.get("codigo_pedido"),
@@ -15,7 +22,7 @@ def getAllEstadoPedido():
 
 def getAllPedidosEntregadosAtrasadosDeTiempo():
     pedidosEntregados = list()
-    for val in pe.pedido:
+    for val in getAllData():
         if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
             val["fecha_entrega"] = val.get("fecha_esperada")
         if val.get("estado") == "Entregado":
@@ -35,7 +42,7 @@ def getAllPedidosEntregadosAtrasadosDeTiempo():
 
 def getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera():
     pedidosEntregados = list()
-    for val in pe.pedido:
+    for val in getAllData():
         if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
             val["fecha_entrega"] = val.get("fecha_esperada")
         if val.get("estado") == "Entregado":
@@ -55,7 +62,7 @@ def getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera():
 
 def getAllPedidoRechazados2009():
     allRechazados = list()
-    for val in pe.pedido:
+    for val in getAllData():
         if val.get("estado") == "Rechazado" and "2009" in val.get("fecha_pedido"):
             allRechazados.append({
                     "Codigo de pedido": val.get("codigo_pedido"),
@@ -67,7 +74,7 @@ def getAllPedidoRechazados2009():
 
 def getAllPedidosEntregadosEnero():
     pedidosEntregadosEnero = list()
-    for val in pe.pedido:
+    for val in getAllData():
         if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
             val["fecha_entrega"] = val.get("fecha_esperada")
         if val.get("estado") == "Entregado":

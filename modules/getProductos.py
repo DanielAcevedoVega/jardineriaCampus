@@ -5,8 +5,8 @@ import modules.getGama as gG
 import requests
 
 def getAllData():
-    #json-server storage/producto.json -b 5501
-    peticion = requests.get("http://localhost:5501")
+    #json-server storage/pedido.json -b 5503
+    peticion = requests.get("http://localhost:5503")
     data = peticion.json()
     return data 
 
@@ -67,7 +67,7 @@ ______                      _             _       ______              _         
                 "precio_venta": int(input("Ingrese el precio de venta: ")),
                 "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
             }
-           psPro.postProducto(producto)
+           psPro(producto)
            print("Producto Guardado")
            
         elif (opcion == 0):
