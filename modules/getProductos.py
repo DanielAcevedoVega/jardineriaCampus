@@ -1,5 +1,6 @@
 from tabulate import tabulate
 import modules.postProducto as psPro
+import modules.getGama as gG
 #import json
 import requests
 
@@ -58,13 +59,13 @@ ______                      _             _       ______              _         
            producto = {
                 "codigo_producto": input("Ingrese el codigo del producto: "),
                 "nombre": input("Ingrese el nombre del producto: "),
-                "gama": input("Ingrese la gama del producto: "),
+                "gama": gG.getAllNombre()[int(input("Seleccione la gama\n: "+"".join([f"\t{i}. {val}\n" for i, val in enumerate(gG.getAllNombre())])))],
                 "dimensiones": input("Ingrese la dimension del producto: "),
                 "proveedor": input("Ingrese el proveedor del producto: "),
                 "descripcion": input("Ingrese la descipcion del producto: "),
                 "cantidad_en_stock": int(input("Ingrese la cantidad de stock: ")),
-                "precio_venta": float(input("Ingrese el precio de venta: ")),
-                "precio_proveedor": float(input("Ingrese el precio del proveedor: "))
+                "precio_venta": int(input("Ingrese el precio de venta: ")),
+                "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
             }
            psPro.postProducto(producto)
            print("Producto Guardado")
