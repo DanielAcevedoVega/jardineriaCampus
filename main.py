@@ -46,13 +46,13 @@ if(__name__ == "__main__"):
         elif (opcion == 2):
             me.menuOficina()
         elif (opcion == 3):
-            me.menuEmpleado
+            me.menuEmpleado()
         elif (opcion == 4):
-            me.menuPedido
+            me.menuPedido()
         elif (opcion == 5):
             me.menuProducto()
         elif (opcion == 6):
-            me.menuPago
+            me.menuPago()
         elif (opcion == 0):
             break
         else:

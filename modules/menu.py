@@ -5,7 +5,7 @@ import modules.getEmpleados as REempleado
 import modules.getPedido as REpedidos
 import modules.getPagos as REpago
 import modules.getProductos as REproducto
-import modules.post as CRUDproducto
+import modules.crudProductos as CRUDproducto
 
 
 def menuCliente():
@@ -36,7 +36,7 @@ def menuCliente():
         if (opcion == 1):
             REcliente.menu()
         elif (opcion == 2):
-            
+            print("")
         elif (opcion == 0):
             break
         else:
@@ -68,7 +68,7 @@ def menuOficina():
         if (opcion == 1):
             REoficina.menu()
         elif (opcion == 2):
-            
+            print("")
         elif (opcion == 0):
             break
         else:
@@ -100,7 +100,7 @@ def menuEmpleado():
         if (opcion == 1):
             REempleado.menu()
         elif (opcion == 2):
-            CRUDproducto.menu()
+            print("")
         elif (opcion == 0):
             break
         else:
@@ -132,7 +132,7 @@ def menuPedido():
         if (opcion == 1):
             REpedidos.menu()
         elif (opcion == 2):
-            
+            print("")
         elif (opcion == 0):
             break
         else:
@@ -175,16 +175,17 @@ def menuPago():
         os.system("clear")
         print("""  
                   
-    ____  _                            _     __               __                                     __   
-   / __ )(_)__  ____ _   _____  ____  (_)___/ /___     ____ _/ /  ____ ___  ___  ____  __  __   ____/ /__ 
-  / __  / / _ \/ __ \ | / / _ \/ __ \/ / __  / __ \   / __ `/ /  / __ `__ \/ _ \/ __ \/ / / /  / __  / _ \\
- / /_/ / /  __/ / / / |/ /  __/ / / / / /_/ / /_/ /  / /_/ / /  / / / / / /  __/ / / / /_/ /  / /_/ /  __/
-/_____/_/\___/_/ /_/|___/\___/_/ /_/_/\__,_/\____/   \__,_/_/  /_/ /_/ /_/\___/_/ /_/\__,_/   \__,_/\___/ 
-    ____  _________  ____/ /_  _______/ /_____  _____                                                     
-   / __ \/ ___/ __ \/ __  / / / / ___/ __/ __ \/ ___/                                                     
-  / /_/ / /  / /_/ / /_/ / /_/ / /__/ /_/ /_/ (__  )                                                      
- / .___/_/   \____/\__,_/\__,_/\___/\__/\____/____/                                                       
-/_/                                                                                                       
+    ____  _                            _     __               __                                     __        
+   / __ )(_)__  ____ _   _____  ____  (_)___/ /___     ____ _/ /  ____ ___  ___  ____  __  __   ____/ /__      
+  / __  / / _ \/ __ \ | / / _ \/ __ \/ / __  / __ \   / __ `/ /  / __ `__ \/ _ \/ __ \/ / / /  / __  / _ \\     
+ / /_/ / /  __/ / / / |/ /  __/ / / / / /_/ / /_/ /  / /_/ / /  / / / / / /  __/ / / / /_/ /  / /_/ /  __/     
+/_____/_/\___/_/ /_/|___/\___/_/ /_/_/\__,_/\____/   \__,_/_/  /_/ /_/ /_/\___/_/ /_/\__,_/   \__,_/\___/      
+   / __ \____ _____ _____  _____                                                                               
+  / /_/ / __ `/ __ `/ __ \/ ___/                                                                               
+ / ____/ /_/ / /_/ / /_/ (__  )                                                                                
+/_/    \__,_/\__, /\____/____/                                                                                 
+            /____/                                                                                             
+                                               
 
                   1. Reportes de los pagos
                   2. Guardar, Actualizar y Eliminar productos
@@ -195,7 +196,7 @@ def menuPago():
         if (opcion == 1):
             REpago.menu()
         elif (opcion == 2):
-            
+            print("")
         elif (opcion == 0):
             break
         else:

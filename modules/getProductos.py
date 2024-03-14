@@ -1,6 +1,6 @@
 import os
 from tabulate import tabulate
-from modules.post import postProducto as psPro
+
 
 #import json
 import requests
