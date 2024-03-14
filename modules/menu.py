@@ -6,6 +6,7 @@ import modules.getPedido as REpedidos
 import modules.getPagos as REpago
 import modules.getProductos as REproducto
 import modules.crudProductos as CRUDproducto
+import modules.crudCliente as CRUDcliente
 
 
 def menuCliente():
@@ -29,14 +30,14 @@ def menuCliente():
 
                   1. Reportes de los clientes
                   2. Agregar, Actualizar y Eliminar clientes
-                  0. Atras
+                  0. Regresar al menu principal
                   
                   """)
         opcion = int(input("\nSeleccione una de las opciones: ")) 
         if (opcion == 1):
             REcliente.menu()
         elif (opcion == 2):
-            print("")
+            CRUDcliente.menu()
         elif (opcion == 0):
             break
         else:
@@ -61,7 +62,7 @@ def menuOficina():
 
                   1. Reportes de las oficinas
                   2. Agregar, Actualizar y Eliminar oficinas
-                  0. Atras
+                  0. Regresar al menu principal
                   
                   """)
         opcion = int(input("\nSeleccione una de las opciones: ")) 
@@ -93,7 +94,7 @@ def menuEmpleado():
                                                                             
                   1. Reportes de empleados
                   2. Agregar, Actualizar y Eliminar oficinas
-                  0. Atras
+                  0. Regresar al menu principal
                   
                   """)
         opcion = int(input("\nSeleccione una de las opciones: ")) 
@@ -125,7 +126,7 @@ def menuPedido():
                                                                             
                   1. Reportes de pedidos
                   2. Guardar, Actualizar y Eliminar oficinas
-                  0. Atras
+                  0. Regresar al menu principal
                   
                   """)
         opcion = int(input("\nSeleccione una de las opciones: ")) 
@@ -157,7 +158,7 @@ def menuProducto():
 
                   1. Reportes de los productos
                   2. Guardar, Actualizar y Eliminar productos
-                  0. Atras
+                  0. Regresar al menu principal
                   
                   """)
         opcion = int(input("\nSeleccione una de las opciones: ")) 
@@ -189,7 +190,7 @@ def menuPago():
 
                   1. Reportes de los pagos
                   2. Guardar, Actualizar y Eliminar productos
-                  0. Atras
+                  0. Regresar al menu principal
                   
                   """)
         opcion = int(input("\nSeleccione una de las opciones: ")) 

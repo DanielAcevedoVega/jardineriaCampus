@@ -25,7 +25,7 @@ def menu():
 
           
           1. Guardar un producto nuevo
-          0. Regresar al menu principl
+          0. Atras
 
     """)
         opcion = int(input("\nSeleccione una de las opciones: "))
