@@ -1,3 +1,4 @@
+import os
 import requests
 from tabulate import tabulate
 
@@ -143,6 +144,7 @@ def getAllNombreApellidosDeClientesRepresentanteVentas():
 
 def menu():
     while True:
+        os.system("clear")
         print("""
    ____                       _                  _        _                  _ _            _            
   |  _ \ ___ _ __   ___  _ __| |_ ___  ___    __| | ___  | | ___  ___    ___| (_) ___ _ __ | |_ ___  ___ 
@@ -166,50 +168,38 @@ def menu():
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
             print(tabulate(getAllClientName(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 2):
-            try:
-                print("Crtl + C para volver al menu")
                 codigo = int(input("Ingrese el codigo del cliente: "))
                 print(tabulate(getOneClientCodigo(codigo), headers="keys", tablefmt="github"))
-            except KeyboardInterrupt:
-                menu()
+                input("Precione una tecla para continuar.........")
         elif (opcion == 3):
-            try:
-                print("Crtl + C para volver al menu principal")
                 limite = float(input("Ingrese el limite de credito de los clientes que desee visualizar: "))
                 ciudad = input("Ingrese el nombre de la ciudad que desea filtrar a los clientes: ")
                 print(tabulate(getAllClientCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
-            except KeyboardInterrupt:
-                menu()
+                input("Precione una tecla para continuar.........")
         elif (opcion == 4):
-            try:
-                print("Crtl + C para volver al menu principal")
                 pais = input("Ingrese el pais filtrar a los clientes: ")
                 region = input("Ingrese la region que desea filtrar a los clientes(opcional): ") or None
                 ciudad = input("Ingrese la ciudad que desea filtrar a los clientes(opcional): ") or None
                 print(tabulate(getAllClientPaisRegionCiudad(pais, region, ciudad), headers="keys", tablefmt="github"))
-            except KeyboardInterrupt:
-                break
+                input("Precione una tecla para continuar.........")
         elif (opcion == 5):
-            try:
-                print("Ctrl + C para volver al menu principal")
                 telefono = input("Ingrese el nuemro de contacto del cliente que deseas filtrar: ")
-                print(tabulate(getOneClientContac(telefono), headers="keys", tablefmt="github"))
-            except KeyboardInterrupt:
-                break      
+                print(tabulate(getOneClientContac(telefono), headers="keys", tablefmt="github"))   
+                input("Precione una tecla para continuar.........")
         elif (opcion == 6):
-            try:
-                print("Ctrl + C para volver al menu principal")
                 codigo_postal = input("Ingrese el codigo postal del cliente que deseas filtrar: ")
                 print(tabulate(getClientCodePostal(codigo_postal), headers="keys", tablefmt="github"))
-            except KeyboardInterrupt:
-                break
         elif (opcion == 7):
             print(tabulate(getAllNombreClientesEspañoles(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 8):
             print(tabulate(getAllClientesMadridRepresentantesVentas(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 9):
             print(tabulate(getAllNombreApellidosDeClientesRepresentanteVentas(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 0):
             break
         else:

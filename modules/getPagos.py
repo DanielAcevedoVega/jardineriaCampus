@@ -1,3 +1,4 @@
+import os
 import requests
 #from modules.post import postPagos as pay
 from tabulate import tabulate
@@ -86,6 +87,7 @@ def getAllNombreClientesNoRealizaronPagos():
 
 def menu():
     while True:
+        os.system("clear")
         print("""
 
 ______                      _             _       ______                     
@@ -107,14 +109,19 @@ ______                      _             _       ______
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
             print(tabulate(getAllCodigoClientePago()))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 2):
             print(tabulate(getAllPagos2008Paypal(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 3):
             print(tabulate(getAllFormasDePago()))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 4):
             print(tabulate(getAllNombreClientesRealizaronPagos(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 5):
             print(tabulate(getAllNombreClientesNoRealizaronPagos(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 0):
             break
         else:

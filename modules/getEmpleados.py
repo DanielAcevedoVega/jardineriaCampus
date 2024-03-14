@@ -1,3 +1,4 @@
+import os
 import requests
 from tabulate import tabulate
 
@@ -50,6 +51,7 @@ def getAllNombreApellidosPuestoNoRepresentantesDeVentas():
 
 def menu():
     while True:
+        os.system("clear")
         print("""
 ______                      _             _        _____                _                _           
 | ___ \                    | |           | |      |  ___|              | |              | |          
@@ -67,21 +69,16 @@ ______                      _             _        _____                _       
     """)
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
-            try:
-                print("Crtl + C para volver al menu principal")
                 cogido = int(input("Ingrese el codigo del jefe de los empleados: "))
                 print(tabulate(getAllNombreApellidoEmailJefe(cogido), headers="keys", tablefmt="github"))
-            except KeyboardInterrupt:
-                break
+                input("Precione una tecla para continuar.........")
         elif (opcion == 2):
-            try:
-                print("Crtl + C para volver al menu principal")
                 cogido = int(input("Ingrese el codigo de su jefe para obtener su infromacion: "))
                 print(tabulate(getAllJefeNombreApellidoEmailPuesto(cogido), headers="keys", tablefmt="github"))
-            except KeyboardInterrupt:
-                break
+                input("Precione una tecla para continuar.........")
         elif (opcion == 3):
             print(tabulate(getAllNombreApellidosPuestoNoRepresentantesDeVentas(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 0):
             break
         else:

@@ -1,3 +1,4 @@
+import os
 import requests
 #from modules.post import postPedido as posPe
 from datetime import datetime 
@@ -90,6 +91,7 @@ def getAllPedidosEntregadosEnero():
 
 def menu():
     while True:
+        os.system("clear")
         print("""
 
 ______                      _             _       ______        _ _     _           
@@ -112,14 +114,19 @@ ______                      _             _       ______        _ _     _
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
             print(tabulate(getAllEstadoPedido(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 2):
             print(tabulate(getAllPedidosEntregadosAtrasadosDeTiempo(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 3):
             print(tabulate(getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 4):
             print(tabulate(getAllPedidoRechazados2009(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 5):
             print(tabulate(getAllPedidosEntregadosEnero(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 0):
             break
         else:

@@ -1,10 +1,16 @@
-import storage.oficina as of   
+import os
+import requests
 from tabulate import tabulate
-#Devuelve un listado con el codigo de oficina y la ciudad donde hay oficinas
+
+def getAllDataOficina():
+    #json-server storage/oficina.json -b 5505
+    peticion = requests.get("http://localhost:5505")
+    data = peticion.json()
+    return data 
 
 def getAllCodigoCiudad():
     codigoCiudad = list()
-    for val in of.oficina:
+    for val in getAllDataOficina():
         codigoCiudad.append({
             "codigo": val.get("codigo_oficina"),
             "ciudad": val.get("ciudad")
@@ -13,7 +19,7 @@ def getAllCodigoCiudad():
 
 def getAllCiudadTelefono(pais):
     ciudadTelefono = list()
-    for val in of.oficina:
+    for val in getAllDataOficina():
         if(val.get("pais") == pais):
             ciudadTelefono.append({
                 "ciudad": val.get("ciudad"),
@@ -26,6 +32,7 @@ def getAllCiudadTelefono(pais):
 
 def menu():
     while True:
+        os.system("clear")
         print("""
  ____                       _                  _               __ _      _             
  |  _ \ ___ _ __   ___  _ __| |_ ___  ___    __| | ___    ___  / _(_) ___(_)_ __   __ _ 
@@ -43,9 +50,11 @@ def menu():
         opcion = int(input("\nSeleccione una de las opciones: "))
         if (opcion == 1):
             print(tabulate(getAllCodigoCiudad(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.........")
         elif (opcion == 2):
             pais = input("Ingrese el pais que deseas filtrar: ")
             print(tabulate(getAllCiudadTelefono(pais), headers="keys", tablefmt="github")) 
+            input("Precione una tecla para continuar.........")
         elif (opcion == 0):
             break
         else:
