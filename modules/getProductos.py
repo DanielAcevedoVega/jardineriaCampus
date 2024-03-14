@@ -1,12 +1,13 @@
+import os
 from tabulate import tabulate
 from modules.post import postProducto as psPro
-import modules.getGama as gG
+
 #import json
 import requests
 
 def getAllData():
-    #json-server storage/pedido.json -b 5503
-    peticion = requests.get("http://localhost:5503")
+    #json-server storage/producto.json -b 5501
+    peticion = requests.get("http://localhost:5501")
     data = peticion.json()
     return data 
 
@@ -34,6 +35,7 @@ def getAllStockPriceGama(gama, stock):
 
 def menu():
     while True:
+        os.system("clear")
         print("""
 
 ______                      _             _       ______              _            _            
@@ -45,9 +47,9 @@ ______                      _             _       ______              _         
           | |                                                                                   
           |_|                                                                                   
 
-          0. Regresar al menu principal
+          
           1. Obtener todos los productos de una categoria ordenando sus precios de venta, tambien que su cantidad de stock sea mayor de 100.   (Ejem: Ornamentales, 100)
-          2. Guardar  
+          0. Atras
 
     """)
         opcion = int(input("\nSeleccione una de las opciones: "))
@@ -55,21 +57,7 @@ ______                      _             _       ______              _         
             gama = input("Ingrese la gama que deseas filtrar: ")
             stock = int(input("Ingrese las unidades de stock: "))
             print(tabulate(getAllStockPriceGama(gama,stock), headers="keys", tablefmt="github"))
-        elif (opcion == 2):
-           producto = {
-                "codigo_producto": input("Ingrese el codigo del producto: "),
-                "nombre": input("Ingrese el nombre del producto: "),
-                "gama": gG.getAllNombre()[int(input("Seleccione la gama\n: "+"".join([f"\t{i}. {val}\n" for i, val in enumerate(gG.getAllNombre())])))],
-                "dimensiones": input("Ingrese la dimension del producto: "),
-                "proveedor": input("Ingrese el proveedor del producto: "),
-                "descripcion": input("Ingrese la descipcion del producto: "),
-                "cantidad_en_stock": int(input("Ingrese la cantidad de stock: ")),
-                "precio_venta": int(input("Ingrese el precio de venta: ")),
-                "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
-            }
-           psPro(producto)
-           print("Producto Guardado")
-           
+            input("Precione una tecla para continuar.........")
         elif (opcion == 0):
             break
         else:

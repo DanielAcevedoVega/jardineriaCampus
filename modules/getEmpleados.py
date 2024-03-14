@@ -1,9 +1,15 @@
-import storage.empleado as em
+import requests
 from tabulate import tabulate
+
+def getAllDataEmpleado():
+    #json-server storage/empleado.json -b 5506
+    peticion = requests.get("http://localhost:5506")
+    data = peticion.json()
+    return data 
 
 def getAllNombreApellidoEmailJefe(codigo):
     nombreApellidoEmail = list()
-    for val in em.empleados:
+    for val in getAllDataEmpleado():
         if(val.get("codigo_jefe") == codigo):
             nombreApellidoEmail.append(
                 {
@@ -17,7 +23,7 @@ def getAllNombreApellidoEmailJefe(codigo):
 
 def getAllJefeNombreApellidoEmailPuesto(codigo):
     jefeNombreApellidoEmailPuesto = list()
-    for val in em.empleados:
+    for val in getAllDataEmpleado():
         if((val.get("codigo_empleado") == codigo)):
             jefeNombreApellidoEmailPuesto.append(
                 {
@@ -31,7 +37,7 @@ def getAllJefeNombreApellidoEmailPuesto(codigo):
 
 def getAllNombreApellidosPuestoNoRepresentantesDeVentas():
     nombreApellidosPuetos = list()
-    for val in em.empleados:
+    for val in getAllDataEmpleado():
         if(val.get("puesto") != 'Representante Ventas'):
             nombreApellidosPuetos.append(
                 {
