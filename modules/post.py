@@ -17,8 +17,8 @@ def postProducto():
                 "precio_venta": int(input("Ingrese el precio de venta: ")),
                 "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
             }
-    
-    peticion = requests.post("http://localhost:5501", data=json.dumps(producto))
+    headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
+    peticion = requests.post("http://localhost:5501", headers=headers, data=json.dumps(producto))
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"
     return [res]

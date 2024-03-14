@@ -191,6 +191,7 @@ def menu():
         elif (opcion == 6):
                 codigo_postal = input("Ingrese el codigo postal del cliente que deseas filtrar: ")
                 print(tabulate(getClientCodePostal(codigo_postal), headers="keys", tablefmt="github"))
+                input("Precione una tecla para continuar.........")
         elif (opcion == 7):
             print(tabulate(getAllNombreClientesEspañoles(), headers="keys", tablefmt="github"))
             input("Precione una tecla para continuar.........")

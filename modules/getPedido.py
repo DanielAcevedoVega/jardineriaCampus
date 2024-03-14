@@ -23,7 +23,7 @@ def getAllEstadoPedido():
 
 def getAllPedidosEntregadosAtrasadosDeTiempo():
     pedidosEntregados = list()
-    for val in getAllDataPedido|():
+    for val in getAllDataPedido():
         if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
             val["fecha_entrega"] = val.get("fecha_esperada")
         if val.get("estado") == "Entregado":
