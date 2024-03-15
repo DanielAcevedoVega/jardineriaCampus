@@ -4,6 +4,7 @@ import requests
 from datetime import datetime 
 from tabulate import tabulate
 from modules.crudPedidos import getAllDataPedido as pe
+import modules.validaciones as vali
 
 
 def getAllEstadoPedido():
@@ -107,26 +108,27 @@ ______                      _             _       ______        _ _     _
           5. Mostrar los pedidos entregados en el mes de enero sin importar el año.
 
     """)
-        opcion = int(input("\nSeleccione una de las opciones: "))
-        if (opcion == 1):
-            print(tabulate(getAllEstadoPedido(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 2):
-            print(tabulate(getAllPedidosEntregadosAtrasadosDeTiempo(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 3):
-            print(tabulate(getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 4):
-            print(tabulate(getAllPedidoRechazados2009(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 5):
-            print(tabulate(getAllPedidosEntregadosEnero(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 0):
-            break
-        else:
-            print("Opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 5):
+                if (opcion == 1):
+                    print(tabulate(getAllEstadoPedido(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 2):
+                    print(tabulate(getAllPedidosEntregadosAtrasadosDeTiempo(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 3):
+                    print(tabulate(getAllPedidosEntregadosAlMenosDosDiasAnteDeEspera(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 4):
+                    print(tabulate(getAllPedidoRechazados2009(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 5):
+                    print(tabulate(getAllPedidosEntregadosEnero(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 0):
+                    break
 
 
 

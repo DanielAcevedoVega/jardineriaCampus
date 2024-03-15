@@ -1,6 +1,7 @@
 import os
 #from tabulate import tabulate
 import modules.menu as me
+import modules.validaciones as vali
 
 
 
@@ -40,23 +41,26 @@ if(__name__ == "__main__"):
             0. Salir
           
     """)
-        opcion = int(input("\nSeleccione una de las opciones: "))
-        if (opcion == 1):
-            me.menuCliente()
-        elif (opcion == 2):
-            me.menuOficina()
-        elif (opcion == 3):
-            me.menuEmpleado()
-        elif (opcion == 4):
-            me.menuPedido()
-        elif (opcion == 5):
-            me.menuProducto()
-        elif (opcion == 6):
-            me.menuPago()
-        elif (opcion == 0):
-            break
-        else:
-            print("opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 6):
+                if (opcion == 1):  
+                    me.menuCliente()
+                elif (opcion == 2):
+                    me.menuOficina()
+                elif (opcion == 3):
+                    me.menuEmpleado()
+                elif (opcion == 4):
+                    me.menuPedido()
+                elif (opcion == 5):
+                    me.menuProducto()
+                elif (opcion == 6):
+                    me.menuPago()
+                elif (opcion == 0):
+                    break
+
+
 
 
       

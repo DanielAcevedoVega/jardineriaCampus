@@ -1,5 +1,6 @@
 import os
 from tabulate import tabulate
+import modules.validaciones as vali
 
 
 #import json
@@ -52,13 +53,15 @@ ______                      _             _       ______              _         
           0. Atras
 
     """)
-        opcion = int(input("\nSeleccione una de las opciones: "))
-        if (opcion == 1):
-            gama = input("Ingrese la gama que deseas filtrar: ")
-            stock = int(input("Ingrese las unidades de stock: "))
-            print(tabulate(getAllStockPriceGama(gama,stock), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 0):
-            break
-        else:
-            print("Opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 1):
+                if (opcion == 1):
+                    gama = input("Ingrese la gama que deseas filtrar: ")
+                    stock = int(input("Ingrese las unidades de stock: "))
+                    print(tabulate(getAllStockPriceGama(gama,stock), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 0):
+                    break
+

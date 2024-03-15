@@ -3,6 +3,7 @@ import json
 import requests
 from tabulate import tabulate
 import modules.crudOficina as oFi
+import modules.validaciones as vali
 
 def menu():
     while True:
@@ -26,14 +27,15 @@ def menu():
           0. Atras
 
     """)
-        opcion = int(input("\nSeleccione una de las opciones: "))
-        if (opcion == 1):
-            print(tabulate(postEmpleados(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 0):
-            break
-        else:
-            print("Opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 1):
+                if (opcion == 1):
+                    print(tabulate(postEmpleados(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 0):
+                    break
 
 def getAllDataEmpleado():
     #json-server storage/empleado.json -b 5506

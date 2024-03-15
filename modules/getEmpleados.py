@@ -2,6 +2,7 @@ import os
 import requests
 from tabulate import tabulate
 from modules.crudEmpleados import getAllDataEmpleado as em
+import modules.validaciones as vali
 
 def getAllNombreApellidoEmailJefe(codigo):
     nombreApellidoEmail = list()
@@ -52,7 +53,7 @@ ______                      _             _        _____                _       
 | ___ \                    | |           | |      |  ___|              | |              | |          
 | |_/ /___ _ __   ___  _ __| |_ ___    __| | ___  | |__ _ __ ___  _ __ | | ___  __ _  __| | ___  ___ 
 |    // _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ \ |  __| '_ ` _ \| '_ \| |/ _ \/ _` |/ _` |/ _ \/ __|
-| |\ \  __/ |_) | (_) | |  | ||  __/ | (_| |  __/ | |__| | | | | | |_) | |  __/ (_| | (_| | (_) \__ 
+| |\ \  __/ |_) | (_) | |  | ||  __/ | (_| |  __/ | |__| | | | | | |_) | |  __/ (_| | (_| | (_) \__ \\
 \_| \_\___| .__/ \___/|_|   \__\___|  \__,_|\___| \____/_| |_| |_| .__/|_|\___|\__,_|\__,_|\___/|___/
           | |                                                    | |                                 
           |_|                                                    |_|                                 
@@ -62,20 +63,21 @@ ______                      _             _        _____                _       
           2. Obtener la informacion de su jefe.
           3. Obtener el listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
     """)
-        opcion = int(input("\nSeleccione una de las opciones: "))
-        if (opcion == 1):
-                cogido = int(input("Ingrese el codigo del jefe de los empleados: "))
-                print(tabulate(getAllNombreApellidoEmailJefe(cogido), headers="keys", tablefmt="github"))
-                input("Precione una tecla para continuar.........")
-        elif (opcion == 2):
-                cogido = int(input("Ingrese el codigo de su jefe para obtener su infromacion: "))
-                print(tabulate(getAllJefeNombreApellidoEmailPuesto(cogido), headers="keys", tablefmt="github"))
-                input("Precione una tecla para continuar.........")
-        elif (opcion == 3):
-            print(tabulate(getAllNombreApellidosPuestoNoRepresentantesDeVentas(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 0):
-            break
-        else:
-            print("Opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 3):
+                if (opcion == 1):
+                        cogido = int(input("Ingrese el codigo del jefe de los empleados: "))
+                        print(tabulate(getAllNombreApellidoEmailJefe(cogido), headers="keys", tablefmt="github"))
+                        input("Precione una tecla para continuar.........")
+                elif (opcion == 2):
+                        cogido = int(input("Ingrese el codigo de su jefe para obtener su infromacion: "))
+                        print(tabulate(getAllJefeNombreApellidoEmailPuesto(cogido), headers="keys", tablefmt="github"))
+                        input("Precione una tecla para continuar.........")
+                elif (opcion == 3):
+                    print(tabulate(getAllNombreApellidosPuestoNoRepresentantesDeVentas(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 0):
+                    break
     

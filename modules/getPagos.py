@@ -1,7 +1,6 @@
 import os
-import requests
-#from modules.post import postPagos as pay
 from tabulate import tabulate
+import modules.validaciones as vali
 from modules.crudPagos import getAllDataPagos as pay
 from modules.crudEmpleados import getAllDataEmpleado as em
 from modules.crudCliente import getAllCliente as cli
@@ -91,23 +90,24 @@ ______                      _             _       ______
           4. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
           5. Obtener el nombre de los clientes que no hayan realizado pagos junto con el nombre de sus representantes de ventas.  
     """)
-        opcion = int(input("\nSeleccione una de las opciones: "))
-        if (opcion == 1):
-            print(tabulate(getAllCodigoClientePago()))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 2):
-            print(tabulate(getAllPagos2008Paypal(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 3):
-            print(tabulate(getAllFormasDePago()))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 4):
-            print(tabulate(getAllNombreClientesRealizaronPagos(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 5):
-            print(tabulate(getAllNombreClientesNoRealizaronPagos(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 0):
-            break
-        else:
-            print("Opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 5):
+                if (opcion == 1):
+                    print(tabulate(getAllCodigoClientePago()))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 2):
+                    print(tabulate(getAllPagos2008Paypal(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 3):
+                    print(tabulate(getAllFormasDePago()))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 4):
+                    print(tabulate(getAllNombreClientesRealizaronPagos(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 5):
+                    print(tabulate(getAllNombreClientesNoRealizaronPagos(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 0):
+                    break

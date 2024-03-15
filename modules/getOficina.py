@@ -2,6 +2,7 @@ import os
 import requests
 from tabulate import tabulate
 from modules.crudOficina import getAllDataOficina as ofi
+import modules.validaciones as vali
 
 
 def getAllCodigoCiudad():
@@ -43,15 +44,17 @@ def menu():
           2. Obtener los contactos de todas las oficinas del pais especifico. 
           
     """)
-        opcion = int(input("\nSeleccione una de las opciones: "))
-        if (opcion == 1):
-            print(tabulate(getAllCodigoCiudad(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 2):
-            pais = input("Ingrese el pais que deseas filtrar: ")
-            print(tabulate(getAllCiudadTelefono(pais), headers="keys", tablefmt="github")) 
-            input("Precione una tecla para continuar.........")
-        elif (opcion == 0):
-            break
-        else:
-            print("Opcion no valida")    
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 2):
+                if (opcion == 1):
+                    print(tabulate(getAllCodigoCiudad(), headers="keys", tablefmt="github"))
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 2):
+                    pais = input("Ingrese el pais que deseas filtrar: ")
+                    print(tabulate(getAllCiudadTelefono(pais), headers="keys", tablefmt="github")) 
+                    input("Precione una tecla para continuar.........")
+                elif (opcion == 0):
+                    break
+  

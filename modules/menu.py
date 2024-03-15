@@ -1,4 +1,5 @@
 import os
+import modules.validaciones as vali
 import modules.getClients as REcliente
 import modules.getOficina as REoficina
 import modules.getEmpleados as REempleado
@@ -37,15 +38,17 @@ def menuCliente():
                   0. Regresar al menu principal
                   
                   """)
-        opcion = int(input("\nSeleccione una de las opciones: ")) 
-        if (opcion == 1):
-            REcliente.menu()
-        elif (opcion == 2):
-            CRUDcliente.menu()
-        elif (opcion == 0):
-            break
-        else:
-            print("opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 2):
+                if (opcion == 1):
+                    REcliente.menu()
+                elif (opcion == 2):
+                    CRUDcliente.menu()
+                elif (opcion == 0):
+                    break
+
 
 def menuOficina():
     while True:
@@ -69,15 +72,17 @@ def menuOficina():
                   0. Regresar al menu principal
                   
                   """)
-        opcion = int(input("\nSeleccione una de las opciones: ")) 
-        if (opcion == 1):
-            REoficina.menu()
-        elif (opcion == 2):
-            CRUDoficina.menu()
-        elif (opcion == 0):
-            break
-        else:
-            print("opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 2):
+                if (opcion == 1):
+                    REoficina.menu()
+                elif (opcion == 2):
+                    CRUDoficina.menu()
+                elif (opcion == 0):
+                    break
+
 
 def menuEmpleado():
     while True:
@@ -101,15 +106,17 @@ def menuEmpleado():
                   0. Regresar al menu principal
                   
                   """)
-        opcion = int(input("\nSeleccione una de las opciones: ")) 
-        if (opcion == 1):
-            REempleado.menu()
-        elif (opcion == 2):
-            CRUDempleado.menu()
-        elif (opcion == 0):
-            break
-        else:
-            print("opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 2): 
+                if (opcion == 1):
+                    REempleado.menu()
+                elif (opcion == 2):
+                    CRUDempleado.menu()
+                elif (opcion == 0):
+                    break
+
 
 def menuPedido():
     while True:
@@ -133,15 +140,17 @@ def menuPedido():
                   0. Regresar al menu principal
                   
                   """)
-        opcion = int(input("\nSeleccione una de las opciones: ")) 
-        if (opcion == 1):
-            REpedidos.menu()
-        elif (opcion == 2):
-            CRUDpedido.menu()
-        elif (opcion == 0):
-            break
-        else:
-            print("opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 2):
+                if (opcion == 1):
+                    REpedidos.menu()
+                elif (opcion == 2):
+                    CRUDpedido.menu()
+                elif (opcion == 0):
+                    break
+
 
 
 def menuProducto():
@@ -165,15 +174,16 @@ def menuProducto():
                   0. Regresar al menu principal
                   
                   """)
-        opcion = int(input("\nSeleccione una de las opciones: ")) 
-        if (opcion == 1):
-            REproducto.menu()
-        elif (opcion == 2):
-            CRUDproducto.menu()
-        elif (opcion == 0):
-            break
-        else:
-            print("opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 2):
+                if (opcion == 1):
+                    REproducto.menu()
+                elif (opcion == 2):
+                    CRUDproducto.menu()
+                elif (opcion == 0):
+                    break
 
 def menuPago():
     while True:
@@ -197,12 +207,13 @@ def menuPago():
                   0. Regresar al menu principal
                   
                   """)
-        opcion = int(input("\nSeleccione una de las opciones: ")) 
-        if (opcion == 1):
-            REpago.menu()
-        elif (opcion == 2):
-            CRUDpago.menu()
-        elif (opcion == 0):
-            break
-        else:
-            print("opcion no valida")
+        opcion = input("\nSeleccione una de las opciones: ")
+        if(vali.validacionOpciones(opcion) is not None):
+            opcion = int(opcion)
+            if(opcion >= 0 and opcion <= 2):
+                if (opcion == 1):
+                    REpago.menu()
+                elif (opcion == 2):
+                    CRUDpago.menu()
+                elif (opcion == 0):
+                    break
