@@ -42,7 +42,7 @@ def postProducto():
     producto = {
                 "codigo_producto": input("Ingrese el codigo del producto: "),
                 "nombre": input("Ingrese el nombre del producto: "),
-                "gama": gG.getAllNombre()[int(input("Seleccione la gama\n: "+"".join([f"\t{i}. {val}\n" for i, val in enumerate(gG.getAllNombre())])))],
+                "gama": gG.getAllNombre()[int(input("Seleccione la gama:\n "+"".join([f"\t{i}. {val}\n" for i, val in enumerate(gG.getAllNombre())])))],
                 "dimensiones": input("Ingrese la dimension del producto: "),
                 "proveedor": input("Ingrese el proveedor del producto: "),
                 "descripcion": input("Ingrese la descipcion del producto: "),

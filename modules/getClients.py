@@ -1,22 +1,14 @@
 import os
 import requests
 from tabulate import tabulate
+from modules.crudCliente import getAllCliente as cli
+from modules.crudEmpleados import getAllDataEmpleado as em
 
-def getAllDataEmpleado():
-    #json-server storage/empleado.json -b 5506
-    peticion = requests.get("http://localhost:5506")
-    data = peticion.json()
-    return data 
 
-def getAllDataCliente():
-    #json-server storage/cliente.json -b 5507
-    peticion = requests.get("http://localhost:5507")
-    data = peticion.json()
-    return data 
 
 def getAllClientName():
     clientName = list()
-    for val in getAllDataCliente():
+    for val in cli():
         codigoName = dict({
             "codigo": val.get('codigo_cliente'),
             "nombre": val.get('nombre_cliente')
@@ -25,7 +17,7 @@ def getAllClientName():
     return clientName
 
 def getOneClientCodigo(codigo):
-    for val in getAllDataCliente():
+    for val in cli():
         if(val.get('codigo_cliente') == codigo):
             return[{
                 "codigo": val.get('codigo_cliente'),
@@ -34,7 +26,7 @@ def getOneClientCodigo(codigo):
             
 def getAllClientCreditCiudad(limiteCredit, ciudad):
     clienteCredit = list()
-    for val in getAllDataCliente():
+    for val in cli():
         if(val.get('limite_credito') >= limiteCredit and val.get('ciudad') == ciudad):
             clienteCredit.append({
                 "codigo": val.get('codigo_cliente'),
@@ -51,7 +43,7 @@ def getAllClientCreditCiudad(limiteCredit, ciudad):
 
 def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
     clientZone = list()
-    for val in getAllDataCliente():
+    for val in cli():
         if (val.get('pais') == pais):
             if((region is None or val.get('region') == region)):
                 if((ciudad is None or val.get('ciudad') == ciudad)):
@@ -70,7 +62,7 @@ def getAllClientPaisRegionCiudad(pais, region=None, ciudad=None):
 
 def getOneClientContac(telefono):
     clientPhone = list()
-    for val in getAllDataCliente():
+    for val in cli():
         if(val.get('telefono') == telefono):
              clientPhone.append({
                 "codigo": val.get('codigo_cliente'),
@@ -87,7 +79,7 @@ def getOneClientContac(telefono):
 
 def getClientCodePostal(postal):
     clientPostal = list()
-    for val in getAllDataCliente():
+    for val in cli():
         if(val.get('codigo_postal') == postal):
              clientPostal.append({
                 "codigo": val.get('codigo_cliente'),
@@ -104,7 +96,7 @@ def getClientCodePostal(postal):
 
 def getAllNombreClientesEspañoles():
     nombreClienteEspañol = list()
-    for val in getAllDataCliente():
+    for val in cli():
         if(val.get("pais") == 'Spain'):
             nombreClienteEspañol.append(
                 {
@@ -116,7 +108,7 @@ def getAllNombreClientesEspañoles():
 
 def getAllClientesMadridRepresentantesVentas():
     clientesMadrid = list()
-    for val in getAllDataCliente():
+    for val in cli():
         if(val.get("ciudad") == "Madrid"):
             if(val.get("codigo_empleado_rep_ventas") == 11 or val.get("codigo_empleado_rep_ventas") == 30):
                 clientesMadrid.append({
@@ -128,10 +120,10 @@ def getAllClientesMadridRepresentantesVentas():
 
 def getAllNombreApellidosDeClientesRepresentanteVentas():
     nombreClienteRepresentanteVentas = list()
-    for val in getAllDataCliente():
+    for val in cli():
         codigoEmpleado = val.get("codigo_empleado_rep_ventas")
         nombreCliente = val.get("nombre_cliente")
-        for val in getAllDataEmpleado():
+        for val in em():
             if codigoEmpleado == val.get("codigo_empleado") and val.get("puesto") == "Representante Ventas":
                 nombreClienteRepresentanteVentas.append({
                     "nombre cliente": nombreCliente,

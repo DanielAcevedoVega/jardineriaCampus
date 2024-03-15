@@ -36,6 +36,7 @@ def menu():
             print("Opcion no valida")
 
 def getAllCliente():
+    #json-server storage/cliente.json -b 5507
     peticion = requests.get("http://localhost:5507")
     data = peticion.json()
     return data
@@ -51,7 +52,6 @@ def nuevoCodigoCliente():
 
 def postClientes():
     cliente = {
-        #int(input("Ingrese el codigo: ")), 
         "codigo_cliente": nuevoCodigoCliente(),
         "nombre_cliente": input("Ingrese el nombre del cliente: "),
         "nombre_contacto": input("Ingrese el nombre del contacto: "),
@@ -70,5 +70,5 @@ def postClientes():
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
     peticion = requests.post("http://localhost:5507", headers=headers, data=json.dumps(cliente))
     res = peticion.json()
-    res["Mensaje"] = "Producto Guardado"
+    res["Mensaje"] = "Cliente Agregado"
     return [res]

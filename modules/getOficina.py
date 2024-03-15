@@ -1,16 +1,12 @@
 import os
 import requests
 from tabulate import tabulate
+from modules.crudOficina import getAllDataOficina as ofi
 
-def getAllDataOficina():
-    #json-server storage/oficina.json -b 5505
-    peticion = requests.get("http://localhost:5505")
-    data = peticion.json()
-    return data 
 
 def getAllCodigoCiudad():
     codigoCiudad = list()
-    for val in getAllDataOficina():
+    for val in ofi():
         codigoCiudad.append({
             "codigo": val.get("codigo_oficina"),
             "ciudad": val.get("ciudad")
@@ -19,7 +15,7 @@ def getAllCodigoCiudad():
 
 def getAllCiudadTelefono(pais):
     ciudadTelefono = list()
-    for val in getAllDataOficina():
+    for val in ofi():
         if(val.get("pais") == pais):
             ciudadTelefono.append({
                 "ciudad": val.get("ciudad"),
