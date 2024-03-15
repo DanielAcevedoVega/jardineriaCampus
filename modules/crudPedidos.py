@@ -58,7 +58,8 @@ def postPedido():
         "comentario": input("Ingrese un comentario: "),
         "codigo_cliente": int(input("Ingrese el codigo del cliente: "))
     }
-    peticion = requests.post("http://localhost:5503", data=json.dumps(pedido))
+    headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
+    peticion = requests.post("http://localhost:5503", headers=headers, data=json.dumps(pedido))
     res = peticion.json()
     res["Mensaje"] = "Pedido Agregado"
     return res

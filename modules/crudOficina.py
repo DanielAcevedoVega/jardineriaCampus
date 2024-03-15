@@ -58,7 +58,8 @@ def postOficina():
         "linea_direccion1": input("Ingrese una linea de direccion: "),
         "linea_direccion2": input("Ingrese otra linea de direccion(opcional): ")
     }
-    peticion = requests.post("http://localhost:5505", data=json.dumps(oficina))
+    headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
+    peticion = requests.post("http://localhost:5505", headers=headers, data=json.dumps(oficina))
     res = peticion.json()
     res["Mensaje"] = "Oficina Guardada"
     return res

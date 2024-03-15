@@ -2,30 +2,15 @@ import os
 import requests
 #from modules.post import postPagos as pay
 from tabulate import tabulate
-
-def getAllDataPagos():
-    #json-server storage/pago.json -b 5504
-    peticion = requests.get("http://localhost:5504")
-    data = peticion.json()
-    return data 
-
-def getAllDataEmpleado():
-    #json-server storage/empleado.json -b 5506
-    peticion = requests.get("http://localhost:5506")
-    data = peticion.json()
-    return data 
-
-def getAllDataCliente():
-    #json-server storage/cliente.json -b 5507
-    peticion = requests.get("http://localhost:5507")
-    data = peticion.json()
-    return data 
+from modules.crudPagos import getAllDataPagos as pay
+from modules.crudEmpleados import getAllDataEmpleado as em
+from modules.crudCliente import getAllCliente as cli
 
 
 
 def getAllCodigoClientePago():
     codigoClientePago = list()
-    for val in getAllDataPagos():
+    for val in pay():
         if(val.get("fecha_pago")[0:4] == "2008"):
             codigoClientePago.append(val.get("codigo_cliente"))
         converted = set(str(item) for item in codigoClientePago)
@@ -33,7 +18,7 @@ def getAllCodigoClientePago():
 
 def getAllPagos2008Paypal():
     allPagosPaypal = list()
-    for val in getAllDataPagos():
+    for val in pay():
         if val.get("forma_pago") == "PayPal" and "2008" in val.get("fecha_pago"):
             allPagosPaypal.append(val)
     allPagosPaypal.sort(key=lambda x: x.get("total"), reverse=True) 
@@ -41,7 +26,7 @@ def getAllPagos2008Paypal():
 
 def getAllFormasDePago():
     formaDePago = list()
-    for val in getAllDataPagos():
+    for val in pay():
         val.get("forma_pago")
         formaDePago.append(val.get("forma_pago"))
         conjuntoFormaDePago = set(str(item) for item in formaDePago)
@@ -49,14 +34,14 @@ def getAllFormasDePago():
 
 def getAllNombreClientesRealizaronPagos():
     nombresClientesPagos = set()
-    for val in getAllDataCliente():
+    for val in cli():
         codigoCliente = val.get("codigo_cliente")
         nombreCliente = val.get("nombre_cliente")
         codigoEmpleado = val.get("codigo_empleado_rep_ventas")
-        for val in getAllDataEmpleado():
+        for val in em():
             nombreRepresentanteVentas = f'{val.get("nombre")} {val.get("apellido1")} {val.get("apellido2")}'
             if codigoEmpleado == val.get("codigo_empleado") and val.get("puesto") == "Representante Ventas":
-                for val in getAllDataPagos():
+                for val in pay():
                     if codigoCliente == val.get("codigo_cliente"):
                         nombresClientesPagos.add(( 
                             nombreCliente,
@@ -66,15 +51,15 @@ def getAllNombreClientesRealizaronPagos():
 
 def getAllNombreClientesNoRealizaronPagos():
     nombresClientesNoPagos = list()
-    for val in getAllDataCliente():
+    for val in cli():
         codigoCliente = val.get("codigo_cliente")
         nombreCliente = val.get("nombre_cliente")
         codigoEmpleado = val.get("codigo_empleado_rep_ventas")
         cliente_con_pago = False
-        for val in getAllDataEmpleado():
+        for val in em():
             nombreRepresentanteVentas = f'{val.get("nombre")} {val.get("apellido1")} {val.get("apellido2")}'
             if codigoEmpleado == val.get("codigo_empleado") and val.get("puesto") == "Representante Ventas":
-                for val in getAllDataPagos():
+                for val in pay():
                     if codigoCliente == val.get("codigo_cliente"):
                         cliente_con_pago = True
                         break

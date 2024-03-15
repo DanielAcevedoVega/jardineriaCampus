@@ -8,6 +8,9 @@ import modules.getProductos as REproducto
 import modules.crudProductos as CRUDproducto
 import modules.crudCliente as CRUDcliente
 import modules.crudOficina as CRUDoficina
+import modules.crudEmpleados as CRUDempleado
+import modules.crudPedidos as CRUDpedido
+import modules.crudPagos as CRUDpago
 
 
 def menuCliente():
@@ -94,7 +97,7 @@ def menuEmpleado():
 
                                                                             
                   1. Reportes de empleados
-                  2. Agregar, Actualizar y Eliminar oficinas
+                  2. Agregar, Actualizar y Eliminar empleados
                   0. Regresar al menu principal
                   
                   """)
@@ -102,7 +105,7 @@ def menuEmpleado():
         if (opcion == 1):
             REempleado.menu()
         elif (opcion == 2):
-            print("")
+            CRUDempleado.menu()
         elif (opcion == 0):
             break
         else:
@@ -126,7 +129,7 @@ def menuPedido():
 
                                                                             
                   1. Reportes de pedidos
-                  2. Guardar, Actualizar y Eliminar oficinas
+                  2. Guardar, Actualizar y Eliminar pedidos
                   0. Regresar al menu principal
                   
                   """)
@@ -134,7 +137,7 @@ def menuPedido():
         if (opcion == 1):
             REpedidos.menu()
         elif (opcion == 2):
-            print("")
+            CRUDpedido.menu()
         elif (opcion == 0):
             break
         else:
@@ -190,7 +193,7 @@ def menuPago():
                                                
 
                   1. Reportes de los pagos
-                  2. Guardar, Actualizar y Eliminar productos
+                  2. Agregar, Actualizar y Eliminar pagos
                   0. Regresar al menu principal
                   
                   """)
@@ -198,7 +201,7 @@ def menuPago():
         if (opcion == 1):
             REpago.menu()
         elif (opcion == 2):
-            print("")
+            CRUDpago.menu()
         elif (opcion == 0):
             break
         else:
