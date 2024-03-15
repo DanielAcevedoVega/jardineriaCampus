@@ -35,11 +35,24 @@ def menu():
         else:
             print("Opcion no valida")
 
+def getAllCliente():
+    peticion = requests.get("http://localhost:5507")
+    data = peticion.json()
+    return data
 
+def nuevoCodigoCliente():
+    codigodelCliente = list()
+    for val in getAllCliente():
+        codigodelCliente.append(val.get("codigo_cliente"))
+    if codigodelCliente:
+        return max(codigodelCliente) + 1
+    else:
+        return 1
 
 def postClientes():
     cliente = {
-        "codigo_cliente": int(input("Ingrese el codigo: ")),
+        #int(input("Ingrese el codigo: ")), 
+        "codigo_cliente": nuevoCodigoCliente(),
         "nombre_cliente": input("Ingrese el nombre del cliente: "),
         "nombre_contacto": input("Ingrese el nombre del contacto: "),
         "apellido_contacto": input("Ingrese el apellido de contacto: "),
