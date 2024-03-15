@@ -39,19 +39,97 @@ def menu():
                 elif (opcion == 0):
                     break
 
+def getAllData():
+    #json-server storage/producto.json -b 5501
+    peticion = requests.get("http://localhost:5501")
+    data = peticion.json()
+    return data 
+
+def getProductoCodigo(codigo):
+    for val in getAllData():
+        if(val.get("codigo_producto") == codigo):
+             return [val]
+
 def postProducto():
     
-    producto = {
-                "codigo_producto": input("Ingrese el codigo del producto: "),
-                "nombre": input("Ingrese el nombre del producto: "),
-                "gama": gG.getAllNombre()[int(input("Seleccione la gama:\n "+"".join([f"\t{i}. {val}\n" for i, val in enumerate(gG.getAllNombre())])))],
-                "dimensiones": input("Ingrese la dimension del producto: "),
-                "proveedor": input("Ingrese el proveedor del producto: "),
-                "descripcion": input("Ingrese la descipcion del producto: "),
-                "cantidad_en_stock": int(input("Ingrese la cantidad de stock: ")),
-                "precio_venta": int(input("Ingrese el precio de venta: ")),
-                "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
-            }
+    producto = dict()
+    while True: 
+        try:
+
+            if(not producto.get("codigo_producto")):
+                codigo = input("Ingrese el codigo del producto (Ej: OR-251): ")
+                if(vali.validacionCodigo(codigo) is not None):
+                    data = getProductoCodigo(codigo)
+                    if(data):
+                        print(tabulate(data, headers="keys", tablefmt="github"))
+                        raise Exception("El codigo producto ya existe")
+                    else:
+                        producto["codigo_producto"] = codigo
+                else:
+                    raise Exception("El codigo producto no cumple con el estandar establecido")
+                
+            if(not producto.get("nombre")):
+                nombre = input("Ingrese el nombre del producto: ")
+                if(vali.validacionNombre(nombre) is not None):
+                    producto["nombre"] = nombre
+                else:
+                    raise Exception("El nombre del producto no cumple con lo establecido")
+                
+            if(not producto.get("gama")):
+                opcion = input("Seleccione la gama (0-4):\n "+"".join([f"\t{i}. {val}\n" for i, val in enumerate(gG.getAllNombre())]))
+                if vali.validacionOpciones(opcion):
+                    gama = gG.getAllNombre()[int(opcion)]
+                    producto["gama"] = gama
+                else:
+                    raise Exception("La opcion de la gama no cumple con lo establecido")
+                
+            if(not producto.get("dimensiones")):
+                dimensiones = input("Ingrese las dimensiones del producto (Ej: 240-26): ")
+                if(vali.validacionDimension(dimensiones) is not None):
+                    producto["dimensiones"] = dimensiones
+                else:
+                    raise Exception("La dimension del producto no cumple con lo establecido")
+                
+            if(not producto.get("proveedor")):
+                proveedor = input("Ingrese el proveedor del producto: ")
+                if(vali.validacionNombre(proveedor) is not None):
+                    producto["proveedor"] = proveedor
+                else:
+                    raise Exception("El nombre del proveedor del producto no cumple con lo establecido")
+            
+            if(not producto.get("descripcion")):
+                descripcion = input("Ingrese una descripcion del producto: ")
+                producto["descripcion"] = descripcion
+
+            if(not producto.get("cantidad_en_stock")):
+                cantidadDeStock = input("Ingrese la cantidad de sotck (Ej: 100):  ")
+                if(vali.validacionNumerica(cantidadDeStock) is not None):
+                    cantidadDeStock = int(cantidadDeStock)
+                    producto["cantidad_en_stock"] = cantidadDeStock
+                else:
+                    raise Exception("El numero de stock del producto no cumple con lo establecido")
+                
+            if(not producto.get("precio_venta")):
+                precioVenta = input("Ingrese el precio de venta (Ej: 14):  ")
+                if(vali.validacionNumerica(precioVenta) is not None):
+                    precioVenta = int(precioVenta)
+                    producto["precio_venta"] = precioVenta
+                else:
+                    raise Exception("El numero del precio de venta no cumple con lo establecido")
+                
+            if(not producto.get("precio_proveedor")):
+                precioProveedor = input("Ingrese el precio del proveedor (Ej: 11):  ")
+                if(vali.validacionNumerica(precioProveedor) is not None):
+                    precioProveedor = int(precioProveedor)
+                    producto["precio_proveedor"] = precioProveedor
+                    break
+                else:
+                    raise Exception("El numero del precio del proveedor no cumple con lo establecido")
+
+
+        except Exception as error:
+            print(error)
+            
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
     peticion = requests.post("http://localhost:5501", headers=headers, data=json.dumps(producto))
     res = peticion.json()

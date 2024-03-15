@@ -1,20 +1,13 @@
 import os
 from tabulate import tabulate
 import modules.validaciones as vali
+from modules.crudProductos import getAllData as pro
 
 
-#import json
-import requests
-
-def getAllData():
-    #json-server storage/producto.json -b 5501
-    peticion = requests.get("http://localhost:5501")
-    data = peticion.json()
-    return data 
 
 def getAllStockPriceGama(gama, stock):
     condiciones = list()
-    for val in getAllData():
+    for val in pro():
         if(val.get("gama") == gama and val.get("cantidad_en_stock") >= stock):
             condiciones.append(val)
     def price(val):
