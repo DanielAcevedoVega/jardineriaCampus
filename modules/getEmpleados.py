@@ -1,16 +1,11 @@
 import os
 import requests
 from tabulate import tabulate
-
-def getAllDataEmpleado():
-    #json-server storage/empleado.json -b 5506
-    peticion = requests.get("http://localhost:5506")
-    data = peticion.json()
-    return data 
+from modules.crudEmpleados import getAllDataEmpleado as em
 
 def getAllNombreApellidoEmailJefe(codigo):
     nombreApellidoEmail = list()
-    for val in getAllDataEmpleado():
+    for val in em():
         if(val.get("codigo_jefe") == codigo):
             nombreApellidoEmail.append(
                 {
@@ -24,7 +19,7 @@ def getAllNombreApellidoEmailJefe(codigo):
 
 def getAllJefeNombreApellidoEmailPuesto(codigo):
     jefeNombreApellidoEmailPuesto = list()
-    for val in getAllDataEmpleado():
+    for val in em():
         if((val.get("codigo_empleado") == codigo)):
             jefeNombreApellidoEmailPuesto.append(
                 {
@@ -38,7 +33,7 @@ def getAllJefeNombreApellidoEmailPuesto(codigo):
 
 def getAllNombreApellidosPuestoNoRepresentantesDeVentas():
     nombreApellidosPuetos = list()
-    for val in getAllDataEmpleado():
+    for val in em():
         if(val.get("puesto") != 'Representante Ventas'):
             nombreApellidosPuetos.append(
                 {
