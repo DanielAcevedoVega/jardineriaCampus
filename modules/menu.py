@@ -7,6 +7,7 @@ import modules.getPagos as REpago
 import modules.getProductos as REproducto
 import modules.crudProductos as CRUDproducto
 import modules.crudCliente as CRUDcliente
+import modules.crudOficina as CRUDoficina
 
 
 def menuCliente():
@@ -69,7 +70,7 @@ def menuOficina():
         if (opcion == 1):
             REoficina.menu()
         elif (opcion == 2):
-            print("")
+            CRUDoficina.menu()
         elif (opcion == 0):
             break
         else:
