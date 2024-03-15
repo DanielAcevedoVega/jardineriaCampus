@@ -608,5 +608,39 @@
         "codigo_empleado_rep_ventas": 22,
         "limite_credito": 4000.0,
         "id": 38
+    },
+    {
+        "codigo_cliente": 41,
+        "nombre_cliente": "Juan",
+        "nombre_contacto": "Luka",
+        "apellido_contacto": "perez",
+        "telefono": "123456789",
+        "fax": "84998456165",
+        "linea_direccion1": "xxxxx",
+        "linea_direccion2": "xxxxxx",
+        "ciudad": "Madrid",
+        "region": "",
+        "pais": "Spain",
+        "codigo_postal": "12358",
+        "codigo_empleado_rep_ventas": 12,
+        "limite_credito": 8000.0,
+        "id": 39
+    },
+    {
+        "codigo_cliente": 42,
+        "nombre_cliente": "Juan",
+        "nombre_contacto": "Camilo",
+        "apellido_contacto": "Rio",
+        "telefono": "185648",
+        "fax": "5186484651",
+        "linea_direccion1": "xxx",
+        "linea_direccion2": "xxx",
+        "ciudad": "Madrid",
+        "region": "Madrid",
+        "pais": "Spain",
+        "codigo_postal": "1321",
+        "codigo_empleado_rep_ventas": 10,
+        "limite_credito": 1000.0,
+        "id": 40
     }
 ]

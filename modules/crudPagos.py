@@ -51,4 +51,4 @@ def postPagos():
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
     peticion = requests.post("http://localhost:5504", headers=headers, data=json.dumps(pago))
     res = peticion.json()
-    return res
+    return [res]

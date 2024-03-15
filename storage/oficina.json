@@ -2,7 +2,7 @@
     {
         "codigo_oficina": "BCN-ES",
         "ciudad": "Barcelona",
-        "pais": "España",
+        "pais": "Espa\u00f1a",
         "region": "Barcelona",
         "codigo_postal": "08019",
         "telefono": "+34 93 3561182",
@@ -32,7 +32,7 @@
     {
         "codigo_oficina": "MAD-ES",
         "ciudad": "Madrid",
-        "pais": "España",
+        "pais": "Espa\u00f1a",
         "region": "Madrid",
         "codigo_postal": "28032",
         "telefono": "+34 91 7514487",
@@ -72,21 +72,32 @@
     {
         "codigo_oficina": "TAL-ES",
         "ciudad": "Talavera de la Reina",
-        "pais": "España",
+        "pais": "Espa\u00f1a",
         "region": "Castilla-LaMancha",
         "codigo_postal": "45632",
         "telefono": "+34 925 867231",
         "linea_direccion1": "Francisco Aguirre, 32",
-        "linea_direccion2": "5º piso (exterior)"
+        "linea_direccion2": "5\u00ba piso (exterior)"
     },
     {
         "codigo_oficina": "TOK-JP",
         "ciudad": "Tokyo",
-        "pais": "Japón",
+        "pais": "Jap\u00f3n",
         "region": "Chiyoda-Ku",
         "codigo_postal": "102-8578",
         "telefono": "+81 33 224 5000",
         "linea_direccion1": "4-1 Kioicho",
         "linea_direccion2": ""
+    },
+    {
+        "codigo_oficina": "HJK-ES",
+        "ciudad": "Barcelona",
+        "pais": "Espa\u00f1a",
+        "region": "Barcelona",
+        "codigo_postal": "1254",
+        "telefono": "+35 56 13541",
+        "linea_direccion1": "Avenida Diagona, 21",
+        "linea_direccion2": "",
+        "id": 10
     }
 ]

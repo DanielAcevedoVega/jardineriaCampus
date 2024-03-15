@@ -62,4 +62,4 @@ def postOficina():
     peticion = requests.post("http://localhost:5505", headers=headers, data=json.dumps(oficina))
     res = peticion.json()
     res["Mensaje"] = "Oficina Guardada"
-    return res
+    return [res]

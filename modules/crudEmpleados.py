@@ -66,4 +66,4 @@ def postEmpleados():
     peticion = requests.post("http://localhost:5506", headers=headers, data=json.dumps(empleado))
     res = peticion.json()
     res["Mensaje"] = "Empleado Agregado"
-    return res
+    return [res]

@@ -62,4 +62,4 @@ def postPedido():
     peticion = requests.post("http://localhost:5503", headers=headers, data=json.dumps(pedido))
     res = peticion.json()
     res["Mensaje"] = "Pedido Agregado"
-    return res
+    return [res]
