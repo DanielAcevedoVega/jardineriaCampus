@@ -642,5 +642,21 @@
         "codigo_empleado_rep_ventas": 10,
         "limite_credito": 1000.0,
         "id": 40
+    },
+    {
+        "codigo_cliente": 43,
+        "nombre_cliente": "Goyo",
+        "nombre_contacto": "Camillo",
+        "apellido_contacto": "Perez",
+        "telefono": "4 87984-1312",
+        "fax": "313486486",
+        "linea_direccion1": "Calle #54-45 ksagcksj",
+        "linea_direccion2": "",
+        "ciudad": "Miami",
+        "region": "Miami",
+        "codigo_postal": "1324",
+        "codigo_empleado_rep_ventas": 19,
+        "limite_credito": 7000.0,
+        "id": 41
     }
 ]

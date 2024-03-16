@@ -54,22 +54,104 @@ def nuevoCodigoCliente():
         return 1
 
 def postClientes():
-    cliente = {
-        "codigo_cliente": nuevoCodigoCliente(),
-        "nombre_cliente": input("Ingrese el nombre del cliente: "),
-        "nombre_contacto": input("Ingrese el nombre del contacto: "),
-        "apellido_contacto": input("Ingrese el apellido de contacto: "),
-        "telefono": input("Ingrese el numero de telefono: "),
-        "fax": input("Ingrese el fax: "),
-        "linea_direccion1": input("Ingrese una linea de direccion: "),
-        "linea_direccion2": input("Ingrese otra linea de direccion(opcional): "),
-        "ciudad": input("Ingrese la ciudad: "),
-        "region": input("Ingrese la region(opcional): "),
-        "pais": input("Ingrese el pais: "),
-        "codigo_postal": input("Ingrese el codigo postal: "),
-        "codigo_empleado_rep_ventas": int(input("Ingrese el codigo de empelado: ")),
-        "limite_credito": float(input("Ingrese el limite de credito: "))
-    }
+
+    cliente = dict()
+    while True:
+        try:
+            codigoCliente = nuevoCodigoCliente()
+            cliente["codigo_cliente"] = codigoCliente
+
+            if(not cliente.get("nombre_cliente")):
+                nombreCliente = input("Ingrese el nombre del cliente: ")
+                if(vali.validacionNombre(nombreCliente) is not None):
+                    cliente["nombre_cliente"] = nombreCliente
+                else:
+                    raise Exception("El nombre del cliente no cumple con lo establecido")
+                
+            if(not cliente.get("nombre_contacto")):
+                nombreContacto = input("Ingrese el nombre del contacto: ")
+                if(vali.validacionNombre(nombreContacto) is not None):
+                    cliente["nombre_contacto"] = nombreContacto
+                else:
+                    raise Exception("El nombre del contacto no cumple con lo establecido")
+                
+            if(not cliente.get("apellido_contacto")):
+                apellidoContacto = input("Ingrese el apellido de contacto: ")
+                if(vali.validacionNombre(apellidoContacto) is not None):
+                    cliente["apellido_contacto"] = apellidoContacto
+                else:
+                    raise Exception("El apellido del contacto no cumple con lo establecido")
+                
+            if(not cliente.get("telefono")):
+                telefono = input("Ingrese el numero de telefono: ")
+                if(vali.validacionNumero(telefono) is not None):
+                    cliente["telefono"] = telefono
+                else:
+                    raise Exception("El telefono ingresado no cumple con lo establecido")
+                
+            if(not cliente.get("fax")):
+                fax = input("Ingrese el fax: ")
+                if(vali.validacionNumero(fax) is not None):
+                    cliente["fax"] = fax
+                else:
+                    raise Exception("El fax ingresado no cumple con lo establecido")
+                
+            if(not cliente.get("linea_direccion1")):
+                direccion1 = input("Ingrese una linea de direccion: ")
+                cliente["linea_direccion1"] = direccion1
+                
+            if(not cliente.get("linea_direccion2")):
+                direccion2 = input("Ingrese otra linea de direccion(opcional): ")
+                cliente["linea_direccion2"] = direccion2
+
+            if(not cliente.get("ciudad")):
+                ciudad = input("Ingrese la ciudad: ")
+                if(vali.validacionNombre(ciudad) is not None):
+                    cliente["ciudad"] = ciudad
+                else:
+                    raise Exception("El nombre de la ciudad no cumple con lo establecido")
+
+            if(not cliente.get("region")):
+                region = input("Ingrese la region: ")
+                if(vali.validacionNombre(region) is not None):
+                    cliente["region"] = region
+                else:
+                    raise Exception("La region no cumple con lo establecido")
+
+            if(not cliente.get("pais")):
+                pais = input("Ingrese el pais: ")
+                if(vali.validacionNombre(pais) is not None):
+                    cliente["ciudad"] = pais
+                else:
+                    raise Exception("El nombre de la ciudad no cumple con lo establecido")
+                
+            if(not cliente.get("codigo_postal")):
+                codigoPostal = input("Ingrese el codigo postal: ")
+                if(vali.validacionNumerica(codigoPostal) is not None):
+                    cliente["codigo_postal"] = codigoPostal
+                else:
+                    raise Exception("El codigo postal no cumple con lo establecido")
+                
+            if(not cliente.get("codigo_empleado_rep_ventas")):
+                codigoEmpleado = input("Ingrese el codigo de empleado: ")
+                if(vali.validacionNumerica(codigoEmpleado) is not None):
+                    codigoEmpleado = int(codigoEmpleado)
+                    cliente["codigo_empleado_rep_ventas"] = codigoEmpleado
+                else:
+                    raise Exception("El codigo de empleado no cumple con lo establecido")
+                
+            if(not cliente.get("limite_credito")):
+                limiteCredito = input("Ingrese el limite de credito: ")
+                if(vali.validacionNumerica(limiteCredito) is not None):
+                    limiteCredito = float(limiteCredito)
+                    cliente["limite_credito"] = limiteCredito
+                    break
+                else:
+                    raise Exception("El codigo de empleado no cumple con lo establecido")
+                
+        except Exception as error:
+            print(error)
+
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
     peticion = requests.post("http://localhost:5507", headers=headers, data=json.dumps(cliente))
     res = peticion.json()
