@@ -27,3 +27,7 @@ def validacionNumerica(numero):
 def validacionNumero(numero):
     val = re.match(r'^\s*(\(\d+\))?\s*\d+(?:[\s-]?\d+)*\s*$', numero)
     return val
+
+def validacionFecha(fecha):
+    val = re.match(r'^\d{4}-\d{2}-\d{2}$', fecha)
+    return val

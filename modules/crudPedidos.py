@@ -52,15 +52,51 @@ def nuevoCodigoPedido():
         return 1
 
 def postPedido():
-    pedido = {
-        "codigo_pedido": nuevoCodigoPedido(),
-        "fecha_pedido": input("Ingrese la fecha del pedido: "),
-        "fecha_esperada": input("Ingrese la fecha esperada: "),
-        "fecha_entrega": input("Ingrese la fecha de entrega: "),
-        "estado": input("Ingrese el estado del pedido: "),
-        "comentario": input("Ingrese un comentario: "),
-        "codigo_cliente": int(input("Ingrese el codigo del cliente: "))
-    }
+    pedido = dict()
+    while True:
+        try:
+            codigoPedido = nuevoCodigoPedido()
+            pedido["codigo_pedido"] = codigoPedido
+
+            if(not pedido.get("fecha_pedido")):
+                fechaPeido = input("Ingrese la fecha del pedido: ")
+                if(vali.validacionFecha(fechaPeido) is not None):
+                    pedido["fecha_pedido"] = fechaPeido
+                else:
+                    raise Exception("La fehca no cumple con lo establecido")
+                
+            if(not pedido.get("fecha_esperada")):
+                fechaEntrega = input("Ingrese la fecha de entrega: ")
+                if(vali.validacionFecha(fechaEntrega) is not None):
+                    pedido["fecha_esperada"] = fechaEntrega
+                else:
+                    raise Exception("La fehca no cumple con lo establecido")
+                
+            fechaEntregada = input("Ingrese la fehca entregada: ")
+            if(not pedido.get("fecha_entrega")):
+                pedido["fecha_entrega"] = fechaEntregada
+
+            if(not pedido.get("estado")):
+                estado = input("Ingrese el estado del pedido: ")
+                if(vali.validacionNombre(estado) is not None):
+                    pedido["estado"] = estado
+                else:
+                    raise Exception("El estado del pedido no cumple con lo establecido")            
+
+            comentario = input("Ingrese un comentario: ")
+            if(not pedido.get("comentario")):
+                pedido["comentario"] = comentario
+
+            if(not pedido.get("codigo_cliente")):
+                codigocliente = input("Ingrese el codigo del cliente: ")
+                if(vali.validacionNumerica(codigocliente) is not None):
+                    pedido["codigo_cliente"] = codigocliente
+                else:
+                    raise Exception("El codigo del cliente no cumple con lo establecido")     
+
+        except Exception as error:
+            print(error)
+    
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
     peticion = requests.post("http://localhost:5503", headers=headers, data=json.dumps(pedido))
     res = peticion.json()
