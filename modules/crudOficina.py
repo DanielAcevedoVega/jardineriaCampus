@@ -62,7 +62,7 @@ def postOficina():
     while True:
         try:
             if(not oficina.get("codigo_oficina")):
-                codigo = input("Ingrese el codigo de la oficina (Ej: OR-251): ")
+                codigo = input("Ingrese el codigo de la oficina (Ej: BCN-ES): ")
                 if(vali.validacionCoidgoOficina(codigo) is not None):
                     data = getOficinaCodigo(codigo)
                     if(data):
@@ -88,7 +88,7 @@ def postOficina():
                     raise Exception("El nombre del pais no cumple con lo establecido")
                 
             if(not oficina.get("region")):
-                region = input("Ingrese la ciudad: ")
+                region = input("Ingrese la region: ")
                 if(vali.validacionNombre(region) is not None):
                     oficina["region"] = region
                 else:
@@ -112,9 +112,12 @@ def postOficina():
                 direccion1 = input("Ingrese una linea de direccion: ")
                 oficina["linea_direccion1"] = direccion1
                  
-            direccion2 = input("Ingrese otra linea de direccion(opcional): ")
-            if direccion2:
-                oficina["linea_direccion2"] = direccion2
+            if not oficina.get("linea_direccion2"):  
+                direccion2 = input("Ingrese otra linea de direccion(opcional): ")
+                if direccion2:
+                    oficina["linea_direccion2"] = direccion2
+                else:
+                    break
 
         except Exception as error:
             print(error)

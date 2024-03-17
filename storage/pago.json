@@ -188,5 +188,13 @@
         "fecha_pago": "2009-01-27",
         "total": 6000,
         "id": 27
+    },
+    {
+        "codigo_cliente": 5,
+        "forma_pagoado": "PayPal",
+        "id_transaccion": "ak-sda-134896",
+        "fecha_pago": "2023-12-31",
+        "total": 20034,
+        "id": 28
     }
 ]

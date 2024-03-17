@@ -1061,5 +1061,25 @@
         "comentario": "",
         "codigo_cliente": 27,
         "id": 118
+    },
+    {
+        "codigo_pedido": 122,
+        "fecha_pedido": "2023-12-30",
+        "fecha_esperada": "2024-01-20",
+        "fecha_entrega": "2024-03-17",
+        "estado": "Entregado",
+        "comentario": "",
+        "codigo_cliente": 5,
+        "id": 119
+    },
+    {
+        "codigo_pedido": 123,
+        "fecha_pedido": "2023-12-31",
+        "fecha_esperada": "2024-01-25",
+        "fecha_entrega": "",
+        "estado": "Rechazado",
+        "comentario": "",
+        "codigo_cliente": 16,
+        "id": 120
     }
 ]

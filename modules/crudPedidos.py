@@ -66,7 +66,7 @@ def postPedido():
                     raise Exception("La fehca no cumple con lo establecido")
                 
             if(not pedido.get("fecha_esperada")):
-                fechaEntrega = input("Ingrese la fecha de entrega: ")
+                fechaEntrega = input("Ingrese la fecha de espera: ")
                 if(vali.validacionFecha(fechaEntrega) is not None):
                     pedido["fecha_esperada"] = fechaEntrega
                 else:
@@ -92,6 +92,7 @@ def postPedido():
                 if(vali.validacionNumerica(codigocliente) is not None):
                     codigocliente = int(codigocliente)
                     pedido["codigo_cliente"] = codigocliente
+                    break
                 else:
                     raise Exception("El codigo del cliente no cumple con lo establecido")     
 

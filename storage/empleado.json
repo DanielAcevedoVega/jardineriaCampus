@@ -363,5 +363,17 @@
         "codigo_jefe": 11,
         "puesto": "Representante de Ventas",
         "id": 33
+    },
+    {
+        "codigo_empleado": 34,
+        "nombre": "Marcos",
+        "apellido1": "Burro",
+        "apellido2": "",
+        "extension": "15646",
+        "email": "MarcusDF48@gmail.com",
+        "codigo_oficina": "NCA-MS",
+        "codigo_jefe": 5,
+        "puesto": "Director Pendejo",
+        "id": 34
     }
 ]

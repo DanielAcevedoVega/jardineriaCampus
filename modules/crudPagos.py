@@ -69,7 +69,7 @@ def postPagos():
                     raise Exception("La id de la transaccion no cumple con lo establecido")
                 
             if(not pago.get("fecha_pago")):
-                fechaPago = input("Ingrese la fecha de entrega: ")
+                fechaPago = input("Ingrese la fecha de pago: ")
                 if(vali.validacionFecha(fechaPago) is not None):
                     pago["fecha_pago"] = fechaPago
                 else:
@@ -80,6 +80,7 @@ def postPagos():
                 if(vali.validacionNumerica(total) is not None):
                     total = int(total)
                     pago["total"] = total
+                    break
                 else:
                     raise Exception("El pago no cumple con lo establecido")   
                 

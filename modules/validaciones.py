@@ -9,11 +9,11 @@ def validacionCodigo(codigo):
     return val
 
 def validacionCoidgoOficina(codigo):
-    val = re.M(r'^[A-Z]{3}-[A-Z]{3}$', codigo)
+    val = re.match(r'^[A-Z]{3}-[A-Z]{2,3}$', codigo)
     return val
 
 def validacionNombre(nombre):
-    val = re.match(r'^([A-Z][a-z]*\s*)+$', nombre)
+    val = re.match(r'^([A-ZÑ][a-zñ]*\s*)+$', nombre)
     return val
 
 def validacionDimension(dimensiones):
@@ -25,7 +25,7 @@ def validacionNumerica(numero):
     return val
 
 def validacionNumero(numero):
-    val = re.match(r'^\s*(\(\d+\))?\s*\d+(?:[\s-]?\d+)*\s*$', numero)
+    val = re.match(r'^\s*(\+\d{1,3}\s*)?\s*(\(\d+\))?\s*\d+(?:[\s-]?\d+)*\s*$', numero)
     return val
 
 def validacionFecha(fecha):
@@ -33,4 +33,5 @@ def validacionFecha(fecha):
     return val
 
 def validaiconTransccion(transccion):
-    val = re.match(r'^[a-zA-Z]{2}-[a-zA-Z]{3}-\d{6}$')
+    val = re.match(r'^[a-zA-Z]{2}-[a-zA-Z]{3}-\d{6}$', transccion)
+    return val

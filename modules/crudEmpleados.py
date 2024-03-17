@@ -108,6 +108,7 @@ def postEmpleados():
                 puesto = input("Ingrese el puesto del empleado: ")
                 if(vali.validacionNombre(puesto) is not None):
                     empleado["puesto"] = puesto
+                    break
                 else:
                     raise Exception("El puesto del empleado no cumple con lo establecido")
 
