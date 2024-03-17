@@ -43,13 +43,49 @@ def getAllDataPagos():
     return data 
 
 def postPagos():
-    pago = {
-        "codigo_cliente": int(input("Ingrese el codigo del cliente: ")),
-        "forma_pago": input("Ingrese la forma de pago: "),
-        "id_transaccion": input("Ingrese la id de la transaccion: "),
-        "fecha_pago": input("Ingrese la fecha de pago: "),
-        "total": int(input("Ingrese el total pagado: "))
-    }
+    pago = dict()
+    while True:
+        try:
+            if(not pago.get("codigo_cliente")):
+                codigocliente = input("Ingrese el codigo del cliente: ")
+                if(vali.validacionNumerica(codigocliente) is not None):
+                    codigocliente = int(codigocliente)
+                    pago["codigo_cliente"] = codigocliente
+                else:
+                    raise Exception("El codigo del cliente no cumple con lo establecido")  
+
+            if(not pago.get("forma_pago")):
+                formaPago = input("Ingrese la forma de pago: ")
+                if(vali.validacionNombre(formaPago) is not None):
+                    pago["forma_pagoado"] = formaPago
+                else:
+                    raise Exception("La forma de pago no cumple con lo establecido")  
+                
+            if(not pago.get("id_transaccion")):
+                idTransaccion = input("Ingrese la id de la transaccion: ")
+                if(vali.validaiconTransccion(idTransaccion) is not None):
+                    pago["id_transaccion"] = idTransaccion
+                else:
+                    raise Exception("La id de la transaccion no cumple con lo establecido")
+                
+            if(not pago.get("fecha_pago")):
+                fechaPago = input("Ingrese la fecha de entrega: ")
+                if(vali.validacionFecha(fechaPago) is not None):
+                    pago["fecha_pago"] = fechaPago
+                else:
+                    raise Exception("La fehca no cumple con lo establecido") 
+
+            if(not pago.get("total")):
+                total = input("Ingrese el total del pago: ")
+                if(vali.validacionNumerica(total) is not None):
+                    total = int(total)
+                    pago["total"] = total
+                else:
+                    raise Exception("El pago no cumple con lo establecido")   
+                
+        except Exception as error:
+            print(error)
+    
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
     peticion = requests.post("http://localhost:5504", headers=headers, data=json.dumps(pago))
     res = peticion.json()

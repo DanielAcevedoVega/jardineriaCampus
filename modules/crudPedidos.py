@@ -90,6 +90,7 @@ def postPedido():
             if(not pedido.get("codigo_cliente")):
                 codigocliente = input("Ingrese el codigo del cliente: ")
                 if(vali.validacionNumerica(codigocliente) is not None):
+                    codigocliente = int(codigocliente)
                     pedido["codigo_cliente"] = codigocliente
                 else:
                     raise Exception("El codigo del cliente no cumple con lo establecido")     
