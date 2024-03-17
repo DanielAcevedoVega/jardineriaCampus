@@ -53,17 +53,67 @@ def nuevoCodigoEmpleado():
         return 1
 
 def postEmpleados():
-    empleado = {
-        "codigo_empleado": nuevoCodigoEmpleado(),
-        "nombre": input("Ingrese el nombre del empleado: "),
-        "apellido1": input("Ingrese el apellido del empleado: "),
-        "apellido2": input("Ingrese el segundo apellido del empleado(opcional): "),
-        "extension": input("Ingrese la extension: "),
-        "email": input("Ingrese el email del empleado: "),
-        "codigo_oficina": oFi.getAllCodigoOficina()[int(input("Seleccione la oficina:\n "+"".join([f"\t{i}. {val}\n" for i, val in enumerate(oFi.getAllCodigoOficina())])))],
-        "codigo_jefe": int(input("Ingrese el codigo del jefe: ")),
-        "puesto": input("Ingrese el nombre del puesto: ")
-    }
+    empleado = dict()
+    while True:
+        try:
+            codigoEmpleado = nuevoCodigoEmpleado()
+            empleado["codigo_empleado"] = codigoEmpleado
+
+            if(not empleado.get("nombre")):
+                nombreEmpleado = input("Ingrese el nombre del empleado: ")
+                if(vali.validacionNombre(nombreEmpleado) is not None):
+                    empleado["nombre"] = nombreEmpleado
+                else:
+                    raise Exception("El nombre del cliente no cumple con lo establecido")
+                
+            if(not empleado.get("apellido1")):
+                apellido1 = input("Ingrese el apellido del empleado: ")
+                if(vali.validacionNombre(apellido1) is not None):
+                    empleado["apellido1"] = apellido1
+                else:
+                    raise Exception("El apellido del empleado no cumple con lo establecido") 
+
+            apellido2 = input("Ingrese el otro apellido del empleado(opcional): ")
+            if(vali.validacionNombre(apellido1) is not None):
+                empleado["apellido2"] = apellido2   
+            
+            if(not empleado.get("extension")):
+                extension = input("Ingrese la extension: ")
+                if(vali.validacionNumerica(extension) is not None):
+                    empleado["extension"] = extension
+                else:
+                    raise Exception("La extension ingresada no cumple con lo establecido")
+                
+            if(not empleado.get("email")):
+                email = input("Ingrese el email del empleado: ")
+                empleado["email"] = email
+
+            if(not empleado.get("codigo_oficina")):
+                opcion = input("Seleccione la oficina:\n "+"".join([f"\t{i}. {val}\n" for i, val in enumerate(oFi.getAllCodigoOficina())]))
+                if vali.validacionOpciones(opcion):
+                    gama = oFi.getAllCodigoOficina()[int(opcion)]
+                    empleado["codigo_oficina"] = gama
+                else:
+                    raise Exception("La opcion de la oficina no cumple con lo establecido")
+                
+            if(not empleado.get("codigo_jefe")):
+                codigoJefe = input("Ingrese el codigo jefe: ")
+                if(vali.validacionNumerica(codigoJefe) is not None):
+                    codigoJefe = int(codigoJefe)
+                    empleado["codigo_jefe"] = codigoJefe
+                else:
+                    raise Exception("El codigo jefe no cumple con lo establecido")            
+
+            if(not empleado.get("puesto")):
+                puesto = input("Ingrese el puesto del empleado: ")
+                if(vali.validacionNombre(puesto) is not None):
+                    empleado["puesto"] = puesto
+                else:
+                    raise Exception("El puesto del empleado no cumple con lo establecido")
+
+        except Exception as error:
+            print(error)
+    
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
     peticion = requests.post("http://localhost:5506", headers=headers, data=json.dumps(empleado))
     res = peticion.json()
