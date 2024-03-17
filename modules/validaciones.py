@@ -8,6 +8,10 @@ def validacionCodigo(codigo):
     val = re.match(r'^[A-Z]{2}-[0-9]{3}$', codigo)
     return val
 
+def validacionCoidgoOficina(codigo):
+    val = re.M(r'^[A-Z]{3}-[A-Z]{3}$', codigo)
+    return val
+
 def validacionNombre(nombre):
     val = re.match(r'^([A-Z][a-z]*\s*)+$', nombre)
     return val

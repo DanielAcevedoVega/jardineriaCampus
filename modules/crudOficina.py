@@ -50,17 +50,75 @@ def getAllCodigoOficina():
         oficinaNombre.append(val.get("codigo_oficina"))
     return oficinaNombre
 
+
+def getOficinaCodigo(codigo):
+    for val in getAllDataOficina():
+        if(val.get("codigo_oficina") == codigo):
+             return [val]
+
 def postOficina():
-    oficina = {
-        "codigo_oficina": input("Ingrese el codigo de la oficina: "),
-        "ciudad": input("Ingrese la ciudad: "),
-        "pais": input("Ingrese el pais: "),
-        "region": input("Ingrese la region: "),
-        "codigo_postal": input("Ingrese el codigo postal: "),
-        "telefono": input("Ingrese el numero de telefono: "),
-        "linea_direccion1": input("Ingrese una linea de direccion: "),
-        "linea_direccion2": input("Ingrese otra linea de direccion(opcional): ")
-    }
+
+    oficina = dict()
+    while True:
+        try:
+            if(not oficina.get("codigo_oficina")):
+                codigo = input("Ingrese el codigo de la oficina (Ej: OR-251): ")
+                if(vali.validacionCoidgoOficina(codigo) is not None):
+                    data = getOficinaCodigo(codigo)
+                    if(data):
+                        print(tabulate(data, headers="keys", tablefmt="github"))
+                        raise Exception("El codigo oficina ya existe")
+                    else:
+                        oficina["codigo_oficina"] = codigo
+                else:
+                    raise Exception("El codigo oficina no cumple con el estandar establecido")
+                
+            if(not oficina.get("ciudad")):
+                ciudad = input("Ingrese la ciudad: ")
+                if(vali.validacionNombre(ciudad) is not None):
+                    oficina["ciudad"] = ciudad
+                else:
+                    raise Exception("El nombre de la ciudad no cumple con lo establecido")
+                
+            if(not oficina.get("pais")):
+                pais = input("Ingrese el pais: ")
+                if(vali.validacionNombre(pais) is not None):
+                    oficina["pais"] = pais
+                else:
+                    raise Exception("El nombre del pais no cumple con lo establecido")
+                
+            if(not oficina.get("region")):
+                region = input("Ingrese la ciudad: ")
+                if(vali.validacionNombre(region) is not None):
+                    oficina["region"] = region
+                else:
+                    raise Exception("El nombre de la region no cumple con lo establecido")
+                
+            if(not oficina.get("codigo_postal")):
+                codigoPostal = input("Ingrese el codigo postal: ")
+                if(vali.validacionNumerica(codigoPostal) is not None):
+                    oficina["codigo_postal"] = codigoPostal
+                else:
+                    raise Exception("El codigo postal no cumple con lo establecido")
+                
+            if(not oficina.get("telefono")):
+                telefono = input("Ingrese el numero de telefono: ")
+                if(vali.validacionNumero(telefono) is not None):
+                    oficina["telefono"] = telefono
+                else:
+                    raise Exception("El telefono ingresado no cumple con lo establecido")
+                
+            if(not oficina.get("linea_direccion1")):
+                direccion1 = input("Ingrese una linea de direccion: ")
+                oficina["linea_direccion1"] = direccion1
+                 
+            direccion2 = input("Ingrese otra linea de direccion(opcional): ")
+            if direccion2:
+                oficina["linea_direccion2"] = direccion2
+
+        except Exception as error:
+            print(error)
+    
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
     peticion = requests.post("http://localhost:5505", headers=headers, data=json.dumps(oficina))
     res = peticion.json()

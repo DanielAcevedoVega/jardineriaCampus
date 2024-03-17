@@ -99,9 +99,9 @@ def postClientes():
             if(not cliente.get("linea_direccion1")):
                 direccion1 = input("Ingrese una linea de direccion: ")
                 cliente["linea_direccion1"] = direccion1
-                
-            if(not cliente.get("linea_direccion2")):
-                direccion2 = input("Ingrese otra linea de direccion(opcional): ")
+                 
+            direccion2 = input("Ingrese otra linea de direccion(opcional): ")
+            if direccion2:
                 cliente["linea_direccion2"] = direccion2
 
             if(not cliente.get("ciudad")):
@@ -111,19 +111,17 @@ def postClientes():
                 else:
                     raise Exception("El nombre de la ciudad no cumple con lo establecido")
 
-            if(not cliente.get("region")):
-                region = input("Ingrese la region: ")
-                if(vali.validacionNombre(region) is not None):
+            region = input("Ingrese la region (opcional): ")
+            if region:
+                if vali.validacionNombre(region) is not None:
                     cliente["region"] = region
-                else:
-                    raise Exception("La region no cumple con lo establecido")
 
             if(not cliente.get("pais")):
                 pais = input("Ingrese el pais: ")
                 if(vali.validacionNombre(pais) is not None):
-                    cliente["ciudad"] = pais
+                    cliente["pais"] = pais
                 else:
-                    raise Exception("El nombre de la ciudad no cumple con lo establecido")
+                    raise Exception("El nombre del pais no cumple con lo establecido")
                 
             if(not cliente.get("codigo_postal")):
                 codigoPostal = input("Ingrese el codigo postal: ")
