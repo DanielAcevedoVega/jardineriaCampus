@@ -49,18 +49,6 @@
             "id": 4
         },
         {
-            "codigo_producto": "AR-001",
-            "nombre": "Ajedrea",
-            "gama": "Arom\u00e1ticas",
-            "dimensiones": "15-20",
-            "proveedor": "Murcia Seasons",
-            "descripcion": "Planta arom\u00e1tica que fresca se utiliza para condimentar carnes y ensaladas, y seca, para pastas, sopas y guisantes",
-            "cantidad_en_stock": 140,
-            "precio_venta": 1,
-            "precio_proveedor": 0,
-            "id": 5
-        },
-        {
             "codigo_producto": "AR-002",
             "nombre": "Lav\u00e1ndula Dentata",
             "gama": "Arom\u00e1ticas",

@@ -26,15 +26,19 @@ def menu():
 
           
           1. Guardar un producto nuevo
+          2. Eliminar un producto
           0. Atras
 
     """)
         opcion = input("\nSeleccione una de las opciones: ")
         if(vali.validacionOpciones(opcion) is not None):
             opcion = int(opcion)
-            if(opcion >= 0 and opcion <= 1):
+            if(opcion >= 0 and opcion <= 2):
                 if (opcion == 1):
                     print(tabulate(postProducto(), headers="keys", tablefmt="github"))
+                elif (opcion == 2):
+                    id = int(input("Ingrese el codigo de produto que deseas elminar: "))
+                    print(tabulate(deleteProducto(id)["body"], headers="keys", tablefmt="github"))
                 elif (opcion == 0):
                     break
             input("Precione una tecla para continuar.........")
@@ -47,8 +51,7 @@ def getAllData():
 
 def getProductoCodigo(codigo):
     peticion = requests.get(f"http://localhost:5501/productos/{codigo}")
-    data = peticion.json()
-    return [data]
+    return [peticion.json()] if peticion.ok else []
 
 def postProducto():
     
@@ -137,9 +140,23 @@ def postProducto():
     return [res]
 
 def deleteProducto(id):
-    peticion = requests.delete(f"http://localhost:5501/productos/{id}")
-    res = peticion.json()
-    return res
+    data = getProductoCodigo(id)
+    if(len(data)):
+        peticion = requests.delete(f"http://localhost:5501/productos/{id}")
+        if(peticion.status_code == 204):
+            data.append({"message": "producto eliminado correctamente"})
+            return {
+                "body": data,
+                "status": peticion.status_code, 
+            }
+    else:
+        return {
+                "body":[{
+                    "message": "Producto no encontrado",
+                    "id" : id
+                }],
+                "status": 400,
+            }   
 
 
 
