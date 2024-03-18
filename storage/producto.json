@@ -3064,26 +3064,15 @@
         },
         {
             "codigo_producto": "OR-251",
-            "nombre": "Zamia Furfuracaea",
-            "gama": "Ornamentales",
-            "dimensiones": "90 - 110",
-            "proveedor": "Viveros EL OASIS",
-            "cantidad_en_stock": 15,
-            "precio_venta": 168,
-            "precio_proveedor": 134,
+            "nombre": "Mango",
+            "gama": "Frutales",
+            "dimensiones": "58-46",
+            "proveedor": "Prueba",
+            "descripcion": "Esto es una ajdksjahdksa",
+            "cantidad_en_stock": 150,
+            "precio_venta": 23,
+            "precio_proveedor": 10,
             "id": 275
-        },
-        {
-            "codigo_producto": "OR-99",
-            "nombre": "Mimosa DEALBATA Gaulois Astier  ",
-            "gama": "Ornamentales",
-            "dimensiones": "200-225",
-            "proveedor": "Viveros EL OASIS",
-            "descripcion": "Acacia dealbata. Nombre com\u00fan o vulgar: Mimosa fina, Mimosa, Mimosa com\u00fan, Mimosa plateada, Aromo franc\u00e9s. Familia: Mimosaceae. Origen: Australia, Sureste, (N. G. del Sur y Victoria). Arbol de follaje persistente muy usado en parques por su atractiva floraci\u00f3n amarilla hacia fines del invierno. Altura: de 3 a 10 metros generalmente. Crecimiento r\u00e1pido. Follaje perenne de tonos plateados, muy ornamental. Sus hojas son de textura fina, de color verde y sus flores amarillas que aparecen en racimos grandes. Florece de Enero a Marzo (Hemisferio Norte). Legumbre de 5-9 cm de longitud, recta o ligeramente curvada, con los bordes algo constre\u00f1idos entre las semillas, que se disponen en el fruto longitudinalmente...",
-            "cantidad_en_stock": 100,
-            "precio_venta": 14,
-            "precio_proveedor": 11,
-            "id": 276
         }
     ]
 }
