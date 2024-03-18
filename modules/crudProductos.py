@@ -37,7 +37,7 @@ def menu():
                 if (opcion == 1):
                     print(tabulate(postProducto(), headers="keys", tablefmt="github"))
                 elif (opcion == 2):
-                    id = int(input("Ingrese el codigo de produto que deseas elminar: "))
+                    id = int(input("Ingrese el id de produto que deseas elminar: "))
                     print(tabulate(deleteProducto(id)["body"], headers="keys", tablefmt="github"))
                 elif (opcion == 0):
                     break

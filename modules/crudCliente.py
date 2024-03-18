@@ -24,15 +24,19 @@ def menu():
 
           
           1. Agregar un nuevo cliente
+          2. Eliminar un cliente
           0. Atras
 
     """)
         opcion = input("\nSeleccione una de las opciones: ")
         if(vali.validacionOpciones(opcion) is not None):
             opcion = int(opcion)
-            if(opcion >= 0 and opcion <= 1):
+            if(opcion >= 0 and opcion <= 2):
                 if (opcion == 1):
                     print(tabulate(postClientes(), headers="keys", tablefmt="github"))
+                elif (opcion == 2):
+                    id = int(input("Ingrese el codigo del cliente que deseas eliminar: "))
+                    print(tabulate(deleteCliente(id)["body"], headers="keys", tablefmt="github"))
                 elif (opcion == 0):
                     break
             input("Precione una tecla para continuar.........")
@@ -52,6 +56,10 @@ def nuevoCodigoCliente():
         return max(codigodelCliente) + 1
     else:
         return 1
+    
+def getClienteCodigo(codigo):
+    peticion = requests.get(f"http://localhost:5507/clientes/{codigo}")
+    return [peticion.json()] if peticion.ok else []
 
 def postClientes():
 
@@ -155,3 +163,23 @@ def postClientes():
     res = peticion.json()
     res["Mensaje"] = "Cliente Agregado"
     return [res]
+
+    
+def deleteCliente(id):
+    data = getClienteCodigo(id)
+    if(len(data)):
+        peticion = requests.delete(f"http://localhost:5507/clientes/{id}")
+        if(peticion.status_code == 204):
+            data.append({"message": "Cliente eliminado correctamente"})
+            return {
+                "body": data,
+                "status": peticion.status_code, 
+            }
+    else:
+        return {
+                "body":[{
+                    "message": "Cliente no encontrado",
+                    "id" : id
+                }],
+                "status": 400,
+            }   

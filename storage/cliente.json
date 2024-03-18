@@ -625,22 +625,6 @@
             "codigo_empleado_rep_ventas": 31,
             "limite_credito": 8000.0,
             "id": 37
-        },
-        {
-            "codigo_cliente": 40,
-            "nombre_cliente": "Gaditoo",
-            "nombre_contacto": "Gad",
-            "apellido_contacto": "Live",
-            "telefono": "4864651651",
-            "fax": "56465164864",
-            "linea_direccion1": "Calle cacas",
-            "ciudad": "Madrid",
-            "region": "Madrid",
-            "pais": "Spain",
-            "codigo_postal": "4846",
-            "codigo_empleado_rep_ventas": 13,
-            "limite_credito": 5000.0,
-            "id": 38
         }
     ]
 }
