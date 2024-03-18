@@ -40,7 +40,7 @@ def menu():
 
 def getAllDataOficina():
     #json-server storage/oficina.json -b 5505
-    peticion = requests.get("http://localhost:5505")
+    peticion = requests.get("http://localhost:5505/oficinas")
     data = peticion.json()
     return data 
 
@@ -123,7 +123,7 @@ def postOficina():
             print(error)
     
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5505", headers=headers, data=json.dumps(oficina))
+    peticion = requests.post("http://localhost:5505/oficinas", headers=headers, data=json.dumps(oficina))
     res = peticion.json()
     res["Mensaje"] = "Oficina Guardada"
     return [res]

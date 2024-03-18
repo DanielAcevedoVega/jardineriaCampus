@@ -38,7 +38,7 @@ def menu():
 
 def getAllDataPagos():
     #json-server storage/pago.json -b 5504
-    peticion = requests.get("http://localhost:5504")
+    peticion = requests.get("http://localhost:5504/pagos")
     data = peticion.json()
     return data 
 
@@ -88,6 +88,6 @@ def postPagos():
             print(error)
     
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5504", headers=headers, data=json.dumps(pago))
+    peticion = requests.post("http://localhost:5504/pagos", headers=headers, data=json.dumps(pago))
     res = peticion.json()
     return [res]

@@ -40,7 +40,7 @@ def menu():
 
 def getAllCliente():
     #json-server storage/cliente.json -b 5507
-    peticion = requests.get("http://localhost:5507")
+    peticion = requests.get("http://localhost:5507/clientes")
     data = peticion.json()
     return data
 
@@ -151,7 +151,7 @@ def postClientes():
             print(error)
 
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5507", headers=headers, data=json.dumps(cliente))
+    peticion = requests.post("http://localhost:5507/clientes", headers=headers, data=json.dumps(cliente))
     res = peticion.json()
     res["Mensaje"] = "Cliente Agregado"
     return [res]

@@ -38,7 +38,7 @@ def menu():
 
 def getAllDataPedido():
     #json-server storage/pedido.json -b 5503
-    peticion = requests.get("http://localhost:5503")
+    peticion = requests.get("http://localhost:5503/pedidos")
     data = peticion.json()
     return data 
 
@@ -100,7 +100,7 @@ def postPedido():
             print(error)
     
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5503", headers=headers, data=json.dumps(pedido))
+    peticion = requests.post("http://localhost:5503/pedidos", headers=headers, data=json.dumps(pedido))
     res = peticion.json()
     res["Mensaje"] = "Pedido Agregado"
     return [res]

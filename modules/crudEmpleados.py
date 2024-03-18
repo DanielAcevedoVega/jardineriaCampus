@@ -39,7 +39,7 @@ def menu():
 
 def getAllDataEmpleado():
     #json-server storage/empleado.json -b 5506
-    peticion = requests.get("http://localhost:5506")
+    peticion = requests.get("http://localhost:5506/empleados")
     data = peticion.json()
     return data 
 
@@ -116,7 +116,7 @@ def postEmpleados():
             print(error)
     
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5506", headers=headers, data=json.dumps(empleado))
+    peticion = requests.post("http://localhost:5506/empleados", headers=headers, data=json.dumps(empleado))
     res = peticion.json()
     res["Mensaje"] = "Empleado Agregado"
     return [res]
