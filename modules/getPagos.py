@@ -96,18 +96,14 @@ ______                      _             _       ______
             if(opcion >= 0 and opcion <= 5):
                 if (opcion == 1):
                     print(tabulate(getAllCodigoClientePago()))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 2):
                     print(tabulate(getAllPagos2008Paypal(), headers="keys", tablefmt="github"))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 3):
                     print(tabulate(getAllFormasDePago()))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 4):
                     print(tabulate(getAllNombreClientesRealizaronPagos(), headers="keys", tablefmt="github"))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 5):
                     print(tabulate(getAllNombreClientesNoRealizaronPagos(), headers="keys", tablefmt="github"))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 0):
                     break
+            input("Precione una tecla para continuar.........")

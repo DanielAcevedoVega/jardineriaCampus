@@ -35,20 +35,20 @@ def menu():
             if(opcion >= 0 and opcion <= 1):
                 if (opcion == 1):
                     print(tabulate(postProducto(), headers="keys", tablefmt="github"))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 0):
                     break
+            input("Precione una tecla para continuar.........")
 
 def getAllData():
     #json-server storage/producto.json -b 5501
-    peticion = requests.get("http://localhost:5501")
+    peticion = requests.get("http://localhost:5501/productos")
     data = peticion.json()
     return data 
 
 def getProductoCodigo(codigo):
-    for val in getAllData():
-        if(val.get("codigo_producto") == codigo):
-             return [val]
+    peticion = requests.get(f"http://localhost:5501/productos/{codigo}")
+    data = peticion.json()
+    return [data]
 
 def postProducto():
     
@@ -136,7 +136,10 @@ def postProducto():
     res["Mensaje"] = "Producto Guardado"
     return [res]
 
-
+def deleteProducto(id):
+    peticion = requests.delete(f"http://localhost:5501/productos/{id}")
+    res = peticion.json()
+    return res
 
 
 

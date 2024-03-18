@@ -164,38 +164,30 @@ def menu():
             if(opcion >= 0 and opcion <= 9):
                 if (opcion == 1):
                     print(tabulate(getAllClientName(), headers="keys", tablefmt="github"))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 2):
                         codigo = int(input("Ingrese el codigo del cliente: "))
                         print(tabulate(getOneClientCodigo(codigo), headers="keys", tablefmt="github"))
-                        input("Precione una tecla para continuar.........")
                 elif (opcion == 3):
                         limite = float(input("Ingrese el limite de credito de los clientes que desee visualizar: "))
                         ciudad = input("Ingrese el nombre de la ciudad que desea filtrar a los clientes: ")
                         print(tabulate(getAllClientCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
-                        input("Precione una tecla para continuar.........")
                 elif (opcion == 4):
                         pais = input("Ingrese el pais filtrar a los clientes: ")
                         region = input("Ingrese la region que desea filtrar a los clientes(opcional): ") or None
                         ciudad = input("Ingrese la ciudad que desea filtrar a los clientes(opcional): ") or None
                         print(tabulate(getAllClientPaisRegionCiudad(pais, region, ciudad), headers="keys", tablefmt="github"))
-                        input("Precione una tecla para continuar.........")
                 elif (opcion == 5):
                         telefono = input("Ingrese el nuemro de contacto del cliente que deseas filtrar: ")
                         print(tabulate(getOneClientContac(telefono), headers="keys", tablefmt="github"))   
-                        input("Precione una tecla para continuar.........")
                 elif (opcion == 6):
                         codigo_postal = input("Ingrese el codigo postal del cliente que deseas filtrar: ")
                         print(tabulate(getClientCodePostal(codigo_postal), headers="keys", tablefmt="github"))
-                        input("Precione una tecla para continuar.........")
                 elif (opcion == 7):
                     print(tabulate(getAllNombreClientesEspañoles(), headers="keys", tablefmt="github"))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 8):
                     print(tabulate(getAllClientesMadridRepresentantesVentas(), headers="keys", tablefmt="github"))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 9):
                     print(tabulate(getAllNombreApellidosDeClientesRepresentanteVentas(), headers="keys", tablefmt="github"))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 0):
                     break
+            input("Precione una tecla para continuar.........")

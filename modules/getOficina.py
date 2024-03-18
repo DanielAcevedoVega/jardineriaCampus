@@ -50,11 +50,10 @@ def menu():
             if(opcion >= 0 and opcion <= 2):
                 if (opcion == 1):
                     print(tabulate(getAllCodigoCiudad(), headers="keys", tablefmt="github"))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 2):
                     pais = input("Ingrese el pais que deseas filtrar: ")
                     print(tabulate(getAllCiudadTelefono(pais), headers="keys", tablefmt="github")) 
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 0):
                     break
+            input("Precione una tecla para continuar.........")
   

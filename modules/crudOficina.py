@@ -32,9 +32,9 @@ def menu():
             if(opcion >= 0 and opcion <= 1):
                 if (opcion == 1):
                     print(tabulate(postOficina(), headers="keys", tablefmt="github"))
-                    input("Precione una tecla para continuar.........")
                 elif (opcion == 0):
                     break
+            input("Precione una tecla para continuar.........")
 
 
 
