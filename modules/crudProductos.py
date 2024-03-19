@@ -57,10 +57,6 @@ def getProductoCodigo(codigo):
     peticion = requests.get(f"http://localhost:5501/productos/{codigo}")
     return peticion.json() if peticion.ok else []
 
-def compararAllCodigo(codigo):
-    for val in getAllData():
-        if(val.get("codigo_producto") == codigo):
-             return [val]
 
 def postProducto():
     

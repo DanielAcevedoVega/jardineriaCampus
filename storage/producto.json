@@ -3097,18 +3097,6 @@
             "precio_venta": 600,
             "precio_proveedor": 400,
             "id": 277
-        },
-        {
-            "codigo_producto": "MK-489",
-            "nombre": "Otro Martillo",
-            "gama": "Ornamentales",
-            "dimensiones": "12-5",
-            "proveedor": "Juan Camilo",
-            "descripcion": "otro martillo para la prueba xd",
-            "cantidad_en_stock": 120,
-            "precio_venta": 23,
-            "precio_proveedor": 15,
-            "id": 278
         }
     ]
 }
