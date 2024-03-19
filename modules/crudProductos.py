@@ -39,7 +39,7 @@ def menu():
                     print(tabulate(postProducto(), headers="keys", tablefmt="github"))
                 elif (opcion == 2):
                     id = int(input("Ingrese el id de produto que deseas elminar: "))
-                    print(tabulate(deleteProducto(id)["body"], headers="keys", tablefmt="github"))
+                    print(tabulate(deleteProducto(id), tablefmt="github"))
                 elif (opcion == 3):
                     id = int(input("Ingrese el id de produto que deseas actualizar: "))
                     print(tabulate(updateProducto(id), headers="keys", tablefmt="github"))
@@ -55,7 +55,7 @@ def getAllData():
 
 def getProductoCodigo(codigo):
     peticion = requests.get(f"http://localhost:5501/productos/{codigo}")
-    return [peticion.json()] if peticion.ok else []
+    return peticion.json() if peticion.ok else []
 
 def compararAllCodigo(codigo):
     for val in getAllData():
@@ -151,41 +151,38 @@ def postProducto():
 def deleteProducto(id):
     data = getProductoCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f"http://localhost:5501/productos/{id}")
-        if(peticion.status_code == 204):
-            data.append({"message": "producto eliminado correctamente"})
-            return {
-                "body": data,
-                "status": peticion.status_code, 
-            }
+        print("Informacion del producto encontrado: ")
+        print(tabulate([data], headers="keys", tablefmt="github"))
+        while True:
+            try:
+                confirmacion = input("Deseas eliminar este producto?(s/n): ")
+                if vali.validacionSiNo(confirmacion):
+                    if confirmacion == "s":
+                        peticion = requests.delete(f"http://localhost:5501/productos/{id}")
+                        if(peticion.status_code == 204):
+                            return[["messege", "Producto eliminado correctamente"]]
+                        break
+                    else:
+                        return [
+                        ["messege", "La eliminacion del producto fue cancelada"],
+                        ["status", 200]
+                    ]
+                else:
+                    raise Exception("La confirmacion no cumple con lo establecido por favor solo s/n")
+            except Exception as error:
+                print(error)
     else:
-        return {
-                "body":[{
-                    "message": "Producto no encontrado",
-                    "id" : id
-                }],
-                "status": 400,
-            }   
+        return [["Producto no encontrado", id], 
+                ["status", 400 ]
+            ]
 
 def updateProducto(id):
     data = getProductoCodigo(id)
     if(len(data)):
             producto = dict()
+            producto["codigo_producto"] = data["codigo_producto"]
             while True: 
-                try:    
-                    
-                    if(not producto.get("codigo_producto")):
-                        codigo = input("Ingrese el codigo del producto (Ej: OR-251): ")
-                    if(vali.validacionCodigo(codigo) is not None):
-                        data = compararAllCodigo(codigo)
-                        if(data):
-                            print(tabulate(data, headers="keys", tablefmt="github"))
-                            raise Exception("El codigo producto ya existe")
-                        else:
-                            producto["codigo_producto"] = codigo
-                    else:
-                        raise Exception("El codigo producto no cumple con el estandar establecido")
-                    
+                try:              
                     if(not producto.get("nombre")):
                         nombre = input("Ingrese el nombre del producto: ")
                         if(vali.validacionNombre(nombre) is not None):
@@ -253,10 +250,11 @@ def updateProducto(id):
             return [res]
 
     else:
-        return {
+        return [{
                     "message": "Producto no encontrado",
+                    "id": id
 
-            }   
+            }]   
 
 
 

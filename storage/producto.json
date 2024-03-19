@@ -3064,15 +3064,51 @@
         },
         {
             "codigo_producto": "OR-251",
+            "nombre": "Zhanahoria",
+            "gama": "Frutales",
+            "dimensiones": "12-46",
+            "proveedor": "Juan",
+            "descripcion": "Xddd",
+            "cantidad_en_stock": 150,
+            "precio_venta": 32,
+            "precio_proveedor": 12,
+            "id": 275
+        },
+        {
+            "codigo_producto": "OR-252",
             "nombre": "Mango",
             "gama": "Frutales",
-            "dimensiones": "58-46",
-            "proveedor": "Prueba",
-            "descripcion": "Esto es una ajdksjahdksa",
+            "dimensiones": "12-5",
+            "proveedor": "Carlos",
+            "descripcion": "Carlos trajo el major mango de todos",
             "cantidad_en_stock": 150,
             "precio_venta": 23,
-            "precio_proveedor": 10,
-            "id": 275
+            "precio_proveedor": 15,
+            "id": 276
+        },
+        {
+            "codigo_producto": "KL-561",
+            "nombre": "El Martillo God",
+            "gama": "Ornamentales",
+            "dimensiones": "132-45",
+            "proveedor": "Carlos ",
+            "descripcion": "El martillo mas god ",
+            "cantidad_en_stock": 150,
+            "precio_venta": 600,
+            "precio_proveedor": 400,
+            "id": 277
+        },
+        {
+            "codigo_producto": "MK-489",
+            "nombre": "Otro Martillo",
+            "gama": "Ornamentales",
+            "dimensiones": "12-5",
+            "proveedor": "Juan Camilo",
+            "descripcion": "otro martillo para la prueba xd",
+            "cantidad_en_stock": 120,
+            "precio_venta": 23,
+            "precio_proveedor": 15,
+            "id": 278
         }
     ]
 }

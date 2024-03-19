@@ -25,6 +25,7 @@ def menu():
           
           1. Agregar un nuevo cliente
           2. Eliminar un cliente
+          3. Actualizar un cliente
           0. Atras
 
     """)
@@ -37,6 +38,7 @@ def menu():
                 elif (opcion == 2):
                     id = int(input("Ingrese el codigo del cliente que deseas eliminar: "))
                     print(tabulate(deleteCliente(id)["body"], headers="keys", tablefmt="github"))
+
                 elif (opcion == 0):
                     break
             input("Precione una tecla para continuar.........")
@@ -59,7 +61,7 @@ def nuevoCodigoCliente():
     
 def getClienteCodigo(codigo):
     peticion = requests.get(f"http://localhost:5507/clientes/{codigo}")
-    return [peticion.json()] if peticion.ok else []
+    return peticion.json() if peticion.ok else []
 
 def postClientes():
 
@@ -168,18 +170,32 @@ def postClientes():
 def deleteCliente(id):
     data = getClienteCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f"http://localhost:5507/clientes/{id}")
-        if(peticion.status_code == 204):
-            data.append({"message": "Cliente eliminado correctamente"})
-            return {
-                "body": data,
-                "status": peticion.status_code, 
-            }
+        print("Informacion del cliente encontrado: ")
+        print(tabulate([data], headers="keys", tablefmt="github"))
+        while True:
+            try:
+                confirmacion = input("Deseas eliminar este cliente(s/n): ")
+                if vali.validacionSiNo(confirmacion):
+                    if confirmacion == "s":
+                        peticion = requests.delete(f"http://localhost:5507/clientes/{id}")
+                        if(peticion.status_code == 204):
+                            return[["messege", "Cliente eliminado correctamente"]]
+                        break
+                    else:
+                        return[
+                            ["messege", "La eliminacion del clienete fue cancelada"],
+                            ["status", 200]
+                        ]
+                else:
+                    raise Exception("La confirmacion no cumple con lo establecido por favor solo s/n")
+            except Exception as error:
+                print(error)
     else:
-        return {
-                "body":[{
-                    "message": "Cliente no encontrado",
-                    "id" : id
-                }],
-                "status": 400,
-            }   
+        return [
+            ["Producto no encontrado", id],
+            ["status", 400]
+        ]
+
+def updateCliente(id):
+    data = getClienteCodigo(id)
+    
