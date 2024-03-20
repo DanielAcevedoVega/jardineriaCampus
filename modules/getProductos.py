@@ -1,27 +1,22 @@
 import os
 from tabulate import tabulate
 import modules.validaciones as vali
-from modules.crudProductos import getAllData as pro
+import requests
 
 
 
 def getAllStockPriceGama(gama, stock):
-    condiciones = list()
-    for val in pro():
-        if(val.get("gama") == gama and val.get("cantidad_en_stock") >= stock):
-            condiciones.append(val)
-    def price(val):
-        return val.get("precio_venta")
-    condiciones.sort(key=price, reverse=True)
+    peticion = requests.get(f"http://154.38.171.54:5008/productos?gama={gama}&cantidadEnStock_gte={stock}&_sort=-precio_venta")
+    condiciones = peticion.json()
     for i, val in enumerate(condiciones):
         condiciones[i] = {
             "codigo": val.get("codigo_producto"),
             "venta": val.get("precio_venta"),
-            "nombre": val.get("nombre_"),
+            "nombre": val.get("nombre"),
             "gama": val.get("gama"),
             "dimensiones": val.get("dimensiones"),
             "proveedor": val.get("proveedor"),
-            "descripcion": f'{val.get("descripcion")[:20]}...' if condiciones[i].get("descripcion") else None,
+            "descripcion": f'{val.get("descripcion")[:8]}...' if condiciones[i].get("descripcion") else None,
             "stock": val.get("cantidad_en_stock"),
             "base": val.get("precio_proveedor")
         }
