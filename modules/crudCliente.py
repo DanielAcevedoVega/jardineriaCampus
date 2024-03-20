@@ -37,7 +37,7 @@ def menu():
                     print(tabulate(postClientes(), headers="keys", tablefmt="github"))
                 elif (opcion == 2):
                     id = int(input("Ingrese el codigo del cliente que deseas eliminar: "))
-                    print(tabulate(deleteCliente(id), headers="keys", tablefmt="github"))
+                    print(tabulate(deleteCliente(id), tablefmt="github"))
                 elif (opcion == 3):
                     id = int(input("Ingrese el codigo del cliente que deseas actualizar: "))
                     print(tabulate(updateCliente(id), headers="keys", tablefmt="github"))
@@ -295,7 +295,7 @@ def updateCliente(id):
                 print(error)
 
         headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-        peticion = requests.post(f"http://localhost:5507/clientes/{id}", headers=headers, data=json.dumps(cliente))
+        peticion = requests.put(f"http://localhost:5507/clientes/{id}", headers=headers, data=json.dumps(cliente))
         res = peticion.json()
         res["Mensaje"] = "Cliente Actualizado"
         return [res]

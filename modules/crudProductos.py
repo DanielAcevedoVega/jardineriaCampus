@@ -38,7 +38,7 @@ def menu():
                 if (opcion == 1):
                     print(tabulate(postProducto(), headers="keys", tablefmt="github"))
                 elif (opcion == 2):
-                    id = int(input("Ingrese el id de produto que deseas elminar: "))
+                    id = int(input("Ingrese el id de produto que deseas eliminar: "))
                     print(tabulate(deleteProducto(id), tablefmt="github"))
                 elif (opcion == 3):
                     id = int(input("Ingrese el id de produto que deseas actualizar: "))
@@ -105,8 +105,9 @@ def postProducto():
                 else:
                     raise Exception("El nombre del proveedor del producto no cumple con lo establecido")
             
-            if(not producto.get("descripcion")):
-                descripcion = input("Ingrese una descripcion del producto: ")
+
+            descripcion = input("Ingrese una descripcion del producto: ")
+            if descripcion:
                 producto["descripcion"] = descripcion
 
             if(not producto.get("cantidad_en_stock")):
@@ -142,12 +143,16 @@ def postProducto():
     peticion = requests.post("http://localhost:5501/productos", headers=headers, data=json.dumps(producto))
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"
+    res["descripcion"] = f'{res.get("descripcion")[:20]}...' if res.get("descripcion") else None
     return [res]
 
 def deleteProducto(id):
     data = getProductoCodigo(id)
     if(len(data)):
         print("Informacion del producto encontrado: ")
+        if data.get("descripcion"):
+            descripcion = data.get("descripcion")
+            data["descripcion"] = f'{descripcion[:20]}...' if len(descripcion) > 20 else descripcion
         print(tabulate([data], headers="keys", tablefmt="github"))
         while True:
             try:
@@ -208,8 +213,8 @@ def updateProducto(id):
                         else:
                             raise Exception("El nombre del proveedor del producto no cumple con lo establecido")
                     
-                    if(not producto.get("descripcion")):
-                        descripcion = input("Ingrese una descripcion del producto: ")
+                    descripcion = input("Ingrese una descripcion del producto: ")
+                    if descripcion:
                         producto["descripcion"] = descripcion
 
                     if(not producto.get("cantidad_en_stock")):
@@ -243,13 +248,13 @@ def updateProducto(id):
             peticion = requests.put(f"http://localhost:5501/productos/{id}", headers=headers, data=json.dumps(producto))
             res = peticion.json()
             res["Mensaje"] = "Producto Actualizado"
+            res["descripcion"] = f'{res.get("descripcion")[:20]}...' if res.get("descripcion") else None
             return [res]
 
     else:
         return [{
                     "message": "Producto no encontrado",
                     "id": id
-
             }]   
 
 

@@ -217,11 +217,11 @@
             "id": 27
         },
         {
-            "codigo_cliente": 5,
-            "forma_pagoado": "PayPal",
-            "id_transaccion": "ak-sda-134896",
-            "fecha_pago": "2023-12-31",
-            "total": 20034,
+            "codigo_cliente": 12,
+            "forma_pago": "Cheque",
+            "id_transaccion": "as-zxz-123456",
+            "fecha_pago": "2010-03-18",
+            "total": 4500,
             "id": 28
         }
     ]

@@ -1192,12 +1192,12 @@
         },
         {
             "codigo_pedido": 123,
-            "fecha_pedido": "2023-12-31",
-            "fecha_esperada": "2024-01-25",
-            "fecha_entrega": "",
-            "estado": "Rechazado",
+            "fecha_pedido": "2024-06-05",
+            "fecha_esperada": "2024-09-15",
+            "fecha_entrega": "2024-10-30",
+            "estado": "Entregado",
             "comentario": "",
-            "codigo_cliente": 16,
+            "codigo_cliente": 30,
             "id": 120
         }
     ]

@@ -23,15 +23,23 @@ def menu():
                                                       
           
           1. Agregar un pago nuevo
+          2. Eliminar un pago 
+          3. Actualizar un pago 
           0. Atras
 
     """)
         opcion = input("\nSeleccione una de las opciones: ")
         if(vali.validacionOpciones(opcion) is not None):
             opcion = int(opcion)
-            if(opcion >= 0 and opcion <= 1):
+            if(opcion >= 0 and opcion <= 3):
                 if (opcion == 1):
                     print(tabulate(postPagos(), headers="keys", tablefmt="github"))
+                elif (opcion == 2):
+                    id = int(input("Ingrese el codigo del pago que deseas eliminar: "))
+                    print(tabulate(deletePago(id), tablefmt="github"))
+                elif (opcion == 3):
+                    id = int(input("Ingrese el codigo del pago que deseas actualizar: "))
+                    print(tabulate(updatePago(id), headers="keys", tablefmt="github"))
                 elif (opcion == 0):
                     break
             input("Precione una tecla para continuar.........")
@@ -41,6 +49,10 @@ def getAllDataPagos():
     peticion = requests.get("http://localhost:5504/pagos")
     data = peticion.json()
     return data 
+
+def getPagoCodigo(codigo):
+    peticion = requests.get(f"http://localhost:5504/pagos/{codigo}")
+    return peticion.json() if peticion.ok else []
 
 def postPagos():
     pago = dict()
@@ -57,7 +69,7 @@ def postPagos():
             if(not pago.get("forma_pago")):
                 formaPago = input("Ingrese la forma de pago: ")
                 if(vali.validacionNombre(formaPago) is not None):
-                    pago["forma_pagoado"] = formaPago
+                    pago["forma_pago"] = formaPago
                 else:
                     raise Exception("La forma de pago no cumple con lo establecido")  
                 
@@ -91,3 +103,84 @@ def postPagos():
     peticion = requests.post("http://localhost:5504/pagos", headers=headers, data=json.dumps(pago))
     res = peticion.json()
     return [res]
+
+def deletePago(id):
+    data = getPagoCodigo(id)
+    if(len(data)):
+        print("Informacion del pago encontrado: ")
+        print(tabulate([data], headers="keys", tablefmt="github"))
+        while True:
+            try:
+                confirmacion = input("Deseas eliminar este pago?(s/n): ")
+                if vali.validacionSiNo(confirmacion):
+                    if confirmacion == "s":
+                        peticion = requests.delete(f"http://localhost:5504/pagos/{id}")
+                        if(peticion.status_code == 204):
+                            return[["messege", "Pago eliminado correctamente"]]
+                        break
+                    else:
+                        return[
+                            ["messege", "La eliminacion del pago fue cancelada"],
+                            ["status", 200]
+                        ]
+                else:
+                    raise Exception("La confirmacion no cumple con lo establecido por favor solo s/n")
+            except Exception as error:
+                print(error)
+    else:
+        return [
+            ["Pago no encontrado", id],
+            ["status", 400]
+        ]
+    
+def updatePago(id):
+    data = getPagoCodigo(id)
+    if(len(data)):
+        pago = dict()
+        pago["codigo_cliente"] = data["codigo_cliente"]
+        while True:
+            try:
+                if(not pago.get("forma_pago")):
+                    formaPago = input("Ingrese la forma de pago: ")
+                    if(vali.validacionNombre(formaPago) is not None):
+                        pago["forma_pago"] = formaPago
+                    else:
+                        raise Exception("La forma de pago no cumple con lo establecido")  
+                    
+                if(not pago.get("id_transaccion")):
+                    idTransaccion = input("Ingrese la id de la transaccion: ")
+                    if(vali.validaiconTransccion(idTransaccion) is not None):
+                        pago["id_transaccion"] = idTransaccion
+                    else:
+                        raise Exception("La id de la transaccion no cumple con lo establecido")
+                    
+                if(not pago.get("fecha_pago")):
+                    fechaPago = input("Ingrese la fecha de pago: ")
+                    if(vali.validacionFecha(fechaPago) is not None):
+                        pago["fecha_pago"] = fechaPago
+                    else:
+                        raise Exception("La fehca no cumple con lo establecido") 
+
+                if(not pago.get("total")):
+                    total = input("Ingrese el total del pago: ")
+                    if(vali.validacionNumerica(total) is not None):
+                        total = int(total)
+                        pago["total"] = total
+                        break
+                    else:
+                        raise Exception("El pago no cumple con lo establecido")   
+                    
+            except Exception as error:
+                print(error)
+        
+        headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
+        peticion = requests.put(f"http://localhost:5504/pagos/{id}", headers=headers, data=json.dumps(pago))
+        res = peticion.json()
+        return [res]
+    else:
+        return[{
+            "messege": "Pago no encontrado",
+            "id": id
+        }]
+
+

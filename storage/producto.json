@@ -3097,6 +3097,53 @@
             "precio_venta": 600,
             "precio_proveedor": 400,
             "id": 277
+        },
+        {
+            "codigo_producto": "PO-214",
+            "nombre": "Martillo",
+            "gama": "Ornamentales",
+            "dimensiones": "21-45",
+            "proveedor": "Bob Pro",
+            "descripcion": "Hola que hace denjfuijdfuijfduifsduifduidfsuibfduisuibfdfasuhasouihasiohassia",
+            "cantidad_en_stock": 135,
+            "precio_venta": 66,
+            "precio_proveedor": 20,
+            "id": 278
+        },
+        {
+            "codigo_producto": "XC-232",
+            "nombre": "Martillo Otro",
+            "gama": "Ornamentales",
+            "dimensiones": "456-46",
+            "proveedor": "Luka",
+            "descripcion": "",
+            "cantidad_en_stock": 123,
+            "precio_venta": 60,
+            "precio_proveedor": 20,
+            "id": 279
+        },
+        {
+            "codigo_producto": "MK-146",
+            "nombre": "Martillo Otro Vez",
+            "gama": "Ornamentales",
+            "dimensiones": "12-48",
+            "proveedor": "Juan Carlos ",
+            "cantidad_en_stock": 123,
+            "precio_venta": 50,
+            "precio_proveedor": 40,
+            "id": 280
+        },
+        {
+            "codigo_producto": "MA-789",
+            "nombre": "Planta",
+            "gama": "Ornamentales",
+            "dimensiones": "12-4",
+            "proveedor": "Lukas",
+            "descripcion": "Hoajsdiashfdskdnsaihdo hsadhosdhoas hoas hdoasiod hasudhasuifuidhigsdvf sdigfsdig iugfiygfaguiyasfyguif asgiysfaig",
+            "cantidad_en_stock": 145,
+            "precio_venta": 26,
+            "precio_proveedor": 13,
+            "id": 281
         }
     ]
 }

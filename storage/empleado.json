@@ -397,15 +397,15 @@
             "id": 33
         },
         {
-            "codigo_empleado": 34,
+            "codigo_empleado": 33,
             "nombre": "Marcos",
-            "apellido1": "Burro",
+            "apellido1": "Lopez",
             "apellido2": "",
-            "extension": "15646",
-            "email": "MarcusDF48@gmail.com",
-            "codigo_oficina": "NCA-MS",
-            "codigo_jefe": 5,
-            "puesto": "Director Pendejo",
+            "extension": "4564",
+            "email": "Marcos@jardines.com",
+            "codigo_oficina": "LON-UK",
+            "codigo_jefe": 11,
+            "puesto": "Representante Ventas",
             "id": 34
         }
     ]
