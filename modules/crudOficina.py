@@ -48,7 +48,7 @@ def menu():
 
 def getAllDataOficina():
     #json-server storage/oficina.json -b 5505
-    peticion = requests.get("http://localhost:5505/oficinas")
+    peticion = requests.get("http://154.38.171.54:5005/oficinas")
     data = peticion.json()
     return data 
 
@@ -59,7 +59,7 @@ def getAllCodigoOficina():
     return oficinaNombre
 
 def getOficinaCodigo(codigo):
-    peticion = requests.get(f"http://localhost:5505/oficinas/{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5005/oficinas/{codigo}")
     return peticion.json() if peticion.ok else []
 
 def getCodigo(codigo):
@@ -133,7 +133,7 @@ def postOficina():
         break
     
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5505/oficinas", headers=headers, data=json.dumps(oficina))
+    peticion = requests.post("http://154.38.171.54:5005/oficinas", headers=headers, data=json.dumps(oficina))
     res = peticion.json()
     res["Mensaje"] = "Oficina Guardada"
     return [res]
@@ -148,7 +148,7 @@ def deleteOficina(id):
                 confirmacion = input("Deseas eliminar este producto?(s/n): ")
                 if vali.validacionSiNo(confirmacion):
                     if confirmacion == "s":
-                        peticion = requests.delete(f"http://localhost:5505/oficinas/{id}")
+                        peticion = requests.delete(f"http://154.38.171.54:5005/oficinas/{id}")
                         if(peticion.status_code == 204):
                             return[["messege", "Oficina eliminado correctamente"]]
                         break
@@ -232,7 +232,7 @@ def updateOficina(id):
             break
 
         headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-        peticion = requests.put(f"http://localhost:5505/oficinas/{id}", headers=headers, data=json.dumps(oficina))
+        peticion = requests.put(f"http://154.38.171.54:5005/oficinas/{id}", headers=headers, data=json.dumps(oficina))
         res = peticion.json()
         res["Mensaje"] = "Oficina Actualizada"
         return [res]

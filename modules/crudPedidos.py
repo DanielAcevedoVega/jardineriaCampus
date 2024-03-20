@@ -46,7 +46,7 @@ def menu():
 
 def getAllDataPedido():
     #json-server storage/pedido.json -b 5503
-    peticion = requests.get("http://localhost:5503/pedidos")
+    peticion = requests.get("http://154.38.171.54:5007/pedidos")
     data = peticion.json()
     return data 
 
@@ -62,7 +62,7 @@ def nuevoCodigoPedido():
         return 1
     
 def getCodigoPedido(codigo):
-    peticion = requests.get(f"http://localhost:5503/pedidos/{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5007/pedidos/{codigo}")
     return peticion.json() if peticion.ok else []
 
 def postPedido():
@@ -114,7 +114,7 @@ def postPedido():
             print(error)
     
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5503/pedidos", headers=headers, data=json.dumps(pedido))
+    peticion = requests.post("http://154.38.171.54:5007/pedidos", headers=headers, data=json.dumps(pedido))
     res = peticion.json()
     res["Mensaje"] = "Pedido Agregado"
     return [res]
@@ -129,7 +129,7 @@ def deletePedido(id):
                 confirmacion = input("Deseas eliminar este pedido?(s/n): ")
                 if vali.validacionSiNo(confirmacion):
                     if confirmacion == "s":
-                        peticion = requests.delete(f"http://localhost:5503/pedidos/{id}")
+                        peticion = requests.delete(f"http://154.38.171.54:5007/pedidos/{id}")
                         if(peticion.status_code == 204):
                             return[["messege", "Pedido eliminado correctamente"]]
                         break
@@ -197,7 +197,7 @@ def updatePedido(id):
                 print(error)
         
         headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-        peticion = requests.put(f"http://localhost:5503/pedidos/{id}", headers=headers, data=json.dumps(pedido))
+        peticion = requests.put(f"http://154.38.171.54:5007/pedidos/{id}", headers=headers, data=json.dumps(pedido))
         res = peticion.json()
         res["Mensaje"] = "Pedido Actualizado"
         return [res]

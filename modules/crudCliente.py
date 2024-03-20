@@ -36,7 +36,7 @@ def menu():
                 if (opcion == 1):
                     print(tabulate(postClientes(), headers="keys", tablefmt="github"))
                 elif (opcion == 2):
-                    id = int(input("Ingrese el codigo del cliente que deseas eliminar: "))
+                    id = (input("Ingrese el codigo del cliente que deseas eliminar: "))
                     print(tabulate(deleteCliente(id), tablefmt="github"))
                 elif (opcion == 3):
                     id = int(input("Ingrese el codigo del cliente que deseas actualizar: "))
@@ -48,7 +48,7 @@ def menu():
 
 def getAllCliente():
     #json-server storage/cliente.json -b 5507
-    peticion = requests.get("http://localhost:5507/clientes")
+    peticion = requests.get("http://154.38.171.54:5001/cliente")
     data = peticion.json()
     return data
 
@@ -64,7 +64,7 @@ def nuevoCodigoCliente():
         return 1
     
 def getClienteCodigo(codigo):
-    peticion = requests.get(f"http://localhost:5507/clientes/{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5001/cliente/{codigo}")
     return peticion.json() if peticion.ok else []
 
 def postClientes():
@@ -155,7 +155,7 @@ def postClientes():
             if(not cliente.get("limite_credito")):
                 limiteCredito = input("Ingrese el limite de credito: ")
                 if(vali.validacionNumerica(limiteCredito) is not None):
-                    limiteCredito = float(limiteCredito)
+                    limiteCredito = int(limiteCredito)
                     cliente["limite_credito"] = limiteCredito
                     break
                 else:
@@ -165,7 +165,7 @@ def postClientes():
             print(error)
 
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5507/clientes", headers=headers, data=json.dumps(cliente))
+    peticion = requests.post("http://154.38.171.54:5001/cliente", headers=headers, data=json.dumps(cliente))
     res = peticion.json()
     res["Mensaje"] = "Cliente Agregado"
     return [res]
@@ -181,8 +181,8 @@ def deleteCliente(id):
                 confirmacion = input("Deseas eliminar este cliente(s/n): ")
                 if vali.validacionSiNo(confirmacion):
                     if confirmacion == "s":
-                        peticion = requests.delete(f"http://localhost:5507/clientes/{id}")
-                        if(peticion.status_code == 204):
+                        peticion = requests.delete(f"http://154.38.171.54:5001/cliente/{id}")
+                        if(peticion.ok):
                             return[["messege", "Cliente eliminado correctamente"]]
                         break
                     else:
@@ -287,7 +287,7 @@ def updateCliente(id):
                 if(not cliente.get("limite_credito")):
                     limiteCredito = input("Ingrese el limite de credito: ")
                     if(vali.validacionNumerica(limiteCredito) is not None):
-                        limiteCredito = float(limiteCredito)
+                        limiteCredito = int(limiteCredito)
                         cliente["limite_credito"] = limiteCredito
                         break
                     else:
@@ -297,7 +297,7 @@ def updateCliente(id):
                 print(error)
 
         headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-        peticion = requests.put(f"http://localhost:5507/clientes/{id}", headers=headers, data=json.dumps(cliente))
+        peticion = requests.put(f"http://154.38.171.54:5001/cliente/{id}", headers=headers, data=json.dumps(cliente))
         res = peticion.json()
         res["Mensaje"] = "Cliente Actualizado"
         return [res]

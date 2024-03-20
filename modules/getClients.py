@@ -28,7 +28,7 @@ def getOneClientCodigo(codigo):
 def getAllClientCreditCiudad(limiteCredit, ciudad):
     clienteCredit = list()
     for val in cli():
-        if(val.get('limite_credito') >= limiteCredit and val.get('ciudad') == ciudad):
+        if('limite_credito' in val and val.get('limite_credito') is not None) and (val.get('limite_credito') >= limiteCredit and val.get('ciudad') == ciudad):
             clienteCredit.append({
                 "codigo": val.get('codigo_cliente'),
                 "Responsable": val.get('nombre_cliente'),
@@ -149,7 +149,7 @@ def menu():
           0. Regresar al menu principal  
           1. Obtener todos los clientes (codigo y nombre)
           2. Obtener un cliente por el código (codigo y nombre)
-          3. Obtener toda la informacion de los cliente segun su limite de creditos y ciudad que pertenece (ejem:3000.0, San Francisco).
+          3. Obtener toda la informacion de los cliente segun su limite de creditos y ciudad que pertenece (ejem:3000, San Francisco).
           4. Obtener toda la informacion de los clientes segun su pais, region y ciudad (ejem: Spain, Madrid, Fuenlabrada).
           5. Obtener toda la informacion del cliente por el numero de contacto (telefono).
           6. Obtener toda la informacion del cliente por el codigo postal.
@@ -168,7 +168,7 @@ def menu():
                         codigo = int(input("Ingrese el codigo del cliente: "))
                         print(tabulate(getOneClientCodigo(codigo), headers="keys", tablefmt="github"))
                 elif (opcion == 3):
-                        limite = float(input("Ingrese el limite de credito de los clientes que desee visualizar: "))
+                        limite = int(input("Ingrese el limite de credito de los clientes que desee visualizar: "))
                         ciudad = input("Ingrese el nombre de la ciudad que desea filtrar a los clientes: ")
                         print(tabulate(getAllClientCreditCiudad(limite, ciudad), headers="keys", tablefmt="github"))
                 elif (opcion == 4):

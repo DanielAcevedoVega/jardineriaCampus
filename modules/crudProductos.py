@@ -49,12 +49,12 @@ def menu():
 
 def getAllData():
     #json-server storage/producto.json -b 5501
-    peticion = requests.get("http://localhost:5501/productos")
+    peticion = requests.get("http://154.38.171.54:5008/productos")
     data = peticion.json()
     return data 
 
 def getProductoCodigo(codigo):
-    peticion = requests.get(f"http://localhost:5501/productos/{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5008/productos/{codigo}")
     return peticion.json() if peticion.ok else []
 
 
@@ -140,7 +140,7 @@ def postProducto():
             print(error)
             
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5501/productos", headers=headers, data=json.dumps(producto))
+    peticion = requests.post("http://154.38.171.54:5008/productos", headers=headers, data=json.dumps(producto))
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"
     res["descripcion"] = f'{res.get("descripcion")[:20]}...' if res.get("descripcion") else None
@@ -159,7 +159,7 @@ def deleteProducto(id):
                 confirmacion = input("Deseas eliminar este producto?(s/n): ")
                 if vali.validacionSiNo(confirmacion):
                     if confirmacion == "s":
-                        peticion = requests.delete(f"http://localhost:5501/productos/{id}")
+                        peticion = requests.delete(f"http://154.38.171.54:5008/productos/{id}")
                         if(peticion.status_code == 204):
                             return[["messege", "Producto eliminado correctamente"]]
                         break
@@ -245,7 +245,7 @@ def updateProducto(id):
                     print(error)
                 
             headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-            peticion = requests.put(f"http://localhost:5501/productos/{id}", headers=headers, data=json.dumps(producto))
+            peticion = requests.put(f"http://154.38.171.54:5008/productos/{id}", headers=headers, data=json.dumps(producto))
             res = peticion.json()
             res["Mensaje"] = "Producto Actualizado"
             res["descripcion"] = f'{res.get("descripcion")[:20]}...' if res.get("descripcion") else None

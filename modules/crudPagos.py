@@ -46,12 +46,12 @@ def menu():
 
 def getAllDataPagos():
     #json-server storage/pago.json -b 5504
-    peticion = requests.get("http://localhost:5504/pagos")
+    peticion = requests.get("http://154.38.171.54:5006/pagos")
     data = peticion.json()
     return data 
 
 def getPagoCodigo(codigo):
-    peticion = requests.get(f"http://localhost:5504/pagos/{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5006/pagos/{codigo}")
     return peticion.json() if peticion.ok else []
 
 def postPagos():
@@ -100,7 +100,7 @@ def postPagos():
             print(error)
     
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5504/pagos", headers=headers, data=json.dumps(pago))
+    peticion = requests.post("http://154.38.171.54:5006/pagos", headers=headers, data=json.dumps(pago))
     res = peticion.json()
     return [res]
 
@@ -114,7 +114,7 @@ def deletePago(id):
                 confirmacion = input("Deseas eliminar este pago?(s/n): ")
                 if vali.validacionSiNo(confirmacion):
                     if confirmacion == "s":
-                        peticion = requests.delete(f"http://localhost:5504/pagos/{id}")
+                        peticion = requests.delete(f"http://154.38.171.54:5006/pagos/{id}")
                         if(peticion.status_code == 204):
                             return[["messege", "Pago eliminado correctamente"]]
                         break
@@ -174,7 +174,7 @@ def updatePago(id):
                 print(error)
         
         headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-        peticion = requests.put(f"http://localhost:5504/pagos/{id}", headers=headers, data=json.dumps(pago))
+        peticion = requests.put(f"http://154.38.171.54:5006/pagos/{id}", headers=headers, data=json.dumps(pago))
         res = peticion.json()
         return [res]
     else:

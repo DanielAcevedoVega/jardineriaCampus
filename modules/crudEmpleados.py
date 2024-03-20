@@ -47,7 +47,7 @@ def menu():
 
 def getAllDataEmpleado():
     #json-server storage/empleado.json -b 5506
-    peticion = requests.get("http://localhost:5506/empleados")
+    peticion = requests.get("http://154.38.171.54:5003/empleados")
     data = peticion.json()
     return data 
 
@@ -63,7 +63,7 @@ def nuevoCodigoEmpleado():
         return 1
     
 def getCodigoEmpleado(codigo):
-    peticion = requests.get(f"http://localhost:5506/empleados/{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5003/empleados/{codigo}")
     return peticion.json() if peticion.ok else []
 
 def postEmpleados():
@@ -130,7 +130,7 @@ def postEmpleados():
             print(error)
     
     headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-    peticion = requests.post("http://localhost:5506/empleados", headers=headers, data=json.dumps(empleado))
+    peticion = requests.post("http://154.38.171.54:5003/empleados", headers=headers, data=json.dumps(empleado))
     res = peticion.json()
     res["Mensaje"] = "Empleado Agregado"
     return [res]
@@ -145,7 +145,7 @@ def deleteEmpleado(id):
                 confirmacion = input("Deseas eliminar este empleado?(s/n): ")
                 if vali.validacionSiNo(confirmacion):
                     if confirmacion == "s":
-                        peticion = requests.delete(f"http://localhost:5506/empleados/{id}")
+                        peticion = requests.delete(f"http://154.38.171.54:5003/empleados/{id}")
                         if(peticion.status_code == 204):
                             return[["messege", "Empleado eliminado correctamente"]]
                         break
@@ -228,7 +228,7 @@ def updateEmpleado(id):
                 print(error)
         
         headers = {'Content-Type': 'application/json', 'charset': 'utf-8'}
-        peticion = requests.put(f"http://localhost:5506/empleados/{id}", headers=headers, data=json.dumps(empleado))
+        peticion = requests.put(f"http://154.38.171.54:5003/empleados/{id}", headers=headers, data=json.dumps(empleado))
         res = peticion.json()
         res["Mensaje"] = "Empleado Actualizado"
         return [res]

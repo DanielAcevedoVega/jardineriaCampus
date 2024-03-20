@@ -1,7 +1,7 @@
 import requests
 
 def getAllGama():
-    peticion = requests.get("http://localhost:5502")
+    peticion = requests.get("http://154.38.171.54:5004/gama")
     data = peticion.json()
     return data
 
