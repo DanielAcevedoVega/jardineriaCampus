@@ -52,11 +52,13 @@ def getAllDataEmpleado():
     return data 
 
 def nuevoCodigoEmpleado():
-    codigodelCliente = list()
+    codigoDelEmpleado = list()
     for val in getAllDataEmpleado():
-        codigodelCliente.append(val.get("codigo_empleado"))
-    if codigodelCliente:
-        return max(codigodelCliente) + 1
+        codigoEmpleado = val.get("codigo_empleado")
+        if codigoEmpleado is not None:
+            codigoDelEmpleado.append(codigoEmpleado)
+    if codigoDelEmpleado:
+        return max(codigoDelEmpleado) + 1
     else:
         return 1
     

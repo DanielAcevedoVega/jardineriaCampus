@@ -53,11 +53,13 @@ def getAllCliente():
     return data
 
 def nuevoCodigoCliente():
-    codigodelCliente = list()
+    codigoDelCliente = list()
     for val in getAllCliente():
-        codigodelCliente.append(val.get("codigo_cliente"))
-    if codigodelCliente:
-        return max(codigodelCliente) + 1
+        codigoCliente = val.get("codigo_cliente")
+        if codigoCliente is not None:
+            codigoDelCliente.append(codigoCliente)
+    if codigoDelCliente:
+        return max(codigoDelCliente) + 1
     else:
         return 1
     

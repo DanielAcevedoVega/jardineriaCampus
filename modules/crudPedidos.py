@@ -51,11 +51,13 @@ def getAllDataPedido():
     return data 
 
 def nuevoCodigoPedido():
-    codigodelCliente = list()
+    codigoDelPedido = list()
     for val in getAllDataPedido():
-        codigodelCliente.append(val.get("codigo_pedido"))
-    if codigodelCliente:
-        return max(codigodelCliente) + 1
+        codigoPedido = val.get("codigo_pedido")
+        if codigoPedido is not None:
+            codigoDelPedido.append(codigoPedido)
+    if codigoDelPedido:
+        return max(codigoDelPedido) + 1
     else:
         return 1
     
