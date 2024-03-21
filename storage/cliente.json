@@ -14,25 +14,8 @@
             "pais": "USA",
             "codigo_postal": "24006",
             "codigo_empleado_rep_ventas": 19,
-            "limite_credito": 3000.0,
-            "id": 1
-        },
-        {
-            "codigo_cliente": 3,
-            "nombre_cliente": "Gardening Associates",
-            "nombre_contacto": "Anne",
-            "apellido_contacto": "Wright",
-            "telefono": "5557410345",
-            "fax": "5557410346",
-            "linea_direccion1": "Wall-e Avenue",
-            "linea_direccion2": null,
-            "ciudad": "Miami",
-            "region": "Miami",
-            "pais": "USA",
-            "codigo_postal": "24010",
-            "codigo_empleado_rep_ventas": 19,
-            "limite_credito": 6000.0,
-            "id": 2
+            "limite_credito": 3000,
+            "id": "1"
         },
         {
             "codigo_cliente": 4,
@@ -48,8 +31,8 @@
             "pais": "USA",
             "codigo_postal": "85495",
             "codigo_empleado_rep_ventas": 22,
-            "limite_credito": 12000.0,
-            "id": 3
+            "limite_credito": 12000,
+            "id": "3"
         },
         {
             "codigo_cliente": 5,
@@ -65,8 +48,8 @@
             "pais": "USA",
             "codigo_postal": "696969",
             "codigo_empleado_rep_ventas": 22,
-            "limite_credito": 600000.0,
-            "id": 4
+            "limite_credito": 600000,
+            "id": "4"
         },
         {
             "codigo_cliente": 6,
@@ -82,8 +65,8 @@
             "pais": "Spain",
             "codigo_postal": "28945",
             "codigo_empleado_rep_ventas": 8,
-            "limite_credito": 154310.0,
-            "id": 5
+            "limite_credito": 154310,
+            "id": "5"
         },
         {
             "codigo_cliente": 7,
@@ -99,8 +82,8 @@
             "pais": "Spain",
             "codigo_postal": "28942",
             "codigo_empleado_rep_ventas": 11,
-            "limite_credito": 20000.0,
-            "id": 6
+            "limite_credito": 20000,
+            "id": "6"
         },
         {
             "codigo_cliente": 8,
@@ -116,8 +99,8 @@
             "pais": "Spain",
             "codigo_postal": "28930",
             "codigo_empleado_rep_ventas": 11,
-            "limite_credito": 40000.0,
-            "id": 7
+            "limite_credito": 40000,
+            "id": "7"
         },
         {
             "codigo_cliente": 9,
@@ -133,8 +116,8 @@
             "pais": "Spain",
             "codigo_postal": "28947",
             "codigo_empleado_rep_ventas": 11,
-            "limite_credito": 32000.0,
-            "id": 8
+            "limite_credito": 32000,
+            "id": "8"
         },
         {
             "codigo_cliente": 10,
@@ -150,8 +133,8 @@
             "pais": "Spain",
             "codigo_postal": "28946",
             "codigo_empleado_rep_ventas": 11,
-            "limite_credito": 50000.0,
-            "id": 9
+            "limite_credito": 50000,
+            "id": "9"
         },
         {
             "codigo_cliente": 11,
@@ -167,8 +150,8 @@
             "pais": "Spain",
             "codigo_postal": "28943",
             "codigo_empleado_rep_ventas": 11,
-            "limite_credito": 20000.0,
-            "id": 10
+            "limite_credito": 20000,
+            "id": "10"
         },
         {
             "codigo_cliente": 12,
@@ -184,8 +167,8 @@
             "pais": "Spain",
             "codigo_postal": "28945",
             "codigo_empleado_rep_ventas": 8,
-            "limite_credito": 154310.0,
-            "id": 11
+            "limite_credito": 154310,
+            "id": "11"
         },
         {
             "codigo_cliente": 13,
@@ -201,8 +184,8 @@
             "pais": "Spain",
             "codigo_postal": "28145",
             "codigo_empleado_rep_ventas": 8,
-            "limite_credito": 16481.0,
-            "id": 12
+            "limite_credito": 16481,
+            "id": "12"
         },
         {
             "codigo_cliente": 14,
@@ -218,15 +201,15 @@
             "pais": "Spain",
             "codigo_postal": "28003",
             "codigo_empleado_rep_ventas": 8,
-            "limite_credito": 321000.0,
-            "id": 13
+            "limite_credito": 321000,
+            "id": "13"
         },
         {
             "codigo_cliente": 15,
             "nombre_cliente": "Jardin de Flores",
             "nombre_contacto": "Javier",
             "apellido_contacto": "Villar",
-            "telefono": "654865643",
+            "telefono": "654865644",
             "fax": "914538776",
             "linea_direccion1": "C/ O\u00f1a 34",
             "linea_direccion2": null,
@@ -235,8 +218,8 @@
             "pais": "Spain",
             "codigo_postal": "28950",
             "codigo_empleado_rep_ventas": 30,
-            "limite_credito": 40000.0,
-            "id": 14
+            "limite_credito": 40000,
+            "id": "14"
         },
         {
             "codigo_cliente": 16,
@@ -252,8 +235,8 @@
             "pais": "Spain",
             "codigo_postal": "28945",
             "codigo_empleado_rep_ventas": 5,
-            "limite_credito": 1500.0,
-            "id": 15
+            "limite_credito": 1500,
+            "id": "15"
         },
         {
             "codigo_cliente": 17,
@@ -269,8 +252,8 @@
             "pais": "Spain",
             "codigo_postal": "24586",
             "codigo_empleado_rep_ventas": 5,
-            "limite_credito": 3500.0,
-            "id": 16
+            "limite_credito": 3500,
+            "id": "16"
         },
         {
             "codigo_cliente": 18,
@@ -286,8 +269,8 @@
             "pais": "Spain",
             "codigo_postal": "28011",
             "codigo_empleado_rep_ventas": 30,
-            "limite_credito": 5050.0,
-            "id": 17
+            "limite_credito": 5050,
+            "id": "17"
         },
         {
             "codigo_cliente": 19,
@@ -303,15 +286,15 @@
             "pais": "Spain",
             "codigo_postal": "38297",
             "codigo_empleado_rep_ventas": 12,
-            "limite_credito": 30000.0,
-            "id": 18
+            "limite_credito": 30000,
+            "id": "18"
         },
         {
             "codigo_cliente": 20,
             "nombre_cliente": "Americh Golf Management SL",
             "nombre_contacto": "Mario",
             "apellido_contacto": "Suarez",
-            "telefono": "964493072",
+            "telefono": "964493073",
             "fax": "964493063",
             "linea_direccion1": "C/Letardo",
             "linea_direccion2": null,
@@ -320,8 +303,8 @@
             "pais": "Spain",
             "codigo_postal": "12320",
             "codigo_empleado_rep_ventas": 12,
-            "limite_credito": 20000.0,
-            "id": 19
+            "limite_credito": 20000,
+            "id": "19"
         },
         {
             "codigo_cliente": 21,
@@ -337,8 +320,8 @@
             "pais": "Spain",
             "codigo_postal": "35488",
             "codigo_empleado_rep_ventas": 12,
-            "limite_credito": 50000.0,
-            "id": 20
+            "limite_credito": 50000,
+            "id": "20"
         },
         {
             "codigo_cliente": 22,
@@ -354,8 +337,8 @@
             "pais": "Spain",
             "codigo_postal": "12320",
             "codigo_empleado_rep_ventas": 12,
-            "limite_credito": 30000.0,
-            "id": 21
+            "limite_credito": 30000,
+            "id": "21"
         },
         {
             "codigo_cliente": 23,
@@ -371,8 +354,8 @@
             "pais": "Spain",
             "codigo_postal": "11310",
             "codigo_empleado_rep_ventas": 12,
-            "limite_credito": 60000.0,
-            "id": 22
+            "limite_credito": 60000,
+            "id": "22"
         },
         {
             "codigo_cliente": 24,
@@ -388,8 +371,8 @@
             "pais": "Spain",
             "codigo_postal": "28970",
             "codigo_empleado_rep_ventas": 30,
-            "limite_credito": 7430.0,
-            "id": 23
+            "limite_credito": 7430,
+            "id": "23"
         },
         {
             "codigo_cliente": 25,
@@ -405,8 +388,8 @@
             "pais": "Spain",
             "codigo_postal": "28574",
             "codigo_empleado_rep_ventas": 5,
-            "limite_credito": 4500.0,
-            "id": 24
+            "limite_credito": 4500,
+            "id": "24"
         },
         {
             "codigo_cliente": 26,
@@ -422,8 +405,8 @@
             "pais": "Spain",
             "codigo_postal": "29874",
             "codigo_empleado_rep_ventas": 9,
-            "limite_credito": 76000.0,
-            "id": 25
+            "limite_credito": 76000,
+            "id": "25"
         },
         {
             "codigo_cliente": 27,
@@ -439,8 +422,8 @@
             "pais": "Spain",
             "codigo_postal": "37845",
             "codigo_empleado_rep_ventas": 9,
-            "limite_credito": 100500.0,
-            "id": 26
+            "limite_credito": 100500,
+            "id": "26"
         },
         {
             "codigo_cliente": 28,
@@ -456,8 +439,8 @@
             "pais": "Spain",
             "codigo_postal": "28904",
             "codigo_empleado_rep_ventas": 30,
-            "limite_credito": 8040.0,
-            "id": 27
+            "limite_credito": 8040,
+            "id": "27"
         },
         {
             "codigo_cliente": 29,
@@ -473,8 +456,8 @@
             "pais": "Spain",
             "codigo_postal": "28574",
             "codigo_empleado_rep_ventas": 5,
-            "limite_credito": 5500.0,
-            "id": 28
+            "limite_credito": 5500,
+            "id": "28"
         },
         {
             "codigo_cliente": 30,
@@ -490,11 +473,11 @@
             "pais": "Spain",
             "codigo_postal": "27584",
             "codigo_empleado_rep_ventas": 5,
-            "limite_credito": 7500.0,
-            "id": 29
+            "limite_credito": 7500,
+            "id": "29"
         },
         {
-            "codigo_cliente": 31,
+            "codigo_cliente": 69,
             "nombre_cliente": "Campohermoso",
             "nombre_contacto": "Luis",
             "apellido_contacto": "Jimenez",
@@ -507,8 +490,8 @@
             "pais": "Spain",
             "codigo_postal": "28945",
             "codigo_empleado_rep_ventas": 30,
-            "limite_credito": 3250.0,
-            "id": 30
+            "limite_credito": 3250,
+            "id": "30"
         },
         {
             "codigo_cliente": 32,
@@ -524,8 +507,8 @@
             "pais": "France",
             "codigo_postal": "75010",
             "codigo_empleado_rep_ventas": 16,
-            "limite_credito": 10000.0,
-            "id": 31
+            "limite_credito": 10000,
+            "id": "31"
         },
         {
             "codigo_cliente": 33,
@@ -541,90 +524,25 @@
             "pais": "France",
             "codigo_postal": "75058",
             "codigo_empleado_rep_ventas": 16,
-            "limite_credito": 30000.0,
-            "id": 32
+            "limite_credito": 3000,
+            "id": "32"
         },
         {
-            "codigo_cliente": 35,
-            "nombre_cliente": "Tutifruti S.A",
-            "nombre_contacto": "Jacob",
-            "apellido_contacto": "Jones",
-            "telefono": "2 9261-2433",
-            "fax": "2 9283-1695",
-            "linea_direccion1": "level 24, St. Martins Tower.-31 Market St.",
-            "linea_direccion2": null,
-            "ciudad": "Sydney",
-            "region": "Nueva Gales del Sur",
-            "pais": "Australia",
-            "codigo_postal": "2000",
-            "codigo_empleado_rep_ventas": 31,
-            "limite_credito": 10000.0,
-            "id": 33
-        },
-        {
-            "codigo_cliente": 36,
-            "nombre_cliente": "Flores S.L.",
-            "nombre_contacto": "Antonio",
-            "apellido_contacto": "Romero",
-            "telefono": "654352981",
-            "fax": "685249700",
-            "linea_direccion1": "Avenida Espa\u00f1a",
-            "linea_direccion2": null,
+            "id": "0529",
+            "codigo_cliente": 16,
+            "nombre_cliente": "Goyo",
+            "nombre_contacto": "Jutjutsu",
+            "apellido_contacto": "Kaisen",
+            "telefono": "54654865",
+            "fax": "12 564564-5465",
+            "linea_direccion1": "pij",
+            "linea_direccion2": "Direccion otra xdd",
             "ciudad": "Madrid",
-            "region": "Fuenlabrada",
+            "region": "Madrid",
             "pais": "Spain",
-            "codigo_postal": "29643",
-            "codigo_empleado_rep_ventas": 18,
-            "limite_credito": 6000.0,
-            "id": 34
-        },
-        {
-            "codigo_cliente": 37,
-            "nombre_cliente": "The Magic Garden",
-            "nombre_contacto": "Richard",
-            "apellido_contacto": "Mcain",
-            "telefono": "926523468",
-            "fax": "9364875882",
-            "linea_direccion1": "Lihgting Park",
-            "linea_direccion2": null,
-            "ciudad": "London",
-            "region": "London",
-            "pais": "United Kingdom",
-            "codigo_postal": "65930",
-            "codigo_empleado_rep_ventas": 18,
-            "limite_credito": 10000.0,
-            "id": 35
-        },
-        {
-            "codigo_cliente": 38,
-            "nombre_cliente": "El Jardin Viviente S.L",
-            "nombre_contacto": "Justin",
-            "apellido_contacto": "Smith",
-            "telefono": "2 8005-7161",
-            "fax": "2 8005-7162",
-            "linea_direccion1": "176 Cumberland Street The rocks",
-            "linea_direccion2": null,
-            "ciudad": "Sydney",
-            "region": "Sur",
-            "pais": "Australia",
-            "codigo_postal": "2003",
-            "codigo_empleado_rep_ventas": 31,
-            "limite_credito": 8000.0,
-            "id": 36
-        },
-        {
-            "codigo_cliente": 39,
-            "nombre_cliente": "El Jardin Mas PRO",
-            "nombre_contacto": "Jhostin",
-            "apellido_contacto": "Vargas",
-            "telefono": "8 1234-5647",
-            "fax": "46545616",
-            "linea_direccion1": "Villabel calle 5 #8-4",
-            "ciudad": "Australia",
-            "codigo_postal": "2003",
-            "codigo_empleado_rep_ventas": 31,
-            "limite_credito": 8000.0,
-            "id": 37
+            "codigo_postal": "89752",
+            "codigo_empleado_rep_ventas": 16,
+            "limite_credito": 9000
         }
     ]
 }

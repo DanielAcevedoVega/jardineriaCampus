@@ -190,6 +190,7 @@ def updateProducto(id):
         if data.get("descripcion"):
             descripcion = data.get("descripcion")
             data["descripcion"] = f'{descripcion[:8]}...' if len(descripcion) > 20 else descripcion
+        print("Producto Encontrado")
         print(tabulate([data], headers="keys", tablefmt="github"))
         continuarActualizar = True
         while continuarActualizar:
