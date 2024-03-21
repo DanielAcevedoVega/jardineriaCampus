@@ -167,7 +167,7 @@ def deleteProducto(id):
                 if vali.validacionSiNo(confirmacion):
                     if confirmacion == "s":
                         peticion = requests.delete(f"http://154.38.171.54:5008/productos/{id}")
-                        if(peticion.status_code == 204):
+                        if(peticion.ok):
                             return[["messege", "Producto eliminado correctamente"]]
                         break
                     else:

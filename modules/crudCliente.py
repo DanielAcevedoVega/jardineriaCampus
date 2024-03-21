@@ -39,7 +39,7 @@ def menu():
                     id = (input("Ingrese el codigo del cliente que deseas eliminar: "))
                     print(tabulate(deleteCliente(id), tablefmt="github"))
                 elif (opcion == 3):
-                    id = int(input("Ingrese el codigo del cliente que deseas actualizar: "))
+                    id = (input("Ingrese el codigo del cliente que deseas actualizar: "))
                     print(tabulate(updateCliente(id), headers="keys", tablefmt="github"))
                 elif (opcion == 0):
                     break
