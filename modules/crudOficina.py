@@ -178,14 +178,14 @@ def updateOficina(id):
                 print("""
                         ¿Que dato deseas cambiar?
                         
-                    1. Nombre 
-                    2. Primer apellido
-                    3. Segundo apellido
-                    4. Extension
-                    5. Email
-                    6. Codigo de la oficina
-                    7. Codigo jefe
-                    8. Puesto
+                    1. Codigo oficina 
+                    2. Ciudad
+                    3. Pais
+                    4. Region
+                    5. Codigo postal
+                    6. Telefono
+                    7. Linea direccion 1
+                    8. Linea direccion 2
                     
                 """)
                 opcion = input("\nSeleccione una de las opciones: ")

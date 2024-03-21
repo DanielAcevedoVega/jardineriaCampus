@@ -146,20 +146,16 @@ def updatePago(id):
                 print("""
                         ¿Que dato deseas cambiar?
                         
-                    1. Nombre 
-                    2. Primer apellido
-                    3. Segundo apellido
-                    4. Extension
-                    5. Email
-                    6. Codigo de la oficina
-                    7. Codigo jefe
-                    8. Puesto
+                    1. Forma de pago 
+                    2. Id transaccion
+                    3. Fecha pago
+                    4. Total
                     
                 """)
                 opcion = input("\nSeleccione una de las opciones: ")
                 if(vali.validacionOpciones(opcion) is not None):
                     opcion = int(opcion)
-                    if(opcion >= 0 and opcion <= 8):
+                    if(opcion >= 0 and opcion <= 4):
                         if(opcion == 1):
                             while True:
                                 try:
