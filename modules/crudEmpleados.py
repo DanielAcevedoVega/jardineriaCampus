@@ -36,10 +36,10 @@ def menu():
                 if (opcion == 1):
                     print(tabulate(postEmpleados(), headers="keys", tablefmt="github"))
                 elif (opcion == 2):
-                    id = int(input("Ingrese el codigo del empleado que deseas eliminar: "))
+                    id = (input("Ingrese el codigo del empleado que deseas eliminar: "))
                     print(tabulate(deleteEmpleado(id), tablefmt="github"))
                 elif (opcion == 3):
-                    id = int(input("Ingrese el codigo del empleado que deseas actualizar: "))
+                    id = (input("Ingrese el codigo del empleado que deseas actualizar: "))
                     print(tabulate(updateEmpleado(id), headers="keys", tablefmt="github"))
                 elif (opcion == 0):
                     break
