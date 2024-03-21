@@ -34,10 +34,10 @@ def menu():
                 if (opcion == 1):
                     print(tabulate(postPedido(), headers="keys", tablefmt="github"))
                 elif (opcion == 2):
-                    id = int(input("Ingrese el codigo del pedido que deseas eliminar: "))
+                    id = (input("Ingrese el codigo del pedido que deseas eliminar: "))
                     print(tabulate(deletePedido(id), tablefmt="github"))
                 elif (opcion == 3):
-                    id = int(input("Ingrese el codigo del pedido que deseas actualizar: "))
+                    id = (input("Ingrese el codigo del pedido que deseas actualizar: "))
                     print(tabulate(updatePedido(id), headers="keys", tablefmt="github"))
                 elif (opcion == 0):
                     break

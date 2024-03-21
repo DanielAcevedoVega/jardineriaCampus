@@ -35,10 +35,10 @@ def menu():
                 if (opcion == 1):
                     print(tabulate(postOficina(), headers="keys", tablefmt="github"))
                 elif (opcion == 2):
-                    id = int(input("Ingresel el id de la oficina que deseas eliminar: "))
+                    id = (input("Ingresel el id de la oficina que deseas eliminar: "))
                     print(tabulate(deleteOficina(id), tablefmt="github"))
                 elif (opcion == 3):
-                    id = int(input("Ingrese el id de la oficina que deseas actualizar: "))
+                    id = (input("Ingrese el id de la oficina que deseas actualizar: "))
                     print(tabulate(updateOficina(id), headers="keys", tablefmt="github"))
                 elif (opcion == 0):
                     break

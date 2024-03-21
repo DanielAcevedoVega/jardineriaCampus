@@ -35,10 +35,10 @@ def menu():
                 if (opcion == 1):
                     print(tabulate(postPagos(), headers="keys", tablefmt="github"))
                 elif (opcion == 2):
-                    id = int(input("Ingrese el codigo del pago que deseas eliminar: "))
+                    id = (input("Ingrese el codigo del pago que deseas eliminar: "))
                     print(tabulate(deletePago(id), tablefmt="github"))
                 elif (opcion == 3):
-                    id = int(input("Ingrese el codigo del pago que deseas actualizar: "))
+                    id = (input("Ingrese el codigo del pago que deseas actualizar: "))
                     print(tabulate(updatePago(id), headers="keys", tablefmt="github"))
                 elif (opcion == 0):
                     break
